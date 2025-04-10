@@ -32,7 +32,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="<?= base_url('AdminLTE') ?>/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="<?= base_url('AdminLTE') ?>/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+<!-- bootstrap color picker -->
+<script src="<?= base_url('AdminLTE') ?>/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
 <!-- DataTables  & Plugins -->
 <script src="<?= base_url('AdminLTE') ?>/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?= base_url('AdminLTE') ?>/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -87,7 +88,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="<?= base_url('Admin') ?>" class="brand-link">
       <img src="<?= base_url('AdminLTE') ?>/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">GIS AlutsistaTNI</span>
     </a>
@@ -122,7 +123,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             <li class="nav-item">
-            <a href="<?=base_url('Admin')?>" class="nav-link">
+            <a href="<?=base_url('Admin')?>" class="nav-link <?= $menu  ==  'dashboard' ? 'active' : '' ?>">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -131,7 +132,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
 
           <li class="nav-item">
-            <a href="<?=base_url('Wilayah')?>" class="nav-link">
+            <a href="<?=base_url('Wilayah')?>" class="nav-link <?= $menu  ==  'wilayah' ? 'active' : '' ?>">
               <i class="nav-icon fas fa-layer-group"></i>
               <p>
                 Wilayah
@@ -139,43 +140,34 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
           </li>
 
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-th"></i>
+          <li class="nav-item">
+            <a href="<?=base_url('Komando')?>" class="nav-link <?= $menu  ==  'komando' ? 'active' : '' ?>">
+            <img src="<?= base_url('gambar/komandan tni memberi arahan.png') ?>" alt="Setting Icon" class="nav-icon" style="width: 20px; height: 20px;">
               <p>
-                Starter Pages
-                <i class="right fas fa-angle-left"></i>
+                Komando
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Active Page</p>
-                </a>
-              </li>
+          </li>
 
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Inactive Page</p>
-                </a>
-              </li>
-            </ul>
+          <li class="nav-item">
+            <a href="<?=base_url('Batalyon')?>" class="nav-link <?= $menu  ==  'batalyon' ? 'active' : '' ?>">
+            <img src="<?= base_url('gambar/Batalyon.png') ?>" alt="Setting Icon" class="nav-icon" style="width: 20px; height: 20px;">
+              <p>Batalyon</p>
+            </a>
           </li>
 
           <!-- Sidebar TNI AD(Kodam)-->
         <li class="nav-item">
-        <a href="<?= base_url('Admin/Kodam') ?>" class="nav-link">
-        <img src="<?= base_url('gambar/Lambang_TNI_AD.png') ?>" alt="Setting Icon" class="nav-icon" style="width: 20px; height: 20px;">
+        <a href="<?= base_url('Admin/Kodam') ?>" class="nav-link <?= $menu  ==  'Kodam' ? 'active' : '' ?>">
+        <img src="<?= base_url('gambar/Lambang_TNI_AD_1.png') ?>" alt="Setting Icon" class="nav-icon" style="width: 20px; height: 20px;">
         <p>TNI AD</p>
           </a>
         </li>
 
           <!-- Sidebar TNI AL(Lantamal)-->
           <li class="nav-item">
-        <a href="<?= base_url('Admin/Lantamal') ?>" class="nav-link">
-        <img src="<?= base_url('gambar/Lambang_Koarmada.png') ?>" alt="Setting Icon" class="nav-icon" style="width: 20px; height: 20px;">
+        <a href="<?= base_url('Admin/Lantamal') ?>" class="nav-link <?= $menu  ==  'Lantamal' ? 'active' : '' ?>">
+        <img src="<?= base_url('gambar/Lambang_TNI_AL_2.png') ?>" alt="Setting Icon" class="nav-icon" style="width: 20px; height: 20px;">
         <p>TNI AL</p>
           </a>
         </li>
@@ -188,8 +180,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </a>
         </li>
         
-          <li class="nav-item">
-            <a href="<?= base_url('Admin/Setting') ?>" class="nav-link">
+        <li class="nav-item">
+            <a href="<?= base_url('User') ?>" class="nav-link <?= $menu  ==  'user' ? 'active' : '' ?>">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                User
+              </p>
+            </a>
+          </li>
+
+        <li class="nav-item">
+            <a href="<?= base_url('Admin/Setting') ?>" class="nav-link <?= $menu  ==  'setting' ? 'active' : '' ?>">
               <i class="nav-icon fas fa-cogs"></i>
               <p>
                 Setting
@@ -197,15 +198,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
           </li>
 
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Simple Link
-                <span class="right badge badge-danger">New</span>
-              </p>
-            </a>
-          </li>
+          
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

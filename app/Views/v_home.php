@@ -18,8 +18,8 @@ attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStree
 });
 
 const map = L.map('map', {
-center: [-6.315912188653794, 106.85422580760677],
-zoom: 16,
+center: [<?= $web['coordinate_wilayah'] ?>],
+zoom: <?= $web['zoom_view'] ?>,
 layers: [osm, cities]
 });
 
@@ -45,4 +45,14 @@ attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright"
 });
 layerControl.addBaseLayer(openTopoMap, 'OpenTopoMap');
 layerControl.addOverlay(batalyon, 'Batalyon')
+
+<?php foreach ($wilayah as $key => $value) { ?>
+        L.geoJSON(<?= $value['geojson'] ?>, {
+          fillColor: '<?= $value['warna'] ?>',
+          fillOpacity: 0.5,
+        })
+        .bindPopup("<b><?= $value['nama_wilayah'] ?></b>")
+        .addTo(map);
+    <?php } ?>
+</script>
 </script>
