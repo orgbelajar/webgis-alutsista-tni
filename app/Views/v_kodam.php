@@ -3,63 +3,7 @@
               <div class="card-header">
                 <h3 class="card-title"><?= $judul ?></h3>
 
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                </div>
-                <!-- /.card-tools -->
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
 
-              <?php 
-              if (session()->getFlashdata('pesan')) {
-                echo '<div class="alert alert-success alert-dismissible">
-                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                  <h5><i class="icon fas fa-check"></i>';
-                echo session()->getFlashdata('pesan');
-                echo '</h5></div>';
-              }
-
-              ?>
-
-            <?php echo form_open('Admin/UpdateSetting') ?>
-
-
-
-                <div class="row">
-                    <div class="col-sm-7">
-                    <div class="form-group">
-                    <label>Nama Website</label>
-                    <input name="nama_web" value="<?= $web['nama_web'] ?>" class="form-control" placeholder="Nama Website" required>
-                </div>
-                </div>
-                    <div class="col-sm-3">
-                    <div class="form-group">
-                    <label>Coordinate Wilayah</label>
-                    <input name="coordinate_wilayah" value="<?= $web['coordinate_wilayah'] ?>" class="form-control" placeholder="Coordinate Wilayah" required>
-                        </div>
-                    </div>
-                    <div class="col-sm-2">
-                    <div class="form-group">
-                    <label>Zoom View</label>
-                    <input type="number" value="<?= $web['zoom_view'] ?>" name="zoom_view" min="0" max="20"  class="form-control" placeholder="Zoom View" required>
-                </div>
-                    </div>
-                </div>
-
-
-                <button class="btn btn-primary" type="submit">Simpan</button>
-
-            
-
-            <?php echo form_close() ?>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </div>
 
 
           <div class="col-md-12">
@@ -99,8 +43,8 @@ attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStree
 });
 
 const map = L.map('map', {
-center: [<?= $web['coordinate_wilayah'] ?>],
-zoom: <?= $web['zoom_view'] ?>,
+center: [-1.2785119436652304, 116.82204297339233],
+zoom: 5,
 layers: [osm, cities]
 });
 
@@ -154,7 +98,7 @@ layerControl.addOverlay(batalyon, 'Batalyon')
     L.marker([3.5938878829555216, 98.6224445846017], {
         icon: marker2
       })
-      .bindPopup("Kodam 1 bukit barisan") // Popup saat diklik
+      .bindPopup("<p>Kodam 1 bukit barisan</p><p>personel</p></p><p>Alutsista</p><p>Amunisi</p>") // Popup saat diklik
       .bindTooltip("Kodam 1 bukit barisan", { 
         permanent: false, 
         direction: "top",
@@ -266,7 +210,7 @@ layerControl.addOverlay(batalyon, 'Batalyon')
 
     //custom kodam 6 mulawarman
    const marker9 = L.icon({
-    iconUrl: 'http://localhost/gis-alutsistatni-ci4/public/marker/kodam_6.png',
+    iconUrl: 'http://localhost/gis-alutsistatni-ci4/public/marker/kodam-6.png',
     iconSize:     [30, 35], // size of the icon
 });
     // Tambahkan marker ke peta
@@ -351,7 +295,7 @@ layerControl.addOverlay(batalyon, 'Batalyon')
 
     //custom kodam 17 cenderawasih
     const marker14 = L.icon({
-    iconUrl: 'http://localhost/gis-alutsistatni-ci4/public/marker/kodam_17.png',
+    iconUrl: 'http://localhost/gis-alutsistatni-ci4/public/marker/kodam-17.png',
     iconSize:     [30, 35], // size of the icon
 });
     // Tambahkan marker ke peta

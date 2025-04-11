@@ -159,7 +159,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Sidebar TNI AD(Kodam)-->
         <li class="nav-item">
         <a href="<?= base_url('Admin/Kodam') ?>" class="nav-link <?= $menu  ==  'Kodam' ? 'active' : '' ?>">
-        <img src="<?= base_url('gambar/Lambang_TNI_AD_1.png') ?>" alt="Setting Icon" class="nav-icon" style="width: 20px; height: 20px;">
+        <img src="<?= base_url('gambar/Logo_TNI_AD_1.png') ?>" alt="Setting Icon" class="nav-icon" style="width: 20px; height: 20px;">
         <p>TNI AD</p>
           </a>
         </li>
@@ -172,11 +172,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </a>
         </li>
 
-          <!-- Sidebar Koopsud-->
+          <!-- Sidebar TNI AU(Koopsud)-->
           <li class="nav-item">
         <a href="<?= base_url('Admin/Setting') ?>" class="nav-link">
-        <img src="<?= base_url('gambar/Logo_of_KOOPSUDNAS.png') ?>" alt="Setting Icon" class="nav-icon" style="width: 20px; height: 20px;">
-        <p>Koopsud</p>
+        <img src="<?= base_url('gambar/Lambang_TNI_AU_1.png') ?>" alt="Setting Icon" class="nav-icon" style="width: 20px; height: 20px;">
+        <p>TNI AU</p>
           </a>
         </li>
         

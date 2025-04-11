@@ -3,63 +3,7 @@
               <div class="card-header">
                 <h3 class="card-title"><?= $judul ?></h3>
 
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                </div>
-                <!-- /.card-tools -->
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
 
-              <?php 
-              if (session()->getFlashdata('pesan')) {
-                echo '<div class="alert alert-success alert-dismissible">
-                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                  <h5><i class="icon fas fa-check"></i>';
-                echo session()->getFlashdata('pesan');
-                echo '</h5></div>';
-              }
-
-              ?>
-
-            <?php echo form_open('Admin/UpdateSetting') ?>
-
-
-
-                <div class="row">
-                    <div class="col-sm-7">
-                    <div class="form-group">
-                    <label>Nama Website</label>
-                    <input name="nama_web" value="<?= $web['nama_web'] ?>" class="form-control" placeholder="Nama Website" required>
-                </div>
-                </div>
-                    <div class="col-sm-3">
-                    <div class="form-group">
-                    <label>Coordinate Wilayah</label>
-                    <input name="coordinate_wilayah" value="<?= $web['coordinate_wilayah'] ?>" class="form-control" placeholder="Coordinate Wilayah" required>
-                        </div>
-                    </div>
-                    <div class="col-sm-2">
-                    <div class="form-group">
-                    <label>Zoom View</label>
-                    <input type="number" value="<?= $web['zoom_view'] ?>" name="zoom_view" min="0" max="20"  class="form-control" placeholder="Zoom View" required>
-                </div>
-                    </div>
-                </div>
-
-
-                <button class="btn btn-primary" type="submit">Simpan</button>
-
-            
-
-            <?php echo form_close() ?>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </div>
 
 
           <div class="col-md-12">
@@ -68,9 +12,9 @@
 
           <style>
     .custom-tooltip {
-        color: #008000 !important;
+        color:#0000CD !important;
         background-color: white !important;
-        border: 2px solid #008000 !important;
+        border: 2px solid #483D8B !important;
         font-weight: bold;
         padding: 5px;
         border-radius: 5px;
@@ -146,8 +90,8 @@ layerControl.addOverlay(batalyon, 'Batalyon')
       .addTo(map);
 
 
-        //custom marker Lantamal 2
-   const marker2 = L.icon({
+    //custom marker Lantamal 2
+    const marker2 = L.icon({
     iconUrl: 'http://localhost/gis-alutsistatni-ci4/public/marker/Lantamal_2.png',
     iconSize:     [30, 35], // size of the icon
 });
@@ -164,17 +108,53 @@ layerControl.addOverlay(batalyon, 'Batalyon')
       .addTo(map);
 
 
-        //custom marker Lantamal 3
+    //custom marker Lantamal 3
    const marker3 = L.icon({
-    iconUrl: 'http://localhost/gis-alutsistatni-ci4/public/marker/Lantamal_2.png',
+    iconUrl: 'http://localhost/gis-alutsistatni-ci4/public/marker/Lantamal_3.png',
     iconSize:     [30, 35], // size of the icon
 });
     // Tambahkan marker ke peta
-    L.marker([-1.0036208482513533, 100.36561127180553], {
+    L.marker([-6.132666028988932, 106.83192833754973], {
         icon: marker3
       })
       .bindPopup("Lantamal 3") // Popup saat diklik
       .bindTooltip("Lantamal 3", { 
+        permanent: false, 
+        direction: "top",
+        className: "custom-tooltip" // warna custom untuk Tooltip saat hover(kursor diarahkan ke marker) 
+      }) // Tooltip saat hover
+      .addTo(map);
+
+
+    //custom marker Lantamal 4
+   const marker4 = L.icon({
+    iconUrl: 'http://localhost/gis-alutsistatni-ci4/public/marker/Lantamal_4.png',
+    iconSize:     [30, 35], // size of the icon
+});
+    // Tambahkan marker ke peta
+    L.marker([1.1873389582911875, 104.02133640015913], {
+        icon: marker4
+      })
+      .bindPopup("Lantamal 4") // Popup saat diklik
+      .bindTooltip("Lantamal 4", { 
+        permanent: false, 
+        direction: "top",
+        className: "custom-tooltip" // warna custom untuk Tooltip saat hover(kursor diarahkan ke marker) 
+      }) // Tooltip saat hover
+      .addTo(map);
+
+
+    //custom marker Lantamal 5
+   const marker5 = L.icon({
+    iconUrl: 'http://localhost/gis-alutsistatni-ci4/public/marker/Lantamal_5.png',
+    iconSize:     [30, 35], // size of the icon
+});
+    // Tambahkan marker ke peta
+    L.marker([-0.0075209140578692425, 109.31949897423738], {
+        icon: marker5
+      })
+      .bindPopup("Lantamal 5") // Popup saat diklik
+      .bindTooltip("Lantamal 5", { 
         permanent: false, 
         direction: "top",
         className: "custom-tooltip" // warna custom untuk Tooltip saat hover(kursor diarahkan ke marker) 
