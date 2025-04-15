@@ -16,7 +16,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="<?= base_url('AdminLTE') ?>/plugins/fontawesome-free/css/all.min.css">
    <!-- Bootstrap Color Picker -->
    <link rel="stylesheet" href="<?= base_url('AdminLTE') ?>/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
-  
+  <!-- Select2 -->
+  <link rel="stylesheet" href="<?= base_url('AdminLTE') ?>/plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="<?= base_url('AdminLTE') ?>/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
     <!-- DataTables -->
   <link rel="stylesheet" href="<?= base_url('AdminLTE') ?>/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="<?= base_url('AdminLTE') ?>/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
@@ -32,6 +34,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="<?= base_url('AdminLTE') ?>/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="<?= base_url('AdminLTE') ?>/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Select2 -->
+<script src="<?= base_url('AdminLTE') ?>/plugins/select2/js/select2.full.min.js"></script>
 <!-- bootstrap color picker -->
 <script src="<?= base_url('AdminLTE') ?>/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
 <!-- DataTables  & Plugins -->
@@ -174,7 +178,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           <!-- Sidebar TNI AU(Koopsud)-->
           <li class="nav-item">
-        <a href="<?= base_url('Admin/Setting') ?>" class="nav-link">
+        <a href="<?= base_url('Admin/Koopsud') ?>" class="nav-link <?= $menu  ==  'Koopsud' ? 'active' : '' ?>">
         <img src="<?= base_url('gambar/Lambang_TNI_AU_1.png') ?>" alt="Setting Icon" class="nav-icon" style="width: 20px; height: 20px;">
         <p>TNI AU</p>
           </a>

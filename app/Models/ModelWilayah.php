@@ -20,8 +20,8 @@ class ModelWilayah extends Model
     public function DetailData($id_wilayah)
     {
         return $this->db->table('tbl_wilayah')
-        ->where('id_wilayah',$id_wilayah)
-        ->get()->getRowArray();
+            ->where('id_wilayah', $id_wilayah)
+            ->get()->getRowArray();
     }
 
     public function UpdateData($data)

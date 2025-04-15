@@ -70,12 +70,12 @@ class Wilayah extends BaseController
                 'geojson' => $this->request->getPost('geojson'),
             ];
             $this->ModelWilayah->InsertData($data);
-            session()->setFlashdata('insert','Data Berhasil Ditambahkan !!');
+            session()->setFlashdata('insert', 'Data Berhasil Ditambahkan !!');
             return redirect()->to('Wilayah');
         } else {
            //jika validasi gagal
-           session()->setFlashdata('errors',\Config\Services::validation()->getErrors());
-           return redirect()->to('Wilayah/Input')->withInput('validations', \Config\Services::validation());
+           session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
+           return redirect()->to('Wilayah/Input')->withInput('validation', \Config\Services::validation());
         }
     }
 
@@ -123,12 +123,12 @@ class Wilayah extends BaseController
                 'geojson' => $this->request->getPost('geojson'),
             ];
             $this->ModelWilayah->UpdateData($data);
-            session()->setFlashdata('update','Data Berhasil Diupdate !!');
+            session()->setFlashdata('update', 'Data Berhasil Diupdate !!');
             return redirect()->to('Wilayah');
         } else {
            //jika validasi gagal
            session()->setFlashdata('errors',\Config\Services::validation()->getErrors());
-           return redirect()->to('Wilayah/Input')->withInput('validations', \Config\Services::validation());
+           return redirect()->to('Wilayah/Input')->withInput('validation', \Config\Services::validation());
         }
     }
 

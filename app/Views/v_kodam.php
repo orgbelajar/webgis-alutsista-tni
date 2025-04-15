@@ -45,7 +45,7 @@ attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStree
 const map = L.map('map', {
 center: [-1.2785119436652304, 116.82204297339233],
 zoom: 5,
-layers: [osm, cities]
+layers: [osm]
 });
 
 const baseMaps = {

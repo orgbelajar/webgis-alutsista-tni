@@ -54,6 +54,17 @@ class Admin extends BaseController
         return view('v_template_back_end', $data);
     }
 
+    public function Koopsud(): string
+    {
+        $data = [
+            'judul' => 'Koopsud',
+            'menu'  => 'Koopsud',
+            'page' => 'v_koopsud',
+            'web' => $this->ModelSetting->DataWeb(),
+        ];
+        return view('v_template_back_end', $data);
+    }
+
     public function PostSetting(): string
     {
         $data = [

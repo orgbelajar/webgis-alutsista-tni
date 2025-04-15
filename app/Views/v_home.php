@@ -55,4 +55,3 @@ layerControl.addOverlay(batalyon, 'Batalyon')
         .addTo(map);
     <?php } ?>
 </script>
-</script>
