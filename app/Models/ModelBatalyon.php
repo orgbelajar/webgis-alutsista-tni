@@ -22,8 +22,10 @@ class ModelBatalyon extends Model
     {
         return $this->db->table('tbl_batalyon')
         ->join('tbl_komando', 'tbl_komando.id_komando = tbl_batalyon.id_komando', 'left')
+        ->join('tbl_provinsi', 'tbl_provinsi.id_provinsi = tbl_batalyon.id_provinsi', 'left')
         ->join('tbl_kabupaten', 'tbl_kabupaten.id_kabupaten = tbl_batalyon.id_kabupaten', 'left')
         ->join('tbl_kecamatan', 'tbl_kecamatan.id_kecamatan = tbl_batalyon.id_kecamatan', 'left')
+        ->join('tbl_wilayah', 'tbl_wilayah.id_wilayah = tbl_batalyon.id_wilayah', 'left')
         ->where('id_batalyon',$id_batalyon)
         ->get()->getRowArray();
     }

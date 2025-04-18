@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Modelsetting extends Model
+class ModelSetting extends Model
 {
     public function DataWeb()
     {

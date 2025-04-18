@@ -4,7 +4,7 @@
                 <h3 class="card-title"><?= $judul ?></h3>
 
                 <div class="card-tools">
-                  <a href="<?= base_url('Batalyon/Input') ?>" class="btn btn-flat btn-primary btn-sm">
+                  <a href="<?= base_url('User/Input') ?>" class="btn btn-flat btn-primary btn-sm">
                     <i class="fas fa-plus"></i> Tambah
                   </a>
                 </div>
@@ -45,30 +45,25 @@
                 <thead>
                     <tr class= "text-center">
                         <th width="50px">No</th>
-                        <th>Nama Batalyon</th>
-                        <th>Tahun Dibentuk</th>
-                        <th>Cabang</th>
-                        <th>Komando</th>
-                        <th>Alamat</th>
+                        <th>Nama User</th>
+                        <th>E-mail</th>
+                        <th>Password</th>
                         <th>Foto</th>
                         <th width="150px">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php $no=1;
-                     foreach ($batalyon as $key => $value) { ?>
+                     foreach ($user as $key => $value) { ?>
                         <tr>
                             <td><?= $no++ ?></td>
-                            <td><?= $value['nama_batalyon'] ?></td>
-                            <td class= "text-center"><?= $value['thn_dibentuk'] ?></td>
-                            <td class= "text-center"><?= $value['cabang'] ?></td>
-                            <td class= "text-center"><?= $value['komando'] ?></td>
-                            <td><?= $value['alamat'] ?></td>
-                            <td class= "text-center"><img src="<?= base_url('foto/' . $value['foto']) ?>" width="150px" height="100px"></td>
+                            <td><?= $value['nama_user'] ?></td>
+                            <td class= "text-center"><?= $value['email'] ?></td>
+                            <td class= "text-center"><?= $value['password'] ?></td>
+                            <td class= "text-center"><img src="<?= base_url('foto/' . $value['foto']) ?>" width="100px" height="100px"></td>
                             <td class= "text-center">
-                              <a href="<?= base_url('Batalyon/Detail/' . $value['id_batalyon']) ?>" class="btn btn-xs btn-success btn-flat"><i class="fas fa-eye"></i></a>
-                              <a href="<?= base_url('Batalyon/Edit/' . $value['id_batalyon']) ?>" class="btn btn-xs btn-warning btn-flat"><i class="fas fa-pencil-alt"></i></a>
-                              <a href="<?= base_url('Batalyon/Delete/' . $value['id_batalyon']) ?>" onclick="return confirm('Ingin Hapus Data..?')" class="btn btn-xs btn-danger btn-flat"><i class="fas fa-trash"></i></a>
+                              <a href="<?= base_url('User/Edit/' . $value['id_user']) ?>" class="btn btn-xs btn-warning btn-flat"><i class="fas fa-pencil-alt"></i></a>
+                              <a href="<?= base_url('User/Delete/' . $value['id_user']) ?>" onclick="return confirm('Ingin Hapus Data..?')" class="btn btn-xs btn-danger btn-flat"><i class="fas fa-trash"></i></a>
                             </td>
                         </tr>
                     <?php } ?>

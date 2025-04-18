@@ -307,6 +307,18 @@ class Batalyon extends BaseController
                 return redirect()->to('Batalyon');
         }
 
+        public function Detail($id_batalyon)
+        {
+            $data = [
+                'judul' => 'Detail Batalyon',
+                'menu'  => 'batalyon',
+                'page' => 'batalyon/v_detail',
+                'web' => $this->ModelSetting->DataWeb(),
+                'batalyon' => $this->ModelBatalyon->DetailData($id_batalyon),
+            ];
+            return view('v_template_back_end', $data);
+        }
+
     //kabupaten, kecamatan
     public function Kabupaten()
     {
