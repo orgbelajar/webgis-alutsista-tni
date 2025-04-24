@@ -20,7 +20,7 @@ attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStree
 const map = L.map('map', {
 center: [<?= $web['coordinate_wilayah'] ?>],
 zoom: <?= $web['zoom_view'] ?>,
-layers: [osm, cities]
+layers: [osm]
 });
 
 const baseMaps = {
@@ -52,6 +52,23 @@ layerControl.addOverlay(batalyon, 'Batalyon')
           fillOpacity: 0.5,
         })
         .bindPopup("<b><?= $value['nama_wilayah'] ?></b>")
+        .addTo(map);
+    <?php } ?>
+
+<?php foreach ($batalyon as $key => $value) { ?>
+  var Icon = L.icon({
+    iconUrl: '<?= base_url('marker/' . $value['marker']) ?>',
+    iconSize:     [35, 50], // size of the icon
+});
+
+        L.marker([<?= $value['coordinate'] ?>], {
+          icon: Icon
+        })
+        .bindPopup("<img src='<?= base_url('foto/' . $value['foto']) ?>' width='210px' height='150px'><br>" +
+        "<b><?= $value['nama_batalyon'] ?></b><br>" +
+        "Tahun dibentuk <?= $value['thn_dibentuk'] ?><br>" +
+        "<?= $value['cabang'] ?><br><br>" +
+        "<a href='<?= ?>' class='btn btn-primary btn-xs text-white'>Detail</a>")
         .addTo(map);
     <?php } ?>
 </script>

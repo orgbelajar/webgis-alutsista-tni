@@ -28,9 +28,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
     <div class="container">
       <a href="<?= base_url('AdminLTE') ?>/index3.html" class="navbar-brand">
-        <img src="<?= base_url('AdminLTE') ?>/dist/img/AdminLTELogo.png" class="me-2" height="45px" width="60px">
+        <img src="<?= base_url() ?>/logo/pusinfolahta.png" class="me-2" height="50px" width="40px">
       </a>
-      <h5><b>GIS AlutsistaTNI</b></h5>
+      <h5><b><?= $web['nama_web'] ?></b></h5>
       <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -42,42 +42,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
           </li>
           <li class="nav-item">
-            <a href="index3.html" class="nav-link">Home</a>
+            <a href="<?= base_url() ?>" class="nav-link">Home</a>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">Contact</a>
-          </li>
+          
           <li class="nav-item dropdown">
-            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Dropdown</a>
+            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Wilayah</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-              <li><a href="#" class="dropdown-item">Some action </a></li>
-              <li><a href="#" class="dropdown-item">Some other action</a></li>
+              <?php foreach ($wilayah as $key => $value) { ?>
+              <li><a href="<?= base_url('Home/Wilayah/' . $value['id_wilayah']) ?>" class="dropdown-item"><?= $value['nama_wilayah'] ?> </a></li>
+              <?php } ?>
 
-              <li class="dropdown-divider"></li>
+            </ul>
+          </li>
 
-              <!-- Level two dropdown-->
-              <li class="dropdown-submenu dropdown-hover">
-                <a id="dropdownSubMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">Hover for action</a>
-                <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
-                  <li>
-                    <a tabindex="-1" href="#" class="dropdown-item">level 2</a>
-                  </li>
-
-                  <!-- Level three dropdown-->
-                  <li class="dropdown-submenu">
-                    <a id="dropdownSubMenu3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">level 2</a>
-                    <ul aria-labelledby="dropdownSubMenu3" class="dropdown-menu border-0 shadow">
-                      <li><a href="#" class="dropdown-item">3rd level</a></li>
-                      <li><a href="#" class="dropdown-item">3rd level</a></li>
-                    </ul>
-                  </li>
-                  <!-- End Level three -->
-
-                  <li><a href="#" class="dropdown-item">level 2</a></li>
-                  <li><a href="#" class="dropdown-item">level 2</a></li>
-                </ul>
-              </li>
-              <!-- End Level two -->
+          <li class="nav-item dropdown">
+            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Komando</a>
+            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+            <?php foreach ($komando as $key => $value) { ?>
+              <li><a href="<?= base_url('Home/Komando/' . $value['id_komando']) ?>" class="dropdown-item"><?= $value['komando'] ?> </a></li>
+              <?php } ?>
             </ul>
           </li>
         </ul>
@@ -101,22 +84,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="<?= base_url('AdminLTE') ?>/index3.html" class="brand-link">
-      <img src="<?= base_url('AdminLTE') ?>/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+    <a href="<?= base_url() ?>" class="brand-link">
+      <img src="<?= base_url() ?>/logo/Lambang_TNI.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">GIS Alutsista TNI</span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="<?= base_url('AdminLTE') ?>/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
-        </div>
-      </div>
+
 
 
 
@@ -126,16 +102,54 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+            <a href="<?= base_url('Home') ?>" class="nav-link">
+              <i class="nav-icon fas fa-home"></i>
               <p>
-                Dashboard
+                Home
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-layer-group"></i>
+              <p>
+               Wilayah
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-
+            <ul class="nav nav-treeview">
+            <?php foreach ($wilayah as $key => $value) { ?>
+              <li class="nav-item">
+                <a href="<?= base_url('Home/Wilayah/' . $value['id_wilayah']) ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p><?= $value['nama_wilayah'] ?> </p>
+                </a>
+              </li>
+              <?php } ?>
+            </ul>
           </li>
 
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+            <img src="<?= base_url('gambar/komandan tni memberi arahan.png') ?>" alt="Setting Icon" class="nav-icon" style="width: 20px; height: 20px;">
+              <p>
+               Komando
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+            <?php foreach ($komando as $key => $value) { ?>
+              <li class="nav-item">
+                <a href="<?= base_url('Home/Komando/' . $value['id_komando']) ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p><?= $value['komando'] ?> </p>
+                </a>
+              </li>
+              <?php } ?>
+            </ul>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -178,7 +192,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       Anything you want
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; <?= date('Y') ?> <a href="<?= base_url() ?>"><?= $web['nama_web'] ?></a>.</strong> All rights reserved.
   </footer>
 </div>
 <!-- ./wrapper -->

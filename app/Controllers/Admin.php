@@ -3,12 +3,16 @@
 namespace App\Controllers;
 
 use App\Models\ModelSetting;
+use App\Models\ModelAdmin;
+use App\Models\ModelKomando;
 
 class Admin extends BaseController
 {
     public function __construct()
     {
         $this->ModelSetting = new ModelSetting();
+        $this->ModelAdmin = new ModelAdmin();
+        $this->ModelKomando = new ModelKomando();
     }
 
     public function index(): string
@@ -17,6 +21,9 @@ class Admin extends BaseController
             'judul' => 'Dashboard',
             'menu'  => 'dashboard',
             'page' => 'v_dashboard',
+            'jmlbatalyon' => $this->ModelAdmin->JmlBatalyon(),
+            'jmlwilayah' => $this->ModelAdmin->JmlWilayah(),
+            'komando' => $this->ModelKomando->AllData(),
         ];
         return view('v_template_back_end', $data);
     }

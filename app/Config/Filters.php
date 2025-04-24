@@ -34,6 +34,7 @@ class Filters extends BaseFilters
         'forcehttps'    => ForceHTTPS::class,
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
+        'FilterAuth'    => \App\Filters\FilterAuth::class,
     ];
 
     /**
@@ -69,13 +70,26 @@ class Filters extends BaseFilters
      */
     public array $globals = [
         'before' => [
-            // 'honeypot',
-            // 'csrf',
-            // 'invalidchars',
+            'FilterAuth' => [
+                'except' => [
+                    'Auth', 'Auth/*',
+                    'Home', 'Home/*',
+                    '/',
+                ]
+            ]
         ],
         'after' => [
-            // 'honeypot',
-            // 'secureheaders',
+            'FilterAuth' => [
+                'except' => [
+                    'Auth', 'Auth/*',
+                    'Admin', 'Admin/*',
+                    'Home', 'Home/*',
+                    'User', 'User/*',
+                    'Batalyon', 'Batalyon/*',
+                    'Komando', 'Komando/*',
+                    'Wilayah', 'Wilayah/*',
+                ]
+            ],
         ],
     ];
 
