@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Models\ModelSetting;
 use App\Models\ModelAdmin;
-use App\Models\ModelKomando;
+use App\Models\ModelKesatuan;
 
 class Admin extends BaseController
 {
@@ -12,7 +12,8 @@ class Admin extends BaseController
     {
         $this->ModelSetting = new ModelSetting();
         $this->ModelAdmin = new ModelAdmin();
-        $this->ModelKomando = new ModelKomando();
+        // $this->ModelKomando = new ModelKomando();
+        $this->ModelKesatuan = new ModelKesatuan();
     }
 
     public function index(): string
@@ -23,7 +24,8 @@ class Admin extends BaseController
             'page' => 'v_dashboard',
             'jmlbatalyon' => $this->ModelAdmin->JmlBatalyon(),
             'jmlwilayah' => $this->ModelAdmin->JmlWilayah(),
-            'komando' => $this->ModelKomando->AllData(),
+            // 'komando' => $this->ModelKomando->AllData(),
+            'kesatuan' => $this->ModelKesatuan->AllData(),
         ];
         return view('v_template_back_end', $data);
     }

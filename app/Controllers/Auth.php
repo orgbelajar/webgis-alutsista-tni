@@ -10,7 +10,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 class Auth extends BaseController
 {
 
-    public function __construct() 
+    public function __construct()
     {
         $this->ModelAuth = new ModelAuth;
     }
@@ -57,9 +57,9 @@ class Auth extends BaseController
                 return redirect()->to('Auth/Login');
             }
         } else {
-           //jika validasi gagal
-           session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
-           return redirect()->to('Auth/Login')->withInput('validation', \Config\Services::validation());
+            //jika validasi gagal
+            session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
+            return redirect()->to('Auth/Login')->withInput('validation', \Config\Services::validation());
         }
     }
 

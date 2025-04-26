@@ -20,21 +20,21 @@ class ModelWilayah extends Model
     public function DetailData($id_wilayah)
     {
         return $this->db->table('tbl_wilayah')
-            ->where('id_wilayah', $id_wilayah)
+            ->where('id', $id_wilayah)
             ->get()->getRowArray();
     }
 
     public function UpdateData($data)
     {
         $this->db->table('tbl_wilayah')
-        ->where('id_wilayah', $data['id_wilayah'])
-        ->update($data);
+            ->where('id', $data['id'])
+            ->update($data);
     }
 
     public function DeleteData($data)
     {
         $this->db->table('tbl_wilayah')
-        ->where('id_wilayah', $data['id_wilayah'])
-        ->delete($data);
+            ->where('id', $data['id'])
+            ->delete($data);
     }
 }
