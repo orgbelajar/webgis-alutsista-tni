@@ -31,7 +31,7 @@ class ModelBatalyon extends Model
 
     public function InsertData($data)
     {
-        $this->db->table('tbl_batalyon')->insert($data);
+        $this->db->table('tbl_kodam')->insert($data);
     }
 
     public function DetailData($id_batalyon)

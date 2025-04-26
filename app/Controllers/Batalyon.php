@@ -9,7 +9,7 @@ use App\Models\ModelSetting;
 use App\Models\ModelBatalyon;
 use App\Models\ModelKesatuan;
 use App\Models\ModelKodam;
-use App\Models\ModelKomando;
+
 
 
 class Batalyon extends BaseController
@@ -187,7 +187,42 @@ class Batalyon extends BaseController
                 ]
             ],
             'id_wilayah' => [
-                'label' => 'wilayah',
+                'label' => 'Wilayah',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} Wajib Diisi !!'
+                ]
+            ],
+            'jml_personil' => [
+                'label' => 'Jumlah Personil',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} Wajib Diisi !!'
+                ]
+            ],
+            'jml_kendaraan_tempur' => [
+                'label' => 'Jumlah Kendaraan Tempur',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} Wajib Diisi !!'
+                ]
+            ],
+            'jml_artileri' => [
+                'label' => 'Jumlah Artileri',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} Wajib Diisi !!'
+                ]
+            ],
+            'jml_helikopter' => [
+                'label' => 'Jumlah Helikopter',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} Wajib Diisi !!'
+                ]
+            ],
+            'jml_pertahanan_udara' => [
+                'label' => 'Jumlah Pertahanan Udara',
                 'rules' => 'required',
                 'errors' => [
                     'required' => '{field} Wajib Diisi !!'
@@ -195,20 +230,6 @@ class Batalyon extends BaseController
             ],
             'koordinat' => [
                 'label' => 'Koordinat',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
-            ],
-            'id_kabupaten' => [
-                'label' => 'Kabupaten',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
-            ],
-            'id_kecamatan' => [
-                'label' => 'Kecamatan',
                 'rules' => 'required',
                 'errors' => [
                     'required' => '{field} Wajib Diisi !!'
@@ -234,16 +255,18 @@ class Batalyon extends BaseController
             $nama_file_foto = $foto->getRandomName();
             //jika validasi berhasil
             $data = [
-                'nama_kodam'    => $this->request->getPost('nama_kodam'),
-                'id_kesatuan'   => $this->request->getPost('id_kesatuan'),
-                'tgl_dibentuk'  => $this->request->getPost('tgl_dibentuk'),
-                'provinsi'      => $this->request->getPost('provinsi'),
-                'koordinat'    => $this->request->getPost('koordinat'),
-                'id_wilayah'    => $this->request->getPost('id_wilayah'),
-                'id_kabupaten'  => $this->request->getPost('id_kabupaten'),
-                'id_kecamatan'  => $this->request->getPost('id_kecamatan'),
-                'alamat'        => $this->request->getPost('alamat'),
-                'foto'          => $nama_file_foto,
+                'nama_kodam'            => $this->request->getPost('nama_kodam'),
+                'id_kesatuan'           => $this->request->getPost('id_kesatuan'),
+                'tgl_dibentuk'          => $this->request->getPost('tgl_dibentuk'),
+                'koordinat'             => $this->request->getPost('koordinat'),
+                'id_wilayah'            => $this->request->getPost('id_wilayah'),
+                'jml_personil'          => $this->request->getPost('jml_personil'),
+                'jml_kendaraan_tempur'  => $this->request->getPost('jml_kendaraan_tempur'),
+                'jml_artileri'          => $this->request->getPost('jml_artileri'),
+                'jml_helikopter'        => $this->request->getPost('jml_helikopter'),
+                'jml_pertahanan_udara'  => $this->request->getPost('jml_pertahanan_udara'),
+                'alamat'                => $this->request->getPost('alamat'),
+                'foto'                  => $nama_file_foto,
             ];
 
             $foto->move('foto', $nama_file_foto);
@@ -317,20 +340,20 @@ class Batalyon extends BaseController
                     'required' => '{field} Wajib Diisi !!'
                 ]
             ],
-            'id_kabupaten' => [
-                'label' => 'Kabupaten',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
-            ],
-            'id_kecamatan' => [
-                'label' => 'Kecamatan',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
-            ],
+            // 'id_kabupaten' => [
+            //     'label' => 'Kabupaten',
+            //     'rules' => 'required',
+            //     'errors' => [
+            //         'required' => '{field} Wajib Diisi !!'
+            //     ]
+            // ],
+            // 'id_kecamatan' => [
+            //     'label' => 'Kecamatan',
+            //     'rules' => 'required',
+            //     'errors' => [
+            //         'required' => '{field} Wajib Diisi !!'
+            //     ]
+            // ],
             'alamat' => [
                 'label' => 'Alamat',
                 'rules' => 'required',
@@ -420,6 +443,25 @@ class Batalyon extends BaseController
     }
 
     //kabupaten, kecamatan
+    // public function Kabupaten()
+    // {
+    //     $id_provinsi = $this->request->getPost('id_provinsi');
+    //     $kab = $this->ModelBatalyon->allKabupaten($id_provinsi);
+    //     echo ' <option value="">--Pilih Kabupaten---</option>';
+    //     foreach ($kab as $key => $value) {
+    //         echo '<option value=' . $value['id_kabupaten'] . '>' . $value['nama_kabupaten'] . '</option>';
+    //     }
+    // }
+    // public function Kecamatan()
+    // {
+    //     $id_kabupaten = $this->request->getPost('id_kabupaten');
+    //     $kec = $this->ModelBatalyon->allKecamatan($id_kabupaten);
+    //     echo ' <option value="">--Pilih Kecamatan---</option>';
+    //     foreach ($kec as $key => $value) {
+    //         echo '<option value=' . $value['id_kecamatan'] . '>' . $value['nama_kecamatan'] . '</option>';
+    //     }
+    // }
+
     public function Kabupaten()
     {
         $id_provinsi = $this->request->getPost('id_provinsi');

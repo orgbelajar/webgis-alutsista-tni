@@ -6,28 +6,28 @@ use CodeIgniter\Model;
 
 class ModelKodam extends Model
 {
-    // public function AllData()
-    // {
-    //     return $this->db->table('tbl_batalyon')
-    //         ->join('tbl_komando', 'tbl_komando.id_komando = tbl_batalyon.id_komando', 'left')
-    //         ->get()->getResultArray();
-    // }
+    public function AllData()
+    {
+        return $this->db->table('tbl_batalyon')
+            ->join('tbl_komando', 'tbl_komando.id_komando = tbl_batalyon.id_komando', 'left')
+            ->get()->getResultArray();
+    }
 
-    // public function AllDataPerWilayah($id_wilayah)
-    // {
-    //     return $this->db->table('tbl_batalyon')
-    //         ->join('tbl_komando', 'tbl_komando.id_komando = tbl_batalyon.id_komando', 'left')
-    //         ->where('id_wilayah', $id_wilayah)
-    //         ->get()->getResultArray();
-    // }
+    public function AllDataPerWilayah($id_wilayah)
+    {
+        return $this->db->table('tbl_batalyon')
+            ->join('tbl_komando', 'tbl_komando.id_komando = tbl_batalyon.id_komando', 'left')
+            ->where('id_wilayah', $id_wilayah)
+            ->get()->getResultArray();
+    }
 
-    // public function AllDataPerKomando($id_komando)
-    // {
-    //     return $this->db->table('tbl_batalyon')
-    //         ->join('tbl_komando', 'tbl_komando.id_komando = tbl_batalyon.id_komando', 'left')
-    //         ->where('tbl_batalyon.id_komando', $id_komando)
-    //         ->get()->getResultArray();
-    // }
+    public function AllDataPerKomando($id_komando)
+    {
+        return $this->db->table('tbl_batalyon')
+            ->join('tbl_komando', 'tbl_komando.id_komando = tbl_batalyon.id_komando', 'left')
+            ->where('tbl_batalyon.id_komando', $id_komando)
+            ->get()->getResultArray();
+    }
 
     public function InsertDataKodam($data)
     {
@@ -46,19 +46,19 @@ class ModelKodam extends Model
             ->get()->getRowArray();
     }
 
-    // public function UpdateData($data)
-    // {
-    //     $this->db->table('tbl_batalyon')
-    //         ->where('id_batalyon', $data['id_batalyon'])
-    //         ->update($data);
-    // }
+    public function UpdateData($data)
+    {
+        $this->db->table('tbl_batalyon')
+            ->where('id_batalyon', $data['id_batalyon'])
+            ->update($data);
+    }
 
-    // public function DeleteData($data)
-    // {
-    //     $this->db->table('tbl_batalyon')
-    //         ->where('id_batalyon', $data['id_batalyon'])
-    //         ->delete($data);
-    // }
+    public function DeleteData($data)
+    {
+        $this->db->table('tbl_batalyon')
+            ->where('id_batalyon', $data['id_batalyon'])
+            ->delete($data);
+    }
 
     //provinsi
     public function allProvinsi()
