@@ -86,6 +86,7 @@ class Filters extends BaseFilters
                     'Home', 'Home/*',
                     'User', 'User/*',
                     'Batalyon', 'Batalyon/*',
+                    'Lantamal', 'Lantamal/*',
                     'Kesatuan', 'Kesatuan/*',
                     'Wilayah', 'Wilayah/*',
                 ]

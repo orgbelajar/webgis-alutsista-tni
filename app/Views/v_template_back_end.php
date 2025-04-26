@@ -165,6 +165,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </li>
 
             <li class="nav-item">
+              <a href="<?= base_url('Lantamal') ?>" class="nav-link <?= $menu  ==  'lantamal' ? 'active' : '' ?>">
+                <img src="<?= base_url('Gambar/Lambang_TNI_AL_2.png') ?>" alt="Setting Icon" class="nav-icon" style="width: 25px; height: 25px;">
+                <p>Lantamal</p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="<?= base_url('Koopsud') ?>" class="nav-link <?= $menu  ==  'koopsud' ? 'active' : '' ?>">
+                <img src="<?= base_url('Gambar/Lambang_TNI_AU_1.png') ?>" alt="Setting Icon" class="nav-icon" style="width: 25px; height: 25px;">
+                <p>Koopsud</p>
+              </a>
+            </li>
+
+            <li class="nav-item">
               <a href="<?= base_url('User') ?>" class="nav-link <?= $menu  ==  'user' ? 'active' : '' ?>">
                 <i class="nav-icon fas fa-users"></i>
                 <p>

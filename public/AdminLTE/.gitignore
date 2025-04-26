@@ -69,3 +69,6 @@ TODO
 test.html
 ad.js
 /.cache/
+
+# File Log
+writable/logs/*.log
