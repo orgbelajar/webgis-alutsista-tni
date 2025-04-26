@@ -27,7 +27,7 @@
                         <select name="id_kesatuan" class="form-control" required>
                             <option value="">---Pilih Kesatuan---</option>
                             <?php foreach ($kesatuan as $key => $value) { ?>
-                                <?php if ($value['kesatuan'] == 'TNI AD') { ?>
+                                <?php if ($value['kesatuan'] == 'TNI AL') { ?>
                                     <option value="<?= $value['id'] ?>"><?= $value['kesatuan'] ?></option>
                                 <?php } ?>
                             <?php } ?>

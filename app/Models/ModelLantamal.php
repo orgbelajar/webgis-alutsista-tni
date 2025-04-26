@@ -9,8 +9,11 @@ class ModelLantamal extends Model
     public function AllData()
     {
         return $this->db->table('tbl_lantamal')
-            ->join('tbl_kesatuan', 'tbl_kesatuan.id = tbl_lantamal.id', 'left')
-            ->get()->getResultArray();
+            //->join('tbl_kesatuan', 'tbl_kesatuan.id = tbl_lantamal.id_kesatuan', 'left')
+            ->select('tbl_lantamal.*, tbl_kesatuan.kesatuan') // <-- ambil nama kesatuan!
+            ->join('tbl_kesatuan', 'tbl_kesatuan.id = tbl_lantamal.id_kesatuan', 'left') // join yang benar
+            ->get()
+            ->getResultArray();
     }
 
     // public function AllDataPerWilayah($id_wilayah)
