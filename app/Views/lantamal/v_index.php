@@ -1,7 +1,7 @@
 <div class="col-md-12">
     <div class="card card-outline card-primary">
         <div class="card-header">
-            <h3 class="card-title"><?= $judul ?></h3>
+            <h3 class="card-title">Daftar <?= $judul ?></h3>
 
             <div class="card-tools">
                 <a href="<?= base_url('Lantamal/Input') ?>" class="btn btn-flat btn-primary btn-sm">
@@ -62,11 +62,14 @@
                             <td class="text-center"><?= $value['tgl_dibentuk'] ?></td>
                             <td class="text-center"><?= $value['kesatuan'] ?></td>
                             <td><?= $value['alamat'] ?></td>
-                            <td class="text-center"><img src="<?= base_url('foto/' . $value['foto']) ?>" width="150px" height="100px"></td>
+                            <td class="text-center"><img src="<?= base_url('Gambar/Lantamal/Logo/' . $value['foto']) ?>" width="110px" height="110px"></td>
                             <!-- <td class="text-center">
-                                <a href="<?//= base_url('Batalyon/Detail/' . $value['id_batalyon']) ?>" class="btn btn-xs btn-success btn-flat"><i class="fas fa-eye"></i></a>
-                                <a href="<?//= base_url('Batalyon/Edit/' . $value['id_batalyon']) ?>" class="btn btn-xs btn-warning btn-flat"><i class="fas fa-pencil-alt"></i></a>
-                                <a href="<?//= base_url('Batalyon/Delete/' . $value['id_batalyon']) ?>" onclick="return confirm('Ingin Hapus Data..?')" class="btn btn-xs btn-danger btn-flat"><i class="fas fa-trash"></i></a>
+                                <a href="<? //= base_url('Batalyon/Detail/' . $value['id_batalyon']) 
+                                            ?>" class="btn btn-xs btn-success btn-flat"><i class="fas fa-eye"></i></a>
+                                <a href="<? //= base_url('Batalyon/Edit/' . $value['id_batalyon']) 
+                                            ?>" class="btn btn-xs btn-warning btn-flat"><i class="fas fa-pencil-alt"></i></a>
+                                <a href="<? //= base_url('Batalyon/Delete/' . $value['id_batalyon']) 
+                                            ?>" onclick="return confirm('Ingin Hapus Data..?')" class="btn btn-xs btn-danger btn-flat"><i class="fas fa-trash"></i></a>
                             </td> -->
                         </tr>
                     <?php } ?>

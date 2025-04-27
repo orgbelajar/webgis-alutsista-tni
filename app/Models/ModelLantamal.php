@@ -24,13 +24,13 @@ class ModelLantamal extends Model
     //         ->get()->getResultArray();
     // }
 
-    // public function AllDataPerKomando($id_komando)
-    // {
-    //     return $this->db->table('tbl_batalyon')
-    //         ->join('tbl_komando', 'tbl_komando.id_komando = tbl_batalyon.id_komando', 'left')
-    //         ->where('tbl_batalyon.id_komando', $id_komando)
-    //         ->get()->getResultArray();
-    // }
+    public function AllDataPerKesatuan($id)
+    {
+        return $this->db->table('tbl_lantamal')
+            ->join('tbl_kesatuan', 'tbl_kesatuan.id = tbl_lantamal.id_kesatuan', 'left')
+            ->where('tbl_lantamal.id_kesatuan', $id)
+            ->get()->getResultArray();
+    }
 
     public function InsertDataLantamal($data)
     {

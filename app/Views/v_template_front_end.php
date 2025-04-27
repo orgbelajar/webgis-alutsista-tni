@@ -63,7 +63,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Kesatuan</a>
               <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
                 <?php foreach ($kesatuan as $key => $value) { ?>
-                  <li><a href="<?= base_url('Home/Kesatuan/' . $value['id']) ?>" class="dropdown-item"><?= $value['kesatuan'] ?> </a></li>
+                  <?php
+                  // Cek kalau kesatuan adalah TNI AL
+                  if ($value['kesatuan'] == 'TNI AL') {
+                    $url = base_url('HomeLantamal/Kesatuan/' . $value['id']);
+                  } else {
+                    $url = base_url('Home/Kesatuan/' . $value['id']);
+                  }
+                  ?>
+                  <li><a href="<?= $url ?>" class="dropdown-item"><?= $value['kesatuan'] ?></a></li>
                 <?php } ?>
               </ul>
             </li>
@@ -182,15 +190,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
-      <div class="content-header">
-        <div class="container">
-          <div class="row mb-2">
-            <div class="col-sm-6">
-              <h1 class="m-0"> <?= $judul ?></h1>
-            </div>
-          </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-      </div>
+
       <!-- /.content-header -->
 
       <!-- Main content -->
@@ -220,7 +220,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <footer class="main-footer">
       <!-- To the right -->
       <div class="float-right d-none d-sm-inline">
-        Anything you want
+        <!-- Anything you want -->
       </div>
       <!-- Default to the left -->
       <strong>Copyright &copy; <?= date('Y') ?> <a href="<?= base_url() ?>"><?= $web['nama_web'] ?></a>.</strong> All rights reserved.

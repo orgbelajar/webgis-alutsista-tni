@@ -1,0 +1,78 @@
+<style>
+/* Styling untuk popup */
+.popup-container {
+    text-align: center;
+    padding: 10px;
+    width: 250px;
+}
+
+.popup-img {
+    width: 150px;
+    height: 150px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
+
+.popup-title {
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.popup-content {
+    text-align: left;
+}
+
+.popup-content p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.popup-content ul {
+    padding-left: 20px;
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.popup-content ul li {
+    margin-bottom: 5px;
+}
+
+/* .btn-detail {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 4px;
+    text-decoration: none;
+} */
+
+/* Styling tombol */
+.btn-detail {
+    display: block; /* Membuat tombol jadi blok */
+    width: 100%; /* Membuat tombol lebar 100% dari container */
+    margin-top: 10px;
+    padding: 10px; /* Menambah padding supaya tombol lebih besar */
+    /* background-color: #007bff; */
+    /* color: #fff; */
+    font-size: 15px;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* .btn-detail:hover {
+    background-color: #0056b3;
+} */
+
+</style>
