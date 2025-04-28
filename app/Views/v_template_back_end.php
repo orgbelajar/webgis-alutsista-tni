@@ -158,7 +158,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </li>
 
             <li class="nav-item">
-              <a href="<?= base_url('Batalyon') ?>" class="nav-link <?= $menu  ==  'batalyon' ? 'active' : '' ?>">
+              <a href="<?= base_url('Kodam') ?>" class="nav-link <?= $menu  ==  'kodam' ? 'active' : '' ?>">
                 <img src="<?= base_url('Gambar/Logo_TNI_AD_1.png') ?>" alt="Setting Icon" class="nav-icon" style="width: 25px; height: 25px;">
                 <p>Kodam</p>
               </a>

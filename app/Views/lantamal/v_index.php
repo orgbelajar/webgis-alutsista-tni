@@ -57,7 +57,7 @@
                     <?php $no = 1;
                     foreach ($lantamal as $key => $value) { ?>
                         <tr>
-                            <td><?= $no++ ?></td>
+                            <td class="text-center"><?= $no++ ?></td>
                             <td><?= $value['nama_lantamal'] ?></td>
                             <td class="text-center"><?= $value['tgl_dibentuk'] ?></td>
                             <td class="text-center"><?= $value['kesatuan'] ?></td>

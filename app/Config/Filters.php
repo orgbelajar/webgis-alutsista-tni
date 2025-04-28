@@ -74,7 +74,9 @@ class Filters extends BaseFilters
                 'except' => [
                     'Auth', 'Auth/*',
                     'Home', 'Home/*',
+                    'HomeKodam', 'HomeKodam/*',
                     'HomeLantamal', 'HomeLantamal/*',
+                    'HomeKoopsud', 'HomeKoopsud/*',
                     '/',
                 ]
             ]
@@ -85,10 +87,14 @@ class Filters extends BaseFilters
                     'Auth', 'Auth/*',
                     'Admin', 'Admin/*',
                     'Home', 'Home/*',
+                    'HomeKodam', 'HomeKodam/*',
                     'HomeLantamal', 'HomeLantamal/*',
+                    'HomeKoopsud', 'HomeKoopsud/*',
                     'User', 'User/*',
                     'Batalyon', 'Batalyon/*',
+                    'Kodam', 'Kodam/*',
                     'Lantamal', 'Lantamal/*',
+                    'Koopsud', 'Koopsud/*',
                     'Kesatuan', 'Kesatuan/*',
                     'Wilayah', 'Wilayah/*',
                 ]

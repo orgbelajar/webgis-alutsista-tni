@@ -66,7 +66,7 @@
         <?php foreach ($lantamal as $key => $value) { ?>
             var Icon = L.icon({
                 iconUrl: '<?= base_url('marker/' . $value['marker']) ?>',
-                iconSize: [35, 50],
+                iconSize: [40, 50],
             });
 
             L.marker([<?= $value['koordinat'] ?>], {
@@ -81,6 +81,7 @@
                 <p style="text-align: justify"><strong>Alamat:</strong> <?= $value['alamat'] ?></p>
                 <p><strong>Daftar Jumlah Alutsista:</strong></p>
                 <ul>
+                    <li>Personel: <?= $value['jml_personil'] ?></li>
                     <li>Artileri: <?= $value['jml_artileri'] + $value['jml_artileri_2'] ?></li>
                     <li>Armada Kapal Selam: <?= $value['jml_armada_kapal_selam'] + $value['jml_armada_kapal_selam_2'] ?></li>
                     <li>Armada Kapal Permukaan: <?= $value['jml_armada_kapal_permukaan'] + $value['jml_armada_kapal_permukaan_2'] ?></li>

@@ -67,8 +67,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   // Cek kalau kesatuan adalah TNI AL
                   if ($value['kesatuan'] == 'TNI AL') {
                     $url = base_url('HomeLantamal/Kesatuan/' . $value['id']);
+                  } elseif ($value['kesatuan'] == 'TNI AU') {
+                    $url = base_url('HomeKoopsud/Kesatuan/' . $value['id']);
+                  } elseif ($value['kesatuan'] == 'TNI AD') {
+                    $url = base_url('HomeKodam/Kesatuan/' . $value['id']);
                   } else {
-                    $url = base_url('Home/Kesatuan/' . $value['id']);
+                    $url = base_url('HomeKodam/Kesatuan/' . $value['id']);
                   }
                   ?>
                   <li><a href="<?= $url ?>" class="dropdown-item"><?= $value['kesatuan'] ?></a></li>

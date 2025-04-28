@@ -6,9 +6,9 @@
   <!-- small box -->
   <div class="small-box bg-secondary">
     <div class="inner">
-      <h3><?= $jmlbatalyon ?></h3>
+      <h3><?= $jmlkodam ?></h3>
 
-      <p>Batalyon</p>
+      <p>Kodam</p>
     </div>
     <div class="icon">
       <i class="fas fa-solid fa-person-military-rifle"></i>
@@ -28,14 +28,14 @@
     <div class="icon">
       <i class="fas fa-layer-group"></i>
     </div>
-    <a href="<?= base_url('Batalyon') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+    <a href="<?= base_url('Kodam') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
   </div>
 </div>
 
 <?php
 $db = \Config\Database::connect();
 foreach ($kesatuan as $key => $value) {
-  $jml = $db->table('tbl_batalyon')->where('id_komando', $value['id'])->countAllResults();
+  $jml = $db->table('tbl_kodam,')->where('id_kesatuan', $value['id'])->countAllResults();
 ?>
   <!-- ./col -->
   <div class="col-lg-3 col-3">

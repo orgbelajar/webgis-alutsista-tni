@@ -46,29 +46,5 @@
   layerControl.addBaseLayer(openTopoMap, 'OpenTopoMap');
   layerControl.addOverlay(batalyon, 'Batalyon')
 
-  <?php foreach ($wilayah as $key => $value) { ?>
-    L.geoJSON(<?= $value['geojson'] ?>, {
-        fillColor: '<?= $value['warna'] ?>',
-        fillOpacity: 0.5,
-      })
-      .bindPopup("<b><?= $value['nama_wilayah'] ?></b>")
-      .addTo(map);
-  <?php } ?>
-
-  <?php foreach ($batalyon as $key => $value) { ?>
-    var Icon = L.icon({
-      iconUrl: '<?= base_url('marker/' . $value['marker']) ?>',
-      iconSize: [35, 50], // size of the icon
-    });
-
-    L.marker([<?= $value['coordinate'] ?>], {
-        icon: Icon
-      })
-      .bindPopup("<img src='<?= base_url('foto/' . $value['foto']) ?>' width='210px' height='150px'><br>" +
-        "<b><?= $value['nama_batalyon'] ?></b><br>" +
-        "Tahun dibentuk <?= $value['thn_dibentuk'] ?><br>" +
-        "<?= $value['cabang'] ?><br><br>" +
-        "<a href='<?= base_url('Home/DetailBatalyon/' . $value['id_batalyon']) ?>' class='btn btn-primary btn-xs text-white'>Detail</a>")
-      .addTo(map);
-  <?php } ?>
+  
 </script>

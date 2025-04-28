@@ -12,9 +12,9 @@ class ModelAdmin extends Model
             ->countAll();
     }
 
-    public function JmlBatalyon()
+    public function JmlKodam()
     {
-        return $this->db->table('tbl_batalyon')
+        return $this->db->table('tbl_kodam')
             ->countAll();
     }
 }

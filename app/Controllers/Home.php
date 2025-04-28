@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Models\ModelSetting;
 use App\Models\ModelWilayah;
-use App\Models\ModelBatalyon;
+use App\Models\ModelKodam;
 use App\Models\ModelKesatuan;
 
 class Home extends BaseController
@@ -13,7 +13,7 @@ class Home extends BaseController
     {
         $this->ModelSetting = new ModelSetting();
         $this->ModelWilayah = new ModelWilayah();
-        $this->ModelBatalyon = new ModelBatalyon();
+        $this->ModelKodam = new ModelKodam();
         $this->ModelKesatuan = new ModelKesatuan();
     }
 
@@ -24,7 +24,7 @@ class Home extends BaseController
             'page' => 'v_home',
             'web' => $this->ModelSetting->DataWeb(),
             'wilayah' => $this->ModelWilayah->AllData(),
-            'batalyon' => $this->ModelBatalyon->AllData(),
+            'kodam' => $this->ModelKodam->AllData(),
             'kesatuan' => $this->ModelKesatuan->AllData(),
         ];
         return view('v_template_front_end', $data);
@@ -40,7 +40,7 @@ class Home extends BaseController
             'wilayah' => $this->ModelWilayah->AllData(),
             'kesatuan' => $this->ModelKesatuan->AllData(),
             'detailwilayah' => $this->ModelWilayah->DetailData($id_wilayah),
-            'batalyon' => $this->ModelBatalyon->AllDataPerWilayah($id_wilayah),
+            'kodam' => $this->ModelKodam->AllDataPerWilayah($id_wilayah),
 
         ];
         return view('v_template_front_end', $data);
@@ -51,26 +51,26 @@ class Home extends BaseController
         $dK = $this->ModelKesatuan->DetailData($id);
         $data = [
             'judul' => $dK['kesatuan'],
-            'page' => 'v_batalyon_per_komando',
+            'page' => 'v_kodam_perkesatuan',
             'web' => $this->ModelSetting->DataWeb(),
             'wilayah' => $this->ModelWilayah->AllData(),
             'kesatuan' => $this->ModelKesatuan->AllData(),
-            'batalyon' => $this->ModelBatalyon->AllDataPerKomando($id),
+            'kodam' => $this->ModelKodam->AllDataPerKesatuan($id),
 
         ];
         return view('v_template_front_end', $data);
     }
 
-    public function DetailBatalyon($id_batalyon)
+    public function DetailBatalyon($id_kodam)
     {
-        $batalyon = $this->ModelBatalyon->DetailData($id_batalyon);
+        $kodam = $this->ModelKodam->DetailData($id_kodam);
         $data = [
-            'judul' => $batalyon['nama_batalyon'],
+            'judul' => $kodam['nama_batalyon'],
             'page' => 'v_detail_batalyon',
             'web' => $this->ModelSetting->DataWeb(),
             'wilayah' => $this->ModelWilayah->AllData(),
             'kesatuan' => $this->ModelKesatuan->AllData(),
-            'batalyon' => $batalyon,
+            'kodam' => $kodam,
 
         ];
         return view('v_template_front_end', $data);

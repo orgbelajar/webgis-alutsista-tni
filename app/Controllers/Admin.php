@@ -22,7 +22,7 @@ class Admin extends BaseController
             'judul' => 'Dashboard',
             'menu'  => 'dashboard',
             'page' => 'v_dashboard',
-            'jmlbatalyon' => $this->ModelAdmin->JmlBatalyon(),
+            'jmlkodam' => $this->ModelAdmin->JmlKodam(),
             'jmlwilayah' => $this->ModelAdmin->JmlWilayah(),
             // 'komando' => $this->ModelKomando->AllData(),
             'kesatuan' => $this->ModelKesatuan->AllData(),
