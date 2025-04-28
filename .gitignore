@@ -1,0 +1,4 @@
+
+# Ignore log files
+writable/logs/*.log
+*.log
