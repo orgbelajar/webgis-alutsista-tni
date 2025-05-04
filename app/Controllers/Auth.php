@@ -41,25 +41,49 @@ class Auth extends BaseController
                 ]
             ],
         ])) {
-            //jika login
+            //     //jika login
+            //     $email = $this->request->getPost('email');
+            //     $password = sha1($this->request->getPost('password'));
+
+            //     $CekLogin = $this->ModelAuth->Login($email, $password);
+            //     if ($CekLogin) {
+            //         # jika berhasil Login
+            //         session()->set('nama_user', $CekLogin['nama_user']);
+            //         session()->set('foto', $CekLogin['foto']);
+            //         session()->set('login', 1);
+            //         return redirect()->to('Admin');
+            //     } else {
+            //         # jika gagal Login...
+            //         session()->setFlashdata('pesan', 'Email Atau Password Salah');
+            //         return redirect()->to('Auth/Login');
+            //     }
+            // } else {
+            //     //jika validasi gagal
+            //     session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
+            //     return redirect()->to('Auth/Login')->withInput('validation', \Config\Services::validation());
+            // }
+
             $email = $this->request->getPost('email');
-            $password = sha1($this->request->getPost('password'));
-            $CekLogin = $this->ModelAuth->Login($email, $password);
+            $password = $this->request->getPost('password');
+
+            // Cek apakah user dengan email tersebut ada
+            $CekLogin = $this->ModelAuth->Login($email);
+
             if ($CekLogin) {
-                # jika berhasil Login
-                session()->set('nama_user', $CekLogin['nama_user']);
-                session()->set('foto', $CekLogin['foto']);
-                session()->set('login', 1);
-                return redirect()->to('Admin');
+                // Verifikasi password dengan bcrypt
+                if (password_verify($password, $CekLogin['password'])) {
+                    session()->set('nama_user', $CekLogin['nama_user']);
+                    session()->set('foto', $CekLogin['foto']);
+                    session()->set('login', 1);
+                    return redirect()->to('Admin');
+                } else {
+                    session()->setFlashdata('pesan', 'Password Salah');
+                    return redirect()->to('Auth/Login');
+                }
             } else {
-                # jika gagal Login...
-                session()->setFlashdata('pesan', 'Email Atau Password Salah');
+                session()->setFlashdata('pesan', 'Email Tidak Ditemukan');
                 return redirect()->to('Auth/Login');
             }
-        } else {
-            //jika validasi gagal
-            session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
-            return redirect()->to('Auth/Login')->withInput('validation', \Config\Services::validation());
         }
     }
 

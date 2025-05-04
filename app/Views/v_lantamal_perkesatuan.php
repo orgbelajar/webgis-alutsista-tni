@@ -54,19 +54,10 @@
 
         const layerControl = L.control.layers(baseMaps).addTo(map);
 
-        <?php foreach ($wilayah as $key => $value) { ?>
-            L.geoJSON(<?= $value['geojson'] ?>, {
-                    fillColor: '<?= $value['warna'] ?>',
-                    fillOpacity: 0.5,
-                })
-                .bindPopup("<b><?= $value['nama_wilayah'] ?></b>")
-                .addTo(map);
-        <?php } ?>
-
         <?php foreach ($lantamal as $key => $value) { ?>
             var Icon = L.icon({
-                iconUrl: '<?= base_url('marker/' . $value['marker']) ?>',
-                iconSize: [40, 50],
+                iconUrl: '<?= base_url('Gambar/Lantamal/Logo/' . $value['foto']) ?>',
+                iconSize: [40, 40],
             });
 
             L.marker([<?= $value['koordinat'] ?>], {
@@ -78,15 +69,15 @@
            <h6 class="popup-title"><?= $value['nama_lantamal'] ?></h6>
             <div class="popup-content">
                 <p><strong>Tanggal Didirikan:</strong> <?= $value['tgl_dibentuk'] ?></p>
-                <p style="text-align: justify"><strong>Alamat:</strong> <?= $value['alamat'] ?></p>
+                <p><strong>Wilayah:</strong> <?= $value['nama_wilayah'] ?></p>
                 <p><strong>Daftar Jumlah Alutsista:</strong></p>
                 <ul>
-                    <li>Personel: <?= $value['jml_personil'] ?></li>
+                    <li>Personel: <?= $value['jml_personel'] ?></li>
                     <li>Artileri: <?= $value['jml_artileri'] + $value['jml_artileri_2'] ?></li>
                     <li>Armada Kapal Selam: <?= $value['jml_armada_kapal_selam'] + $value['jml_armada_kapal_selam_2'] ?></li>
                     <li>Armada Kapal Permukaan: <?= $value['jml_armada_kapal_permukaan'] + $value['jml_armada_kapal_permukaan_2'] ?></li>
                 </ul>
-                <a class="btn btn-info btn-detail" href="#">Detail</a>
+                <a class="btn btn-primary btn-detail" href="<?= base_url('HomeLantamal/DetailLantamal/' . $value['id']) ?>">Detail</a>
             </div>
         </div>`
                 )

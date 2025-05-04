@@ -18,15 +18,28 @@ class Admin extends BaseController
 
     public function index(): string
     {
+        $totalTank = $this->ModelAdmin->TotalTank();
+        $totalArtileri = $this->ModelAdmin->TotalArtileri();
+        $totalHelikopter = $this->ModelAdmin->TotalHelikopter();
+        $totalAlutsista = $this->ModelAdmin->TotalAlutsista();
+    
         $data = [
             'judul' => 'Dashboard',
             'menu'  => 'dashboard',
             'page' => 'v_dashboard',
             'jmlkodam' => $this->ModelAdmin->JmlKodam(),
+            'jmllantamal' => $this->ModelAdmin->JmlLantamal(),
+            'jmlkoopsud' => $this->ModelAdmin->JmlKoopsud(),
             'jmlwilayah' => $this->ModelAdmin->JmlWilayah(),
-            // 'komando' => $this->ModelKomando->AllData(),
             'kesatuan' => $this->ModelKesatuan->AllData(),
+    
+            // Tambahan total alutsista
+            'total_tank' => (int)$totalTank['jml_tank'] + (int)$totalTank['jml_tank_2'],
+            'total_artileri' => (int)$totalArtileri['jml_artileri'] + (int)$totalArtileri['jml_artileri_2'],
+            'total_helikopter' => (int)$totalHelikopter['jml_helikopter'] + (int)$totalHelikopter['jml_helikopter_2'],
+            'total_alutsista' => $totalAlutsista,
         ];
+    
         return view('v_template_back_end', $data);
     }
 

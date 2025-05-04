@@ -1,18 +1,22 @@
 <style>
 /* Styling untuk popup */
 .popup-container {
-    text-align: center;
-    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 250px;
+    height: 400px;
+    box-sizing: border-box;
+    padding: 1px;
 }
 
 .popup-img {
-    width: 150px;
-    height: 150px;
+    width: 150px !important;
+    height: 150px !important;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
     border-radius: 8px;
+    object-fit: contain;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     -ms-border-radius: 8px;
@@ -23,6 +27,7 @@
     font-size: 16px;
     text-align: center;
     font-weight: bold;
+    margin-top: 5px;
     margin-bottom: 10px;
     color: #2c3e50;
 }
@@ -32,47 +37,60 @@
 }
 
 .popup-content p {
-    margin: 5px 0;
+    margin: 5px 0 0 0;
     font-size: 14px;
 }
 
 .popup-content ul {
     padding-left: 20px;
-    margin: 5px 0;
+    margin: 0 0 0 0;
     font-size: 14px;
 }
 
 .popup-content ul li {
-    margin-bottom: 5px;
+    margin-bottom: 2px;
 }
-
-/* .btn-detail {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 5px 10px;
-    background-color: #007bff;
-    color: #fff;
-    font-size: 12px;
-    border-radius: 4px;
-    text-decoration: none;
-} */
 
 /* Styling tombol */
 .btn-detail {
-    display: block; /* Membuat tombol jadi blok */
-    width: 100%; /* Membuat tombol lebar 100% dari container */
-    margin-top: 10px;
-    padding: 10px; /* Menambah padding supaya tombol lebih besar */
-    /* background-color: #007bff; */
-    /* color: #fff; */
+    background-color: #007bff !important;
+    color: #ffff !important;
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    padding: 8px;
     font-size: 15px;
     border-radius: 4px;
     text-align: center;
-    text-decoration: none;
+    /* text-decoration: none; */
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
 }
 
-/* .btn-detail:hover {
-    background-color: #0056b3;
-} */
 
+.btn-detail:hover {
+    color: #0d6efd !important;
+    background-color: #ffff !important;
+    border: 1px solid #0d6efd;
+}
+
+.dropdown-menu-scrollable {
+    max-height: 300px; /* Anda bisa ubah sesuai kebutuhan */
+    overflow-y: auto;
+}
+
+.sidebar-scrollable {
+    max-height: 300px; /* Sesuaikan kebutuhan */
+    overflow-y: auto;
+}
+
+.sidebar-text {
+    text-indent: 0;
+    margin-left: 30px; /* Sesuaikan agar sejajar dengan baris pertama */
+    text-align: left;
+    white-space: normal; /* Biarkan teks wrap */
+    display: block; /* Agar baris baru bisa terjadi */
+}
 </style>

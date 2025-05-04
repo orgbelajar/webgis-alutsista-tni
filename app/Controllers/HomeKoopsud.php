@@ -48,6 +48,7 @@ class HomeKoopsud extends BaseController
 
     public function Kesatuan($id)
     {
+        session()->set('previous_url', current_url());
         $dK = $this->ModelKesatuan->DetailData($id);
         $data = [
             'judul' => $dK['kesatuan'],
@@ -55,18 +56,18 @@ class HomeKoopsud extends BaseController
             'web' => $this->ModelSetting->DataWeb(),
             'wilayah' => $this->ModelWilayah->AllData(),
             'kesatuan' => $this->ModelKesatuan->AllData(),
-            'koopsud' => $this->ModelKoopsud->AllDataPerKesatuan($id),
+            'koopsud' => $this->ModelKoopsud->AllData(),
 
         ];
         return view('v_template_front_end', $data);
     }
 
-    public function DetailBatalyon($id_koopsud)
+    public function DetailKoopsud($id)
     {
-        $koopsud = $this->ModelKoopsud->DetailData($id_koopsud);
+        $koopsud = $this->ModelKoopsud->DetailData($id);
         $data = [
-            'judul' => $koopsud['nama_batalyon'],
-            'page' => 'v_detail_batalyon',
+            'judul' => $koopsud['nama_koopsud'],
+            'page' => 'v_detail_koopsud',
             'web' => $this->ModelSetting->DataWeb(),
             'wilayah' => $this->ModelWilayah->AllData(),
             'kesatuan' => $this->ModelKesatuan->AllData(),

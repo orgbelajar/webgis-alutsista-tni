@@ -17,10 +17,10 @@ class ModelWilayah extends Model
         $this->db->table('tbl_wilayah')->insert($data);
     }
 
-    public function DetailData($id_wilayah)
+    public function DetailData($id)
     {
         return $this->db->table('tbl_wilayah')
-            ->where('id', $id_wilayah)
+            ->where('id', $id)
             ->get()->getRowArray();
     }
 

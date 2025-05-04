@@ -9,7 +9,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 class User extends BaseController
 {
 
-    public function __construct() 
+    public function __construct()
     {
         $this->ModelUser = new ModelUser;
     }
@@ -31,63 +31,124 @@ class User extends BaseController
             'judul' => 'Input User',
             'menu'  => 'user',
             'page' => 'user/v_input',
-            
+
         ];
         return view('v_template_back_end', $data);
     }
 
+    // public function InsertData()
+    // {
+    //     if ($this->validate([
+    //         'nama_user' => [
+    //             'label' => 'Nama User',
+    //             'rules' => 'required',
+    //             'errors' => [
+    //                 'required' => '{field} Wajib Diisi !!'
+    //             ]
+    //         ],
+    //         'email' => [
+    //             'label' => 'E-Mail',
+    //             'rules' => 'required',
+    //             'errors' => [
+    //                 'required' => '{field} Wajib Diisi !!'
+    //             ]
+    //         ],
+    //         'password' => [
+    //             'label' => 'Password',
+    //             'rules' => 'required',
+    //             'errors' => [
+    //                 'required' => '{field} Wajib Diisi !!'
+    //             ]
+    //         ],
+    //         'foto' => [
+    //             'label' => 'Foto User',
+    //             'rules' => 'max_size[foto,1024]|mime_in[foto,image/jpg,image/jpeg,image/png]',
+    //             'errors' => [
+    //                 'max_size' => 'Ukuran {field} max 1024 kb !!',
+    //                 'mime_in' => 'Format {field} Harus JPG, JPEG, PNG !!',
+    //             ]
+    //         ],
+    //     ])) {
+    //         $foto = $this->request->getFile('foto');
+    //         $nama_file_foto = $foto->getRandomName();
+    //         //jika validasi berhasil
+    //         $data = [
+    //             'nama_user' => $this->request->getPost('nama_user'),
+    //             'email' => $this->request->getPost('email'),
+    //             'password' => sha1($this->request->getPost('password')),
+    //             'foto' => $nama_file_foto,
+    //         ];
+
+    //         $foto->move('foto', $nama_file_foto);
+    //         $this->ModelUser->InsertData($data);
+    //         session()->setFlashdata('insert', 'Data Berhasil Ditambahkan !!');
+    //         return redirect()->to('User');
+    //     } else {
+    //         //jika validasi gagal
+    //         session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
+    //         return redirect()->to('Batalyon/Input')->withInput('validation', \Config\Services::validation());
+    //     }
+    // }
+
     public function InsertData()
-        {
-            if ($this->validate([
-                'nama_user' => [
-                    'label' => 'Nama User',
-                    'rules' => 'required',
-                    'errors' => [
-                        'required' => '{field} Wajib Diisi !!'
-                    ]
-                ],
-                'email' => [
-                    'label' => 'E-Mail',
-                    'rules' => 'required',
-                    'errors' => [
-                        'required' => '{field} Wajib Diisi !!'
-                    ]
-                ],
-                'password' => [
-                    'label' => 'Password',
-                    'rules' => 'required',
-                    'errors' => [
-                        'required' => '{field} Wajib Diisi !!'
-                    ]
-                ],
-                'foto' => [
-                    'label' => 'Foto User',
-                    'rules' => 'max_size[foto,1024]|mime_in[foto,image/jpg,image/jpeg,image/png]',
-                    'errors' => [
-                        'max_size' => 'Ukuran {field} max 1024 kb !!',
-                        'mime_in' => 'Format {field} Harus JPG, JPEG, PNG !!',
-                    ]
-                ],
-            ])) {
-                $foto = $this->request->getFile('foto');
-                $nama_file_foto = $foto->getRandomName();
-                //jika validasi berhasil
-                $data = [
-                    'nama_user' => $this->request->getPost('nama_user'),
-                    'email' => $this->request->getPost('email'),
-                    'password' => sha1($this->request->getPost('password')),
-                    'foto' =>$nama_file_foto,
-                ];
-                
-                $foto->move('foto',$nama_file_foto);
-                $this->ModelUser->InsertData($data);
-                session()->setFlashdata('insert', 'Data Berhasil Ditambahkan !!');
-                return redirect()->to('User');
-            } else {
-               //jika validasi gagal
-               session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
-               return redirect()->to('Batalyon/Input')->withInput('validation', \Config\Services::validation());
-            }
+    {
+        if ($this->validate([
+            'nama_user' => [
+                'label' => 'Nama User',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} Wajib Diisi !!'
+                ]
+            ],
+            'email' => [
+                'label' => 'E-Mail',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} Wajib Diisi !!'
+                ]
+            ],
+            'password' => [
+                'label' => 'Password',
+                'rules' => 'required|min_length[8]',
+                'errors' => [
+                    'required' => '{field} Wajib Diisi !!',
+                    'min_length' => '{field} minimal 8 karakter'
+                ]
+            ],
+            'foto' => [
+                'label' => 'Foto User',
+                'rules' => 'max_size[foto,1024]|mime_in[foto,image/png]',
+                'errors' => [
+                    'max_size' => 'Ukuran {field} max 1024 kb !!',
+                    'mime_in' => 'Format {field} Harus PNG !!',
+                ]
+            ],
+        ])) {
+            $foto = $this->request->getFile('foto');
+            $nama_file_foto = $foto->getRandomName();
+            //jika validasi berhasil
+
+            // Hash password dengan bcrypt
+            $password = $this->request->getPost('password');
+            $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+
+            $data = [
+                'nama_user' => $this->request->getPost('nama_user'),
+                'email' => $this->request->getPost('email'),
+                // 
+                'password' => $hashedPassword,
+                'foto' => $nama_file_foto,
+            ];
+
+            $foto->move('foto', $nama_file_foto);
+            $this->ModelUser->InsertData($data);
+            session()->setFlashdata('insert', 'Data Berhasil Ditambahkan !');
+            return redirect()->to('User');
+        } else {
+            //jika validasi gagal
+            session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
+            return redirect()->to('User/Input')->withInput('validation', \Config\Services::validation());
+        }
     }
 
     public function Edit($id_user)
@@ -102,64 +163,64 @@ class User extends BaseController
     }
 
     public function UpdateData($id_user)
-        {
-            if ($this->validate([
-                'nama_user' => [
-                    'label' => 'Nama User',
-                    'rules' => 'required',
-                    'errors' => [
-                        'required' => '{field} Wajib Diisi !!'
-                    ]
-                ],
-                'email' => [
-                    'label' => 'E-Mail',
-                    'rules' => 'required',
-                    'errors' => [
-                        'required' => '{field} Wajib Diisi !!'
-                    ]
-                ],
-                'password' => [
-                    'label' => 'Password',
-                    'rules' => 'required',
-                    'errors' => [
-                        'required' => '{field} Wajib Diisi !!'
-                    ]
-                ],
-                'foto' => [
-                    'label' => 'Foto User',
-                    'rules' => 'max_size[foto,1024]|mime_in[foto,image/jpg,image/jpeg,image/png]',
-                    'errors' => [
-                        'max_size' => 'Ukuran {field} max 1024 kb !!',
-                        'mime_in' => 'Format {field} Harus JPG, JPEG, PNG !!',
-                    ]
-                ],
-            ])) {
-                $foto = $this->request->getFile('foto');
-                $user = $this->ModelUser->DetailData($id_user);
+    {
+        if ($this->validate([
+            'nama_user' => [
+                'label' => 'Nama User',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} Wajib Diisi !!'
+                ]
+            ],
+            'email' => [
+                'label' => 'E-Mail',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} Wajib Diisi !!'
+                ]
+            ],
+            'password' => [
+                'label' => 'Password',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} Wajib Diisi !!'
+                ]
+            ],
+            'foto' => [
+                'label' => 'Foto User',
+                'rules' => 'max_size[foto,1024]|mime_in[foto,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'max_size' => 'Ukuran {field} max 1024 kb !!',
+                    'mime_in' => 'Format {field} Harus JPG, JPEG, PNG !!',
+                ]
+            ],
+        ])) {
+            $foto = $this->request->getFile('foto');
+            $user = $this->ModelUser->DetailData($id_user);
 
-                if ($foto->getError() == 4) {
-                    $nama_file_foto = $user['foto'];
-                } else {
-                    $nama_file_foto = $foto->getRandomName();
-                    $foto->move('foto',$nama_file_foto);
-                }
-                //jika validasi berhasil
-                $data = [
-                    'id_user' => $id_user,
-                    'nama_user' => $this->request->getPost('nama_user'),
-                    'email' => $this->request->getPost('email'),
-                    'password' => sha1($this->request->getPost('password')),
-                    'foto' =>$nama_file_foto,
-                ];
-                
-                $this->ModelUser->UpdateData($data);
-                session()->setFlashdata('update', 'Data Berhasil Diupdate !!');
-                return redirect()->to('User');
+            if ($foto->getError() == 4) {
+                $nama_file_foto = $user['foto'];
             } else {
-               //jika validasi gagal
-               session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
-               return redirect()->to('Batalyon/Input')->withInput('validation', \Config\Services::validation());
+                $nama_file_foto = $foto->getRandomName();
+                $foto->move('foto', $nama_file_foto);
             }
+            //jika validasi berhasil
+            $data = [
+                'id_user' => $id_user,
+                'nama_user' => $this->request->getPost('nama_user'),
+                'email' => $this->request->getPost('email'),
+                'password' => sha1($this->request->getPost('password')),
+                'foto' => $nama_file_foto,
+            ];
+
+            $this->ModelUser->UpdateData($data);
+            session()->setFlashdata('update', 'Data Berhasil Diupdate !!');
+            return redirect()->to('User');
+        } else {
+            //jika validasi gagal
+            session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
+            return redirect()->to('Batalyon/Input')->withInput('validation', \Config\Services::validation());
+        }
     }
 
     public function Delete($id_user)
@@ -173,7 +234,7 @@ class User extends BaseController
             'id_user' => $id_user,
         ];
         $this->ModelUser->DeleteData($data);
-            session()->setFlashdata('delete', 'Data Berhasil Didelete !!');
-            return redirect()->to('User');
+        session()->setFlashdata('delete', 'Data Berhasil Didelete !!');
+        return redirect()->to('User');
     }
 }

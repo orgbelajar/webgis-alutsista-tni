@@ -63,14 +63,11 @@
                             <td class="text-center"><?= $value['kesatuan'] ?></td>
                             <td><?= $value['alamat'] ?></td>
                             <td class="text-center"><img src="<?= base_url('Gambar/Kodam/Logo/' . $value['foto']) ?>" width="110px" height="110px"></td>
-                            <!-- <td class="text-center">
-                                <a href="<? //= base_url('Batalyon/Detail/' . $value['id_batalyon']) 
-                                            ?>" class="btn btn-xs btn-success btn-flat"><i class="fas fa-eye"></i></a>
-                                <a href="<? //= base_url('Batalyon/Edit/' . $value['id_batalyon']) 
-                                            ?>" class="btn btn-xs btn-warning btn-flat"><i class="fas fa-pencil-alt"></i></a>
-                                <a href="<? //= base_url('Batalyon/Delete/' . $value['id_batalyon']) 
-                                            ?>" onclick="return confirm('Ingin Hapus Data..?')" class="btn btn-xs btn-danger btn-flat"><i class="fas fa-trash"></i></a>
-                            </td> -->
+                            <td class="text-center">
+                                <a href="<?= base_url('Kodam/Detail/' . $value['id']) ?>" class="btn btn-xs btn-success btn-flat"><i class="fas fa-eye"></i></a>
+                                <a href="<?= base_url('Kodam/Edit/' . $value['id']) ?>" class="btn btn-xs btn-warning btn-flat"><i class="fas fa-pencil-alt"></i></a>
+                                <a href="<?= base_url('Kodam/Delete/' . $value['id']) ?>" onclick="return confirm('Ingin Hapus Data <?= $value['nama_kodam'] ?>?')" class="btn btn-xs btn-danger btn-flat"><i class="fas fa-trash"></i></a>
+                            </td>
                         </tr>
                     <?php } ?>
                 </tbody>

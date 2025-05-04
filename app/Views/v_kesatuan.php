@@ -52,9 +52,9 @@
             <tr>
               <td><?= $no++ ?></td>
               <td class="text-center"><?= $value['kesatuan'] ?></td>
-              <td class="text-center"><img src="<?= base_url('marker/' . $value['marker']) ?>" width="75px"></td>
+              <td class="text-center"><img src="<?= base_url('marker/' . $value['marker']) ?>" width="75px" height="90px"></td>
               <td class="text-center">
-                <button data-toggle="modal" data-target="#edit<?= $value['id'] ?>" class="btn btn-sm btn-warning btn-flat"><i class="fas fa-map-marker-alt"></i>Ganti Marker</button>
+                <button data-toggle="modal" data-target="#edit<?= $value['id'] ?>" class="btn btn-sm btn-warning btn-flat"><i class="fas fa-map-marker-alt"></i> Ganti Marker</button>
               </td>
             </tr>
           <?php } ?>
@@ -72,7 +72,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Ganti Marker<?= $value['kesatuan'] ?></h4>
+          <h4 class="modal-title">Ganti Marker <?= $value['kesatuan'] ?></h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>

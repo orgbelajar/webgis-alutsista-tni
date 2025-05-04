@@ -13,7 +13,7 @@
         <?php echo form_open_multipart('Kodam/InsertDataKodam') ?>
 
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <div class="form-group">
                     <label>Nama Kodam</label>
                     <input name="nama_kodam" value="<?= old('nama_kodam') ?>" placeholder="Nama Kodam" class="form-control" required>
@@ -21,38 +21,14 @@
                 </div>
             </div>
 
-            <div class="col-sm-4">
-                <div class="form-group">
-                    <label>Kesatuan</label>
-                    <select name="id_kesatuan" class="form-control" required>
-                        <option value="">---Pilih Kesatuan---</option>
-                        <?php foreach ($kesatuan as $key => $value) { ?>
-                            <?php if ($value['kesatuan'] == 'TNI AD') { ?>
-                                <option value="<?= $value['id'] ?>"><?= $value['kesatuan'] ?></option>
-                            <?php } ?>
-                        <?php } ?>
-                    </select>
-                    <p class="text-danger"><?= isset($errors['nama_kodam']) ? $errors['nama_kodam'] : '' ?></p>
-                </div>
-            </div>
-
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <div class="form-group">
                     <label>Tanggal Didirikan</label>
                     <input type="date" name="tgl_dibentuk" value="<?= old('tgl_dibentuk') ?>" placeholder="Tanggal Didirikan" class="form-control" required>
                     <p class="text-danger"><?= isset($errors['tgl_dibentuk']) ? $errors['tgl_dibentuk'] : '' ?></p>
                 </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <label>Koordinat Kodam</label>
-            <div id="map" style="width: 100%; height: 500px;"></div>
-            <input name="koordinat" id="Koordinat" value="<?= old('koordinat') ?>" placeholder="Latitude, Longitude" class="form-control" required>
-            <p class="text-danger"><?= isset($errors['koordinat']) ? $errors['koordinat'] : '' ?></p>
-        </div>
-
-        <div class="row">
             <div class="col-sm-3">
                 <div class="form-group">
                     <label>Wilayah Administrasi</label>
@@ -68,6 +44,38 @@
 
             <div class="col-sm-3">
                 <div class="form-group">
+                    <label>Koordinat Kodam</label>
+                    <input name="koordinat" id="Koordinat" value="<?= old('koordinat') ?>" placeholder="Latitude, Longitude" class="form-control" required>
+                    <p class="text-danger"><?= isset($errors['koordinat']) ? $errors['koordinat'] : '' ?></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <!-- <label>Koordinat Kodam</label> -->
+            <div id="map" style="width: 100%; height: 500px;"></div>
+            <!-- <input name="koordinat" id="Koordinat" value="<? //= old('koordinat') 
+                                                                ?>" placeholder="Latitude, Longitude" class="form-control" required> -->
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Kesatuan</label>
+                    <select name="id_kesatuan" class="form-control" required>
+                        <option value="">---Pilih Kesatuan---</option>
+                        <?php foreach ($kesatuan as $key => $value) { ?>
+                            <?php if ($value['kesatuan'] == 'TNI AD') { ?>
+                                <option value="<?= $value['id'] ?>"><?= $value['kesatuan'] ?></option>
+                            <?php } ?>
+                        <?php } ?>
+                    </select>
+                    <p class="text-danger"><?= isset($errors['id_kesatuan']) ? $errors['id_kesatuan'] : '' ?></p>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="form-group">
                     <label>Jumlah Personel</label>
                     <input type="number" name="jml_personel" value="<?= old('jml_personel') ?>" placeholder="Masukkan Jumlah Personel" class="form-control" required>
                     <p class="text-danger"><?= isset($errors['jml_personel']) ? $errors['jml_personel'] : '' ?></p>
@@ -76,7 +84,7 @@
 
             <div class="col-sm-3">
                 <div class="form-group">
-                    <label>Foto Kodam</label>
+                    <label>Foto Kodam (PNG)</label>
                     <input type="file" accept=".png" name="foto" class="form-control" required>
                     <p class="text-danger"><?= isset($errors['foto']) ? $errors['foto'] : '' ?></p>
                 </div>
@@ -89,75 +97,6 @@
                     <p class="text-danger"><?= isset($errors['alamat']) ? $errors['alamat'] : '' ?></p>
                 </div>
             </div>
-
-            <!-- Tank 1 -->
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <label>Alutsista Tank 1</label>
-                    <input name="nama_tank" value="<?= old('nama_tank') ?>" placeholder="Masukkan Nama Tank 1" class="form-control" required>
-                    <p class="text-danger"><?= isset($errors['nama_tank']) ? $errors['nama_tank'] : '' ?></p>
-                </div>
-            </div>
-
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <label>Jumlah Tank 1</label>
-                    <input type="number" name="jml_tank" value="<?= old('jml_tank') ?>" placeholder="Masukkan Jumlah Tank 1" class="form-control" required>
-                    <p class="text-danger"><?= isset($errors['jml_tank']) ? $errors['jml_tank'] : '' ?></p>
-                </div>
-            </div>
-
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <label>Foto Tank 1</label>
-                    <input type="file" accept=".png" name="foto_tank" class="form-control" required>
-                    <p class="text-danger"><?= isset($errors['foto_tank']) ? $errors['foto_tank'] : '' ?></p>
-                </div>
-            </div>
-
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <label>Deskripsi Tank 1</label>
-                    <textarea name="deskripsi_tank" placeholder="Masukkan Deskripsi Tank 1" class="form-control" required><?= old('deskripsi_tank') ?></textarea>
-                    <p class="text-danger"><?= isset($errors['deskripsi_tank']) ? $errors['deskripsi_tank'] : '' ?></p>
-                </div>
-            </div>
-
-
-            <!-- Tank 2 -->
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <label>Alutsista Tank 2</label>
-                    <input name="nama_tank_2" value="<?= old('nama_tank_2') ?>" placeholder="Masukkan Nama Tank 2" class="form-control" required>
-                    <p class="text-danger"><?= isset($errors['nama_tank_2']) ? $errors['nama_tank_2'] : '' ?></p>
-                </div>
-            </div>
-
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <label>Jumlah Tank 2</label>
-                    <input type="number" name="jml_tank_2" value="<?= old('jml_tank_2') ?>" placeholder="Masukkan Jumlah Tank 2" class="form-control" required>
-                    <p class="text-danger"><?= isset($errors['jml_tank_2']) ? $errors['jml_tank_2'] : '' ?></p>
-                </div>
-            </div>
-
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <label>Foto Tank 2</label>
-                    <input type="file" accept=".png" name="foto_tank_2" class="form-control" required>
-                    <p class="text-danger"><?= isset($errors['foto_tank_2']) ? $errors['foto_tank_2'] : '' ?></p>
-                </div>
-            </div>
-
-
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <label>Deskripsi Tank 2</label>
-                    <textarea name="deskripsi_tank_2" placeholder="Masukkan Deskripsi Tank 2" class="form-control" required><?= old('deskripsi_tank_2') ?></textarea>
-                    <p class="text-danger"><?= isset($errors['deskripsi_tank_2']) ? $errors['deskripsi_tank_2'] : '' ?></p>
-                </div>
-            </div>
-
 
             <!-- Artileri 1 -->
             <div class="col-sm-3">
@@ -178,8 +117,8 @@
 
             <div class="col-sm-3">
                 <div class="form-group">
-                    <label>Foto Artileri 1</label>
-                    <input type="file" accept=".png" name="foto_artileri" class="form-control" required>
+                    <label>Foto Artileri 1 (JPG/PNG)</label>
+                    <input type="file" accept=".png,.jpg,.jpeg" name="foto_artileri" class="form-control" required>
                     <p class="text-danger"><?= isset($errors['foto_artileri']) ? $errors['foto_artileri'] : '' ?></p>
                 </div>
             </div>
@@ -213,7 +152,7 @@
             <div class="col-sm-3">
                 <div class="form-group">
                     <label>Foto Artileri 2</label>
-                    <input type="file" accept=".png" name="foto_artileri_2" class="form-control" required>
+                    <input type="file" accept=".png,.jpg,.jpeg" name="foto_artileri_2" class="form-control" required>
                     <p class="text-danger"><?= isset($errors['foto_artileri_2']) ? $errors['foto_artileri_2'] : '' ?></p>
                 </div>
             </div>
@@ -223,6 +162,74 @@
                     <label>Deskripsi Artileri 2</label>
                     <textarea name="deskripsi_artileri_2" placeholder="Masukkan Deskripsi Artileri 2" class="form-control" required><?= old('deskripsi_artileri_2') ?></textarea>
                     <p class="text-danger"><?= isset($errors['deskripsi_artileri_2']) ? $errors['deskripsi_artileri_2'] : '' ?></p>
+                </div>
+            </div>
+
+
+            <!-- Tank 1 -->
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Alutsista Tank 1</label>
+                    <input name="nama_tank" value="<?= old('nama_tank') ?>" placeholder="Masukkan Nama Tank 1" class="form-control" required>
+                    <p class="text-danger"><?= isset($errors['nama_tank']) ? $errors['nama_tank'] : '' ?></p>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Jumlah Tank 1</label>
+                    <input type="number" name="jml_tank" value="<?= old('jml_tank') ?>" placeholder="Masukkan Jumlah Tank 1" class="form-control" required>
+                    <p class="text-danger"><?= isset($errors['jml_tank']) ? $errors['jml_tank'] : '' ?></p>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Foto Tank 1 (JPG/PNG)</label>
+                    <input type="file" accept=".png,.jpg,.jpeg" name="foto_tank" class="form-control" required>
+                    <p class="text-danger"><?= isset($errors['foto_tank']) ? $errors['foto_tank'] : '' ?></p>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Deskripsi Tank 1</label>
+                    <textarea name="deskripsi_tank" placeholder="Masukkan Deskripsi Tank 1" class="form-control" required><?= old('deskripsi_tank') ?></textarea>
+                    <p class="text-danger"><?= isset($errors['deskripsi_tank']) ? $errors['deskripsi_tank'] : '' ?></p>
+                </div>
+            </div>
+
+            <!-- Tank 2 -->
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Alutsista Tank 2</label>
+                    <input name="nama_tank_2" value="<?= old('nama_tank_2') ?>" placeholder="Masukkan Nama Tank 2" class="form-control" required>
+                    <p class="text-danger"><?= isset($errors['nama_tank_2']) ? $errors['nama_tank_2'] : '' ?></p>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Jumlah Tank 2</label>
+                    <input type="number" name="jml_tank_2" value="<?= old('jml_tank_2') ?>" placeholder="Masukkan Jumlah Tank 2" class="form-control" required>
+                    <p class="text-danger"><?= isset($errors['jml_tank_2']) ? $errors['jml_tank_2'] : '' ?></p>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Foto Tank 2 (JPG/PNG)</label>
+                    <input type="file" accept=".png,.jpg,.jpeg" name="foto_tank_2" class="form-control" required>
+                    <p class="text-danger"><?= isset($errors['foto_tank_2']) ? $errors['foto_tank_2'] : '' ?></p>
+                </div>
+            </div>
+
+
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Deskripsi Tank 2</label>
+                    <textarea name="deskripsi_tank_2" placeholder="Masukkan Deskripsi Tank 2" class="form-control" required><?= old('deskripsi_tank_2') ?></textarea>
+                    <p class="text-danger"><?= isset($errors['deskripsi_tank_2']) ? $errors['deskripsi_tank_2'] : '' ?></p>
                 </div>
             </div>
 
@@ -246,8 +253,8 @@
 
             <div class="col-sm-3">
                 <div class="form-group">
-                    <label>Foto Helikopter 1</label>
-                    <input type="file" accept=".png" name="foto_helikopter" class="form-control" required>
+                    <label>Foto Helikopter 1 (JPG/PNG)</label>
+                    <input type="file" accept=".png,.jpg,.jpeg" name="foto_helikopter" class="form-control" required>
                     <p class="text-danger"><?= isset($errors['foto_helikopter']) ? $errors['foto_helikopter'] : '' ?></p>
                 </div>
             </div>
@@ -259,9 +266,6 @@
                     <p class="text-danger"><?= isset($errors['deskripsi_helikopter']) ? $errors['deskripsi_helikopter'] : '' ?></p>
                 </div>
             </div>
-
-
-
 
             <!-- Helikopter 2 -->
             <div class="col-sm-3">
@@ -282,8 +286,8 @@
 
             <div class="col-sm-3">
                 <div class="form-group">
-                    <label>Foto Helikopter 2</label>
-                    <input type="file" accept=".png" name="foto_helikopter_2" class="form-control" required>
+                    <label>Foto Helikopter 2 (JPG/PNG)</label>
+                    <input type="file" accept=".png,.jpg,.jpeg" name="foto_helikopter_2" class="form-control" required>
                     <p class="text-danger"><?= isset($errors['foto_helikopter_2']) ? $errors['foto_helikopter_2'] : '' ?></p>
                 </div>
             </div>
@@ -305,41 +309,6 @@
         <?php echo form_close() ?>
     </div>
 </div>
-
-<script>
-    $(document).ready(function() {
-        //Initialize Select2 Elements
-        $('.select2').select2();
-
-        $('#id_provinsi').change(function() {
-            var id_provinsi = $('#id_provinsi').val();
-            $.ajax({
-                type: "POST",
-                url: "<?= base_url('Batalyon/Kabupaten') ?>",
-                data: {
-                    id_provinsi: id_provinsi,
-                },
-                success: function(response) {
-                    $('#id_kabupaten').html(response);
-                }
-            });
-        });
-
-        $('#id_kabupaten').change(function() {
-            var id_kabupaten = $('#id_kabupaten').val();
-            $.ajax({
-                type: "POST",
-                url: "<?= base_url('Batalyon/Kecamatan') ?>",
-                data: {
-                    id_kabupaten: id_kabupaten,
-                },
-                success: function(response) {
-                    $('#id_kecamatan').html(response);
-                }
-            });
-        });
-    });
-</script>
 
 <script>
     // URL dan attribution untuk peta

@@ -54,19 +54,10 @@
 
         const layerControl = L.control.layers(baseMaps).addTo(map);
 
-        <?php foreach ($wilayah as $key => $value) { ?>
-            L.geoJSON(<?= $value['geojson'] ?>, {
-                    fillColor: '<?= $value['warna'] ?>',
-                    fillOpacity: 0.5,
-                })
-                .bindPopup("<b><?= $value['nama_wilayah'] ?></b>")
-                .addTo(map);
-        <?php } ?>
-
         <?php foreach ($kodam as $key => $value) { ?>
             var Icon = L.icon({
-                iconUrl: '<?= base_url('marker/' . $value['marker']) ?>',
-                iconSize: [40, 40],
+                iconUrl: '<?= base_url('Gambar/Kodam/Logo/' . $value['foto']) ?>',
+                iconSize: [35, 40],
             });
 
             L.marker([<?= $value['koordinat'] ?>], {
@@ -78,7 +69,7 @@
            <h6 class="popup-title"><?= $value['nama_kodam'] ?></h6>
             <div class="popup-content">
                 <p><strong>Tanggal Didirikan:</strong> <?= $value['tgl_dibentuk'] ?></p>
-                <p style="text-align: justify"><strong>Alamat:</strong> <?= $value['alamat'] ?></p>
+                <p><strong>Wilayah:</strong> <?= $value['nama_wilayah'] ?></p>
                 <p><strong>Daftar Jumlah Alutsista:</strong></p>
                 <ul>
                     <li>Personel: <?= $value['jml_personel'] ?></li>
@@ -86,7 +77,7 @@
                     <li>Tank: <?= $value['jml_tank'] + $value['jml_tank_2'] ?></li>
                     <li>Helikopter: <?= $value['jml_helikopter'] + $value['jml_helikopter_2'] ?></li>
                 </ul>
-                <a class="btn btn-info btn-detail" href="#">Detail</a>
+                <a class="btn btn-success btn-detail" href="<?= base_url('HomeKodam/DetailKodam/' . $value['id']) ?>">Detail</a>
             </div>
         </div>`
                 )

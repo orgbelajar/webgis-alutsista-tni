@@ -48,6 +48,7 @@ class HomeLantamal extends BaseController
 
     public function Kesatuan($id)
     {
+        session()->set('previous_url', current_url());
         $dK = $this->ModelKesatuan->DetailData($id);
         $data = [
             'judul' => $dK['kesatuan'],
@@ -55,18 +56,19 @@ class HomeLantamal extends BaseController
             'web' => $this->ModelSetting->DataWeb(),
             'wilayah' => $this->ModelWilayah->AllData(),
             'kesatuan' => $this->ModelKesatuan->AllData(),
-            'lantamal' => $this->ModelLantamal->AllDataPerKesatuan($id),
+            'lantamal' => $this->ModelLantamal->AllData(),
 
         ];
         return view('v_template_front_end', $data);
     }
 
-    public function DetailBatalyon($id_lantamal)
+    public function DetailLantamal($id)
     {
-        $lantamal = $this->ModelLantamal->DetailData($id_lantamal);
+        
+        $lantamal = $this->ModelLantamal->DetailData($id);
         $data = [
-            'judul' => $lantamal['nama_batalyon'],
-            'page' => 'v_detail_batalyon',
+            'judul' => $lantamal['nama_lantamal'],
+            'page' => 'v_detail_lantamal',
             'web' => $this->ModelSetting->DataWeb(),
             'wilayah' => $this->ModelWilayah->AllData(),
             'kesatuan' => $this->ModelKesatuan->AllData(),

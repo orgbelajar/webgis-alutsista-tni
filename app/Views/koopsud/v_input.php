@@ -13,7 +13,7 @@
         <?php echo form_open_multipart('Koopsud/InsertDataKoopsud') ?>
 
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <div class="form-group">
                     <label>Nama Koopsud</label>
                     <input name="nama_koopsud" value="<?= old('nama_koopsud') ?>" placeholder="Nama Koopsud" class="form-control" required>
@@ -21,38 +21,14 @@
                 </div>
             </div>
 
-            <div class="col-sm-4">
-                <div class="form-group">
-                    <label>Kesatuan</label>
-                    <select name="id_kesatuan" class="form-control" required>
-                        <option value="">---Pilih Kesatuan---</option>
-                        <?php foreach ($kesatuan as $key => $value) { ?>
-                            <?php if ($value['kesatuan'] == 'TNI AU') { ?>
-                                <option value="<?= $value['id'] ?>"><?= $value['kesatuan'] ?></option>
-                            <?php } ?>
-                        <?php } ?>
-                    </select>
-                    <p class="text-danger"><?= isset($errors['nama_koopsud']) ? $errors['nama_koopsud'] : '' ?></p>
-                </div>
-            </div>
-
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <div class="form-group">
                     <label>Tanggal Didirikan</label>
                     <input type="date" name="tgl_dibentuk" value="<?= old('tgl_dibentuk') ?>" placeholder="Tanggal Didirikan" class="form-control" required>
                     <p class="text-danger"><?= isset($errors['tgl_dibentuk']) ? $errors['tgl_dibentuk'] : '' ?></p>
                 </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <label>Koordinat Koopsud</label>
-            <div id="map" style="width: 100%; height: 500px;"></div>
-            <input name="koordinat" id="Koordinat" value="<?= old('koordinat') ?>" placeholder="Latitude, Longitude" class="form-control" required>
-            <p class="text-danger"><?= isset($errors['koordinat']) ? $errors['koordinat'] : '' ?></p>
-        </div>
-
-        <div class="row">
             <div class="col-sm-3">
                 <div class="form-group">
                     <label>Wilayah Administrasi</label>
@@ -68,6 +44,38 @@
 
             <div class="col-sm-3">
                 <div class="form-group">
+                    <label>Koordinat Koopsud</label>
+                    <input name="koordinat" id="Koordinat" value="<?= old('koordinat') ?>" placeholder="Latitude, Longitude" class="form-control" required>
+                    <p class="text-danger"><?= isset($errors['koordinat']) ? $errors['koordinat'] : '' ?></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <!-- <label>Koordinat Koopsud</label> -->
+            <div id="map" style="width: 100%; height: 500px;"></div>
+            <!-- <input name="koordinat" id="Koordinat" value="<? //= old('koordinat') 
+                                                                ?>" placeholder="Latitude, Longitude" class="form-control" required> -->
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Kesatuan</label>
+                    <select name="id_kesatuan" class="form-control" required>
+                        <option value="">---Pilih Kesatuan---</option>
+                        <?php foreach ($kesatuan as $key => $value) { ?>
+                            <?php if ($value['kesatuan'] == 'TNI AU') { ?>
+                                <option value="<?= $value['id'] ?>"><?= $value['kesatuan'] ?></option>
+                            <?php } ?>
+                        <?php } ?>
+                    </select>
+                    <p class="text-danger"><?= isset($errors['id_kesatuan']) ? $errors['id_kesatuan'] : '' ?></p>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="form-group">
                     <label>Jumlah Personel</label>
                     <input type="number" name="jml_personel" value="<?= old('jml_personel') ?>" placeholder="Masukkan Jumlah Personel" class="form-control" required>
                     <p class="text-danger"><?= isset($errors['jml_personel']) ? $errors['jml_personel'] : '' ?></p>
@@ -76,7 +84,7 @@
 
             <div class="col-sm-3">
                 <div class="form-group">
-                    <label>Foto Koopsud</label>
+                    <label>Foto Koopsud (PNG)</label>
                     <input type="file" accept=".png" name="foto" class="form-control" required>
                     <p class="text-danger"><?= isset($errors['foto']) ? $errors['foto'] : '' ?></p>
                 </div>
@@ -89,75 +97,6 @@
                     <p class="text-danger"><?= isset($errors['alamat']) ? $errors['alamat'] : '' ?></p>
                 </div>
             </div>
-
-            <!-- Pesawat Terbang 1 -->
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <label>Alutsista Pesawat Terbang 1</label>
-                    <input name="nama_pesawat_terbang" value="<?= old('nama_pesawat_terbang') ?>" placeholder="Masukkan Nama Pesawat Terbang 1" class="form-control" required>
-                    <p class="text-danger"><?= isset($errors['nama_pesawat_terbang']) ? $errors['nama_pesawat_terbang'] : '' ?></p>
-                </div>
-            </div>
-
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <label>Jumlah Pesawat Terbang 1</label>
-                    <input type="number" name="jml_pesawat_terbang" value="<?= old('jml_pesawat_terbang') ?>" placeholder="Masukkan Jumlah Pesawat Terbang 1" class="form-control" required>
-                    <p class="text-danger"><?= isset($errors['jml_pesawat_terbang']) ? $errors['jml_pesawat_terbang'] : '' ?></p>
-                </div>
-            </div>
-
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <label>Foto Pesawat Terbang 1</label>
-                    <input type="file" accept=".png" name="foto_pesawat_terbang" class="form-control" required>
-                    <p class="text-danger"><?= isset($errors['foto_pesawat_terbang']) ? $errors['foto_pesawat_terbang'] : '' ?></p>
-                </div>
-            </div>
-
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <label>Deskripsi Pesawat Terbang 1</label>
-                    <textarea name="deskripsi_pesawat_terbang" placeholder="Masukkan Deskripsi Pesawat Terbang 1" class="form-control" required><?= old('deskripsi_pesawat_terbang') ?></textarea>
-                    <p class="text-danger"><?= isset($errors['deskripsi_pesawat_terbang']) ? $errors['deskripsi_pesawat_terbang'] : '' ?></p>
-                </div>
-            </div>
-
-
-            <!-- Pesawat Terbang 2 -->
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <label>Alutsista Pesawat Terbang 2</label>
-                    <input name="nama_pesawat_terbang_2" value="<?= old('nama_pesawat_terbang_2') ?>" placeholder="Masukkan Nama Pesawat Terbang 2" class="form-control" required>
-                    <p class="text-danger"><?= isset($errors['nama_pesawat_terbang_2']) ? $errors['nama_pesawat_terbang_2'] : '' ?></p>
-                </div>
-            </div>
-
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <label>Jumlah Pesawat Terbang 2</label>
-                    <input type="number" name="jml_pesawat_terbang_2" value="<?= old('jml_pesawat_terbang_2') ?>" placeholder="Masukkan Jumlah Pesawat Terbang 2" class="form-control" required>
-                    <p class="text-danger"><?= isset($errors['jml_pesawat_terbang_2']) ? $errors['jml_pesawat_terbang_2'] : '' ?></p>
-                </div>
-            </div>
-
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <label>Foto Pesawat Terbang 2</label>
-                    <input type="file" accept=".png" name="foto_pesawat_terbang_2" class="form-control" required>
-                    <p class="text-danger"><?= isset($errors['foto_pesawat_terbang_2']) ? $errors['foto_pesawat_terbang_2'] : '' ?></p>
-                </div>
-            </div>
-
-
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <label>Deskripsi Pesawat Terbang 2</label>
-                    <textarea name="deskripsi_pesawat_terbang_2" placeholder="Masukkan Deskripsi Pesawat Terbang 2" class="form-control" required><?= old('deskripsi_pesawat_terbang_2') ?></textarea>
-                    <p class="text-danger"><?= isset($errors['deskripsi_pesawat_terbang_2']) ? $errors['deskripsi_pesawat_terbang_2'] : '' ?></p>
-                </div>
-            </div>
-
 
             <!-- Amunisi 1 -->
             <div class="col-sm-3">
@@ -178,8 +117,8 @@
 
             <div class="col-sm-3">
                 <div class="form-group">
-                    <label>Foto Amunisi 1</label>
-                    <input type="file" accept=".png" name="foto_amunisi" class="form-control" required>
+                    <label>Foto Amunisi 1 (JPG/PNG)</label>
+                    <input type="file" accept=".png,.jpg,.jpeg" name="foto_amunisi" class="form-control" required>
                     <p class="text-danger"><?= isset($errors['foto_amunisi']) ? $errors['foto_amunisi'] : '' ?></p>
                 </div>
             </div>
@@ -212,11 +151,12 @@
 
             <div class="col-sm-3">
                 <div class="form-group">
-                    <label>Foto Amunisi 2</label>
-                    <input type="file" accept=".png" name="foto_amunisi_2" class="form-control" required>
+                    <label>Foto Amunisi 2 (JPG/PNG)</label>
+                    <input type="file" accept=".png,.jpg,.jpeg" name="foto_amunisi_2" class="form-control" required>
                     <p class="text-danger"><?= isset($errors['foto_amunisi_2']) ? $errors['foto_amunisi_2'] : '' ?></p>
                 </div>
             </div>
+
 
             <div class="col-sm-3">
                 <div class="form-group">
@@ -246,8 +186,8 @@
 
             <div class="col-sm-3">
                 <div class="form-group">
-                    <label>Foto Pertahanan Udara 1</label>
-                    <input type="file" accept=".png" name="foto_pertahanan_udara" class="form-control" required>
+                    <label>Foto Pertahanan Udara 1 (JPG/PNG)</label>
+                    <input type="file" accept=".png,.jpg,.jpeg" name="foto_pertahanan_udara" class="form-control" required>
                     <p class="text-danger"><?= isset($errors['foto_pertahanan_udara']) ? $errors['foto_pertahanan_udara'] : '' ?></p>
                 </div>
             </div>
@@ -259,8 +199,6 @@
                     <p class="text-danger"><?= isset($errors['deskripsi_pertahanan_udara']) ? $errors['deskripsi_pertahanan_udara'] : '' ?></p>
                 </div>
             </div>
-
-
 
 
             <!-- Pertahanan Udara 2 -->
@@ -282,8 +220,8 @@
 
             <div class="col-sm-3">
                 <div class="form-group">
-                    <label>Foto Pertahanan Udara 2</label>
-                    <input type="file" accept=".png" name="foto_pertahanan_udara_2" class="form-control" required>
+                    <label>Foto Pertahanan Udara 2 (JPG/PNG)</label>
+                    <input type="file" accept=".png,.jpg,.jpeg" name="foto_pertahanan_udara_2" class="form-control" required>
                     <p class="text-danger"><?= isset($errors['foto_pertahanan_udara_2']) ? $errors['foto_pertahanan_udara_2'] : '' ?></p>
                 </div>
             </div>
@@ -293,6 +231,74 @@
                     <label>Deskripsi Pertahanan Udara 2</label>
                     <textarea name="deskripsi_pertahanan_udara_2" placeholder="Masukkan Deskripsi Pertahanan Udara 2" class="form-control" required><?= old('deskripsi_pertahanan_udara_2') ?></textarea>
                     <p class="text-danger"><?= isset($errors['deskripsi_pertahanan_udara_2']) ? $errors['deskripsi_pertahanan_udara_2'] : '' ?></p>
+                </div>
+            </div>
+
+
+            <!-- Pesawat Terbang 1 -->
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Alutsista Pesawat Terbang 1</label>
+                    <input name="nama_pesawat_terbang" value="<?= old('nama_pesawat_terbang') ?>" placeholder="Masukkan Nama Pesawat Terbang 1" class="form-control" required>
+                    <p class="text-danger"><?= isset($errors['nama_pesawat_terbang']) ? $errors['nama_pesawat_terbang'] : '' ?></p>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Jumlah Pesawat Terbang 1</label>
+                    <input type="number" name="jml_pesawat_terbang" value="<?= old('jml_pesawat_terbang') ?>" placeholder="Masukkan Jumlah Pesawat Terbang 1" class="form-control" required>
+                    <p class="text-danger"><?= isset($errors['jml_pesawat_terbang']) ? $errors['jml_pesawat_terbang'] : '' ?></p>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Foto Pesawat Terbang 1 (JPG/PNG)</label>
+                    <input type="file" accept=".png,.jpg,.jpeg" name="foto_pesawat_terbang" class="form-control" required>
+                    <p class="text-danger"><?= isset($errors['foto_pesawat_terbang']) ? $errors['foto_pesawat_terbang'] : '' ?></p>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Deskripsi Pesawat Terbang 1</label>
+                    <textarea name="deskripsi_pesawat_terbang" placeholder="Masukkan Deskripsi Pesawat Terbang 1" class="form-control" required><?= old('deskripsi_pesawat_terbang') ?></textarea>
+                    <p class="text-danger"><?= isset($errors['deskripsi_pesawat_terbang']) ? $errors['deskripsi_pesawat_terbang'] : '' ?></p>
+                </div>
+            </div>
+
+
+            <!-- Pesawat Terbang 2 -->
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Alutsista Pesawat Terbang 2</label>
+                    <input name="nama_pesawat_terbang_2" value="<?= old('nama_pesawat_terbang_2') ?>" placeholder="Masukkan Nama Pesawat Terbang 2" class="form-control" required>
+                    <p class="text-danger"><?= isset($errors['nama_pesawat_terbang_2']) ? $errors['nama_pesawat_terbang_2'] : '' ?></p>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Jumlah Pesawat Terbang 2</label>
+                    <input type="number" name="jml_pesawat_terbang_2" value="<?= old('jml_pesawat_terbang_2') ?>" placeholder="Masukkan Jumlah Pesawat Terbang 2" class="form-control" required>
+                    <p class="text-danger"><?= isset($errors['jml_pesawat_terbang_2']) ? $errors['jml_pesawat_terbang_2'] : '' ?></p>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Foto Pesawat Terbang 2 (JPG/PNG)</label>
+                    <input type="file" accept=".png,.jpg,.jpeg" name="foto_pesawat_terbang_2" class="form-control" required>
+                    <p class="text-danger"><?= isset($errors['foto_pesawat_terbang_2']) ? $errors['foto_pesawat_terbang_2'] : '' ?></p>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Deskripsi Pesawat Terbang 2</label>
+                    <textarea name="deskripsi_pesawat_terbang_2" placeholder="Masukkan Deskripsi Pesawat Terbang 2" class="form-control" required><?= old('deskripsi_pesawat_terbang_2') ?></textarea>
+                    <p class="text-danger"><?= isset($errors['deskripsi_pesawat_terbang_2']) ? $errors['deskripsi_pesawat_terbang_2'] : '' ?></p>
                 </div>
             </div>
         </div>
@@ -305,41 +311,6 @@
         <?php echo form_close() ?>
     </div>
 </div>
-
-<script>
-    $(document).ready(function() {
-        //Initialize Select2 Elements
-        $('.select2').select2();
-
-        $('#id_provinsi').change(function() {
-            var id_provinsi = $('#id_provinsi').val();
-            $.ajax({
-                type: "POST",
-                url: "<?= base_url('Batalyon/Kabupaten') ?>",
-                data: {
-                    id_provinsi: id_provinsi,
-                },
-                success: function(response) {
-                    $('#id_kabupaten').html(response);
-                }
-            });
-        });
-
-        $('#id_kabupaten').change(function() {
-            var id_kabupaten = $('#id_kabupaten').val();
-            $.ajax({
-                type: "POST",
-                url: "<?= base_url('Batalyon/Kecamatan') ?>",
-                data: {
-                    id_kabupaten: id_kabupaten,
-                },
-                success: function(response) {
-                    $('#id_kecamatan').html(response);
-                }
-            });
-        });
-    });
-</script>
 
 <script>
     // URL dan attribution untuk peta

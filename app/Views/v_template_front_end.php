@@ -19,6 +19,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="https://kit.fontawesome.com/9d76725032.js" crossorigin="anonymous"></script>
   <!-- Theme style -->
   <link rel="stylesheet" href="<?= base_url('AdminLTE') ?>/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="/public/css/styles.css">
   <!-- leaflet -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
@@ -31,10 +32,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
       <div class="container">
-        <a href="<?= base_url('AdminLTE') ?>/index3.html" class="navbar-brand">
-          <img src="<?= base_url() ?>/logo/pusinfolahta.png" class="me-2" height="50px" width="40px">
+
+        <a href="<?= base_url('') ?>" class="">
+          <img src="<?= base_url('') ?>/logo/webgis.png" class="me-2" height="70px" width="70px">
         </a>
-        <h5><b><?= $web['nama_web'] ?></b></h5>
+        <!-- <h5><b><? //= $web['nama_web'] 
+                    ?></b></h5> -->
         <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -43,15 +46,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Left navbar links -->
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+              <a class="nav-link" data-widget="pushmenu" href="#" role="button">
+                <h5><i class="fas fa-bars"></i></h5>
+              </a>
             </li>
             <li class="nav-item">
-              <a href="<?= base_url() ?>" class="nav-link">Home</a>
+              <a href="<?= base_url() ?>" class="nav-link">
+                <h5><strong>Home</strong></h5>
+              </a>
             </li>
 
             <li class="nav-item dropdown">
-              <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Wilayah</a>
-              <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+              <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">
+                <h5><strong>Wilayah</strong></h5>
+              </a>
+              <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow dropdown-menu-scrollable">
                 <?php foreach ($wilayah as $key => $value) { ?>
                   <li><a href="<?= base_url('Home/Wilayah/' . $value['id']) ?>" class="dropdown-item"><?= $value['nama_wilayah'] ?> </a></li>
                 <?php } ?>
@@ -60,7 +69,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </li>
 
             <li class="nav-item dropdown">
-              <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Kesatuan</a>
+              <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">
+                <h5><strong>Kesatuan</strong></h5>
+              </a>
               <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
                 <?php foreach ($kesatuan as $key => $value) { ?>
                   <?php
@@ -72,7 +83,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   } elseif ($value['kesatuan'] == 'TNI AD') {
                     $url = base_url('HomeKodam/Kesatuan/' . $value['id']);
                   } else {
-                    $url = base_url('HomeKodam/Kesatuan/' . $value['id']);
+                    $url = base_url('Home/Kesatuan/' . $value['id']);
                   }
                   ?>
                   <li><a href="<?= $url ?>" class="dropdown-item"><?= $value['kesatuan'] ?></a></li>
@@ -89,7 +100,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           <li class="nav-item">
             <a class="nav-link" href="<?= base_url('Auth/Login') ?>">
-              <i class="fas fa-sign-in-alt"></i> Masuk Admin
+              <h5><strong><i class="fas fa-sign-in-alt"></i> Masuk Admin</strong></h5>
             </a>
           </li>
         </ul>
@@ -101,15 +112,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
       <a href="<?= base_url() ?>" class="brand-link">
-        <img src="<?= base_url() ?>/logo/Lambang_TNI.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">GIS Alutsista TNI</span>
+        <img src="<?= base_url() ?>/logo/webgis.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">WEB GIS Alutsista TNI</span>
       </a>
 
       <!-- Sidebar -->
       <div class="sidebar">
         <!-- Sidebar user (optional) -->
-
-
 
 
         <!-- Sidebar Menu -->
@@ -118,7 +127,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             <li class="nav-item">
-              <a href="<?= base_url('Home') ?>" class="nav-link">
+              <a href="<?= base_url('') ?>" class="nav-link">
                 <i class="nav-icon fas fa-home"></i>
                 <p>
                   Home
@@ -135,12 +144,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
-              <ul class="nav nav-treeview">
+              <ul class="nav nav-treeview sidebar-scrollable">
                 <?php foreach ($wilayah as $key => $value) { ?>
                   <li class="nav-item">
                     <a href="<?= base_url('Home/Wilayah/' . $value['id']) ?>" class="nav-link">
                       <i class="fas fa-location-dot nav-icon"></i>
-                      <p><?= $value['nama_wilayah'] ?> </p>
+                      <p class="region-name"> <?= $value['nama_wilayah'] ?> </p>
                     </a>
                   </li>
                 <?php } ?>
@@ -153,7 +162,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 ?>" alt="Setting Icon" class="nav-icon" style="width: 20px; height: 20px;"> -->
                 <i class="nav-icon fas fa-person-military-rifle"></i>
                 <p>
-                  Satuan
+                  Kesatuan
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
@@ -162,27 +171,36 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <?php
                   $icon = '';
                   $satuan = '';
+                  $url = '';
+
+                  // Tentukan ikon dan satuan
                   if (stripos($value['kesatuan'], 'TNI AD') !== false) {
                     $icon = base_url('Gambar/Logo_TNI_AD_1.png');
                     $satuan = 'Kodam';
+                    $url = base_url('HomeKodam/Kesatuan/' . $value['id']);
                   } elseif (stripos($value['kesatuan'], 'TNI AL') !== false) {
                     $icon = base_url('Gambar/Lambang_TNI_AL_2.png');
                     $satuan = 'Lantamal';
+                    $url = base_url('HomeLantamal/Kesatuan/' . $value['id']);
                   } elseif (stripos($value['kesatuan'], 'TNI AU') !== false) {
                     $icon = base_url('Gambar/Lambang_TNI_AU_1.png');
                     $satuan = 'Koopsud';
+                    $url = base_url('HomeKoopsud/Kesatuan/' . $value['id']);
                   } else {
                     $icon = base_url('Gambar/Logo_TNI_AD_1.png');
+                    $satuan = '';
+                    $url = base_url('');
                   }
                   ?>
                   <li class="nav-item">
-                    <a href="<?= base_url('Home/Kesatuan/' . $value['id']) ?>" class="nav-link">
+                    <a href="<?= $url ?>" class="nav-link">
                       <img src="<?= $icon ?>" alt="Icon <?= $value['kesatuan'] ?>" class="nav-icon" style="width: 20px; height: 20px;">
                       <p><?= $satuan . ' (' . $value['kesatuan'] . ')' ?></p>
                     </a>
                   </li>
                 <?php } ?>
               </ul>
+
             </li>
           </ul>
         </nav>
@@ -241,6 +259,118 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- AdminLTE App -->
   <script src="<?= base_url('AdminLTE') ?>/dist/js/adminlte.min.js"></script>
 
+</body>
+
+<script type="module">
+  import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
+  Chatbot.init({
+    chatflowid: "05705ae6-e238-4d02-afba-1473b12482a9",
+    apiHost: "http://localhost:3000",
+    chatflowConfig: {
+      /* Chatflow Config */
+    },
+    observersConfig: {
+      /* Observers Config */
+    },
+    theme: {
+      button: {
+        backgroundColor: '#2268a7',
+        right: 20,
+        bottom: 20,
+        size: 48,
+        dragAndDrop: true,
+        iconColor: 'white',
+        customIconSrc: 'https://seeklogo.com/images/C/chatcoin-chat-logo-D655A30A39-seeklogo.com.png',
+        autoWindowOpen: {
+          autoOpen: false,
+          openDelay: 2,
+          autoOpenOnMobile: false
+        }
+      },
+      tooltip: {
+        showTooltip: false,
+        tooltipMessage: '',
+        tooltipBackgroundColor: 'white',
+        tooltipTextColor: 'white',
+        tooltipFontSize: 16
+      },
+      disclaimer: {
+        title: 'Disclaimer',
+        message: "By using this chatbot, you agree to the <a target=\"_blank\" href=\"https://flowiseai.com/terms\">Terms & Condition</a>",
+        textColor: 'black',
+        buttonColor: '#ef0724',
+        buttonText: 'Start Chatting',
+        buttonTextColor: 'white',
+        blurredBackgroundColor: 'rgba(0, 0, 0, 0.4)',
+        backgroundColor: 'white'
+      },
+      customCSS: ``,
+      chatWindow: {
+        showTitle: true,
+        showAgentMessages: true,
+        title: 'Ensiklopedia Alutsista TNI',
+        titleAvatarSrc: 'https://upload.wikimedia.org/wikipedia/commons/0/0b/Flag_of_Indonesia.png',
+        welcomeMessage: 'Halo, Selamat datang di Ensiklopedia Alutsista TNI! Adakah pertanyaan mengenai Alutsista TNI?',
+        errorMessage: 'Maaf, sistem sedang bermasalah, Mohon tunggu sebentar.',
+        backgroundColor: '',
+        backgroundImage: 'https://i.pinimg.com/736x/7a/2f/5c/7a2f5c4ebcf3980af69c0041f5c152f9.jpg',
+        height: 650,
+        width: 400,
+        fontSize: 16,
+        starterPrompts: [
+          "Ensiklopedia Alutsista TNI itu apa?",
+          "Apa saja armada di Lantamal 1?",
+          "Dimana Alamat Lantamal 3? ",
+          "Berapa koordinat Lantamal 1?",
+          "Berapa jarak Lantamal 1 dengan Lantamal 3?"
+
+        ],
+        starterPromptFontSize: 15,
+        clearChatOnReload: false,
+        sourceDocsTitle: 'Sources:',
+        renderHTML: true,
+        botMessage: {
+          backgroundColor: '#ececec',
+          textColor: '#303235',
+          showAvatar: true,
+          avatarSrc: 'https://img.freepik.com/free-vector/chatbot-chat-message-vectorart_78370-4104.jpg'
+        },
+        userMessage: {
+          backgroundColor: '#c8f2ff',
+          textColor: '#000000',
+          showAvatar: true,
+          avatarSrc: 'https://www.teknoredaksi.com/wp-content/uploads/2024/04/2a90a89df0ea59aa6dde4eb8dcfdd97a.png'
+        },
+        textInput: {
+          placeholder: 'Tulis pertanyaan anda',
+          backgroundColor: '#ecececf',
+          textColor: '#303235',
+          sendButtonColor: '#3B81F6',
+          maxChars: 1000,
+          maxCharsWarningMessage: 'You exceeded the characters limit. Please input less than 1000 characters.',
+          autoFocus: true,
+          sendMessageSound: true,
+          sendSoundLocation: 'send_message.mp3',
+          receiveMessageSound: true,
+          receiveSoundLocation: 'receive_message.mp3'
+        },
+        feedback: {
+          color: '#ef0724'
+        },
+        dateTimeToggle: {
+          date: true,
+          time: true
+        },
+        footer: {
+          textColor: '#303235',
+          text: 'Dikembangkan oleh Mahasiswa PKL Pusinfolahta',
+          company: '',
+
+        }
+      }
+    }
+  })
+</script>
 </body>
 
 </html>

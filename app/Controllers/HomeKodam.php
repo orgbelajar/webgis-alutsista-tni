@@ -17,18 +17,18 @@ class HomeKodam extends BaseController
         $this->ModelKesatuan = new ModelKesatuan();
     }
 
-    public function index(): string
-    {
-        $data = [
-            'judul' => 'Home',
-            'page' => 'v_home',
-            'web' => $this->ModelSetting->DataWeb(),
-            'wilayah' => $this->ModelWilayah->AllData(),
-            'kodam' => $this->ModelKodam->AllData(),
-            'kesatuan' => $this->ModelKesatuan->AllData(),
-        ];
-        return view('v_template_front_end', $data);
-    }
+    // public function index(): string
+    // {
+    //     $data = [
+    //         'judul' => 'Home',
+    //         'page' => 'v_home',
+    //         'web' => $this->ModelSetting->DataWeb(),
+    //         'wilayah' => $this->ModelWilayah->AllData(),
+    //         'kodam' => $this->ModelKodam->AllData(),
+    //         'kesatuan' => $this->ModelKesatuan->AllData(),
+    //     ];
+    //     return view('v_template_front_end', $data);
+    // }
 
     public function Wilayah($id_wilayah)
     {
@@ -48,6 +48,7 @@ class HomeKodam extends BaseController
 
     public function Kesatuan($id)
     {
+        session()->set('previous_url', current_url());
         $dK = $this->ModelKesatuan->DetailData($id);
         $data = [
             'judul' => $dK['kesatuan'],
@@ -55,18 +56,18 @@ class HomeKodam extends BaseController
             'web' => $this->ModelSetting->DataWeb(),
             'wilayah' => $this->ModelWilayah->AllData(),
             'kesatuan' => $this->ModelKesatuan->AllData(),
-            'kodam' => $this->ModelKodam->AllDataPerKesatuan($id),
+            'kodam' => $this->ModelKodam->AllData(),
 
         ];
         return view('v_template_front_end', $data);
     }
 
-    public function DetailBatalyon($id_kodam)
+    public function DetailKodam($id)
     {
-        $kodam = $this->ModelKodam->DetailData($id_kodam);
+        $kodam = $this->ModelKodam->DetailData($id);
         $data = [
-            'judul' => $kodam['nama_batalyon'],
-            'page' => 'v_detail_batalyon',
+            'judul' => $kodam['nama_kodam'],
+            'page' => 'v_detail_kodam',
             'web' => $this->ModelSetting->DataWeb(),
             'wilayah' => $this->ModelWilayah->AllData(),
             'kesatuan' => $this->ModelKesatuan->AllData(),

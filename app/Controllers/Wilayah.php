@@ -44,38 +44,22 @@ class Wilayah extends BaseController
             'nama_wilayah' => [
                 'label' => 'Nama Wilayah',
                 'rules' => 'required',
-                'errors'=> [
-                    'required'=> '{field} Wajib Diisi !!'
-                ]
-            ],
-            'geojson' => [
-                'label' => 'Data GeoJSON',
-                'rules' => 'required',
-                'errors'=> [
-                    'required'=> '{field} Wajib Diisi !!'
-                ]
-            ],
-            'warna' => [
-                'label' => 'Warna',
-                'rules' => 'required',
-                'errors'=> [
-                    'required'=> '{field} Wajib Diisi !!'
+                'errors' => [
+                    'required' => '{field} Wajib Diisi !!'
                 ]
             ],
         ])) {
             //jika validasi berhasil
             $data = [
                 'nama_wilayah' => $this->request->getPost('nama_wilayah'),
-                'warna' => $this->request->getPost('warna'),
-                'geojson' => $this->request->getPost('geojson'),
             ];
             $this->ModelWilayah->InsertData($data);
             session()->setFlashdata('insert', 'Data Berhasil Ditambahkan !!');
             return redirect()->to('Wilayah');
         } else {
-           //jika validasi gagal
-           session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
-           return redirect()->to('Wilayah/Input')->withInput('validation', \Config\Services::validation());
+            //jika validasi gagal
+            session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
+            return redirect()->to('Wilayah/Input')->withInput('validation', \Config\Services::validation());
         }
     }
 
@@ -96,22 +80,22 @@ class Wilayah extends BaseController
             'nama_wilayah' => [
                 'label' => 'Nama Wilayah',
                 'rules' => 'required',
-                'errors'=> [
-                    'required'=> '{field} Wajib Diisi !!'
+                'errors' => [
+                    'required' => '{field} Wajib Diisi !!'
                 ]
             ],
             'geojson' => [
                 'label' => 'Data GeoJSON',
                 'rules' => 'required',
-                'errors'=> [
-                    'required'=> '{field} Wajib Diisi !!'
+                'errors' => [
+                    'required' => '{field} Wajib Diisi !!'
                 ]
             ],
             'warna' => [
                 'label' => 'Warna',
                 'rules' => 'required',
-                'errors'=> [
-                    'required'=> '{field} Wajib Diisi !!'
+                'errors' => [
+                    'required' => '{field} Wajib Diisi !!'
                 ]
             ],
         ])) {
@@ -126,9 +110,9 @@ class Wilayah extends BaseController
             session()->setFlashdata('update', 'Data Berhasil Diupdate !!');
             return redirect()->to('Wilayah');
         } else {
-           //jika validasi gagal
-           session()->setFlashdata('errors',\Config\Services::validation()->getErrors());
-           return redirect()->to('Wilayah/Input')->withInput('validation', \Config\Services::validation());
+            //jika validasi gagal
+            session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
+            return redirect()->to('Wilayah/Input')->withInput('validation', \Config\Services::validation());
         }
     }
 
@@ -138,7 +122,7 @@ class Wilayah extends BaseController
             'id_wilayah' => $id_wilayah,
         ];
         $this->ModelWilayah->DeleteData($data);
-        session()->setFlashdata('delete','Data Berhasil Didelete !!');
+        session()->setFlashdata('delete', 'Data Berhasil Didelete !!');
         return redirect()->to('Wilayah');
     }
 }
