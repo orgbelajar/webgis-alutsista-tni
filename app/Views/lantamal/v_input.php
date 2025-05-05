@@ -176,7 +176,7 @@
 
             <div class="col-sm-3">
                 <div class="form-group">
-                    <label>Jumlah Kapal Selam 1 (JPG/PNG)</label>
+                    <label>Jumlah Kapal Selam 1</label>
                     <input type="number" name="jml_armada_kapal_selam" value="<?= old('jml_armada_kapal_selam') ?>" placeholder="Masukkan Jumlah Kapal Selam 1" class="form-control" required>
                     <p class="text-danger"><?= isset($errors['jml_armada_kapal_selam']) ? $errors['jml_armada_kapal_selam'] : '' ?></p>
                 </div>
@@ -184,7 +184,7 @@
 
             <div class="col-sm-3">
                 <div class="form-group">
-                    <label>Foto Kapal Selam 1</label>
+                    <label>Foto Kapal Selam 1 (JPG/PNG)</label>
                     <input type="file" accept=".png,.jpg,.jpeg" name="foto_armada_kapal_selam" class="form-control" required>
                     <p class="text-danger"><?= isset($errors['foto_armada_kapal_selam']) ? $errors['foto_armada_kapal_selam'] : '' ?></p>
                 </div>

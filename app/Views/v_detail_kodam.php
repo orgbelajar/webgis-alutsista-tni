@@ -2,7 +2,7 @@
 
     <!-- Foto Kodam -->
     <div class="text-center mb-4">
-        <img src="<?= base_url('Gambar/Kodam/Logo/' . $kodam['foto']) ?>" alt="Foto Koopsud" class="img-fluid" style="max-height: 300px;">
+        <img src="<?= base_url('Gambar/Kodam/Logo/' . $kodam['foto']) ?>" alt="Foto Koopsud" class="img-fluid" style="max-height: 301px;">
     </div>
 
     <!-- Informasi Kodam -->
@@ -47,33 +47,33 @@
         <div class="card-body">
             <h4 class="text-center mb-4"><strong>Daftar Alutsista</strong></h4>
 
-            <!-- Tank -->
-            <h5><strong>Tipe Tank</strong></h5>
-            <div class="row mb-4">
-                <div class="col-md-6 text-center mb-3">
-                    <img src="<?= base_url('Gambar/Kodam/Tank/' . $kodam['foto_tank']) ?>" alt="Tank 1" class="img-fluid" style="max-height: 300px;">
-                    <p><strong><?= $kodam['nama_tank'] ?><br>Jumlah Unit: <?= $kodam['jml_tank'] ?></strong></p>
-                    <p class="mb-0" style="text-align: justify;"><?= $kodam['deskripsi_tank'] ?></p>
-                </div>
-                <div class="col-md-6 text-center mb-3">
-                    <img src="<?= base_url('Gambar/Kodam/Tank 2/' . $kodam['foto_tank_2']) ?>" alt="Tank 2" class="img-fluid" style="max-height: 300px;">
-                    <p><strong><?= $kodam['nama_tank_2'] ?><br>Jumlah Unit: <?= $kodam['jml_tank_2'] ?></strong></p>
-                    <p class="mb-0" style="text-align: justify;"><?= $kodam['deskripsi_tank_2'] ?></p>
-                </div>
-            </div>
-
             <!-- Artileri -->
             <h5><strong>Tipe Artileri</strong></h5>
             <div class="row mb-4">
                 <div class="col-md-6 text-center mb-3">
-                    <img src="<?= base_url('Gambar/Kodam/Artileri/' . $kodam['foto_artileri']) ?>" alt="Artileri 1" class="img-fluid" style="max-height: 300px;">
+                    <img src="<?= base_url('Gambar/Kodam/Artileri/' . $kodam['foto_artileri']) ?>" alt="Artileri 1" class="img-fluid" style="height: 350px; width: 550px;">
                     <p><strong><?= $kodam['nama_artileri'] ?><br>Jumlah Unit: <?= $kodam['jml_artileri'] ?></strong></p>
                     <p class="mb-0" style="text-align: justify;"><?= $kodam['deskripsi_artileri'] ?></p>
                 </div>
                 <div class="col-md-6 text-center mb-3">
-                    <img src="<?= base_url('Gambar/Kodam/Artileri 2/' . $kodam['foto_artileri_2']) ?>" alt="Artileri 2" class="img-fluid" style="max-height: 300px;">
+                    <img src="<?= base_url('Gambar/Kodam/Artileri 2/' . $kodam['foto_artileri_2']) ?>" alt="Artileri 2" class="img-fluid" style="height: 350px; width: 550px;">
                     <p><strong><?= $kodam['nama_artileri_2'] ?><br>Jumlah Unit: <?= $kodam['jml_artileri_2'] ?></strong></p>
                     <p class="mb-0" style="text-align: justify;"><?= $kodam['deskripsi_artileri_2'] ?></p>
+                </div>
+            </div>
+
+            <!-- Tank -->
+            <h5><strong>Tipe Tank</strong></h5>
+            <div class="row mb-4">
+                <div class="col-md-6 text-center mb-3">
+                    <img src="<?= base_url('Gambar/Kodam/Tank/' . $kodam['foto_tank']) ?>" alt="Tank 1" class="img-fluid" style="height: 350px; width: 550px;">
+                    <p><strong><?= $kodam['nama_tank'] ?><br>Jumlah Unit: <?= $kodam['jml_tank'] ?></strong></p>
+                    <p class="mb-0" style="text-align: justify;"><?= $kodam['deskripsi_tank'] ?></p>
+                </div>
+                <div class="col-md-6 text-center mb-3">
+                    <img src="<?= base_url('Gambar/Kodam/Tank 2/' . $kodam['foto_tank_2']) ?>" alt="Tank 2" class="img-fluid" style="height: 350px; width: 550px;">
+                    <p><strong><?= $kodam['nama_tank_2'] ?><br>Jumlah Unit: <?= $kodam['jml_tank_2'] ?></strong></p>
+                    <p class="mb-0" style="text-align: justify;"><?= $kodam['deskripsi_tank_2'] ?></p>
                 </div>
             </div>
 
@@ -81,12 +81,12 @@
             <h5><strong>Tipe Helikopter</strong></h5>
             <div class="row mb-4">
                 <div class="col-md-6 text-center mb-3">
-                    <img src="<?= base_url('Gambar/Kodam/Helikopter/' . $kodam['foto_helikopter']) ?>" alt="Helikopter 1" class="img-fluid" style="max-height: 300px;">
+                    <img src="<?= base_url('Gambar/Kodam/Helikopter/' . $kodam['foto_helikopter']) ?>" alt="Helikopter 1" class="img-fluid" style="height: 350px; width: 550px;">
                     <p><strong><?= $kodam['nama_helikopter'] ?><br>Jumlah Unit: <?= $kodam['jml_helikopter'] ?></strong></p>
                     <p class="mb-0" style="text-align: justify;"><?= $kodam['deskripsi_helikopter'] ?></p>
                 </div>
                 <div class="col-md-6 text-center mb-3">
-                    <img src="<?= base_url('Gambar/Kodam/Helikopter 2/' . $kodam['foto_helikopter_2']) ?>" alt="Helikopter 2" class="img-fluid" style="max-height: 300px;">
+                    <img src="<?= base_url('Gambar/Kodam/Helikopter 2/' . $kodam['foto_helikopter_2']) ?>" alt="Helikopter 2" class="img-fluid" style="height: 350px; width: 550px;">
                     <p><strong><?= $kodam['nama_helikopter_2'] ?><br>Jumlah Unit: <?= $kodam['jml_helikopter_2'] ?></strong></p>
                     <p class="mb-0" style="text-align: justify;"><?= $kodam['deskripsi_helikopter_2'] ?></p>
                 </div>

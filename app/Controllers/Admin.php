@@ -21,7 +21,16 @@ class Admin extends BaseController
         $totalTank = $this->ModelAdmin->TotalTank();
         $totalArtileri = $this->ModelAdmin->TotalArtileri();
         $totalHelikopter = $this->ModelAdmin->TotalHelikopter();
-        $totalAlutsista = $this->ModelAdmin->TotalAlutsista();
+        //$totalAlutsista = $this->ModelAdmin->TotalAlutsista();
+
+        $totalArtileriLantamal = $this->ModelAdmin->TotalArtileriLantamal();
+        $totalKapalSelam = $this->ModelAdmin->TotalKapalSelam();
+        $totalKapalPermukaan = $this->ModelAdmin->TotalKapalPermukaan();
+        //$totalAlutsista = $this->ModelAdmin->TotalAlutsista();
+
+        $totalAmunisi = $this->ModelAdmin->TotalAmunisi();
+        $totalPertahananUdara = $this->ModelAdmin->TotalPertahananUdara();
+        $totalPesawatTerbang = $this->ModelAdmin->TotalPesawatTerbang();
     
         $data = [
             'judul' => 'Dashboard',
@@ -37,7 +46,16 @@ class Admin extends BaseController
             'total_tank' => (int)$totalTank['jml_tank'] + (int)$totalTank['jml_tank_2'],
             'total_artileri' => (int)$totalArtileri['jml_artileri'] + (int)$totalArtileri['jml_artileri_2'],
             'total_helikopter' => (int)$totalHelikopter['jml_helikopter'] + (int)$totalHelikopter['jml_helikopter_2'],
-            'total_alutsista' => $totalAlutsista,
+            //'total_alutsista' => $totalAlutsista,
+
+            'total_artileri_lantamal' => (int)$totalArtileriLantamal['jml_artileri'] + (int)$totalArtileriLantamal['jml_artileri_2'],
+            'total_kapal_selam' => (int)$totalKapalSelam['jml_armada_kapal_selam'] + (int)$totalKapalSelam['jml_armada_kapal_selam_2'],
+            'total_kapal_permukaan' => (int)$totalKapalPermukaan['jml_armada_kapal_permukaan'] + (int)$totalKapalPermukaan['jml_armada_kapal_permukaan_2'],
+
+            //? Diganti
+            'total_amunisi' => (int)$totalAmunisi['jml_amunisi'] + (int)$totalAmunisi['jml_amunisi_2'],
+            'total_pertahanan_udara' => (int)$totalPertahananUdara['jml_pertahanan_udara'] + (int)$totalPertahananUdara['jml_pertahanan_udara_2'],
+            'total_pesawat_terbang' => (int)$totalPesawatTerbang['jml_pesawat_terbang'] + (int)$totalPesawatTerbang['jml_pesawat_terbang_2'],
         ];
     
         return view('v_template_back_end', $data);

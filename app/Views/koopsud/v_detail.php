@@ -2,7 +2,7 @@
 
     <!-- Foto Koopsud -->
     <div class="text-center mb-4">
-        <img src="<?= base_url('Gambar/Koopsud/Logo/' . $koopsud['foto']) ?>" alt="Foto Koopsud" class="img-fluid" style="max-height: 300px;">
+        <img src="<?= base_url('Gambar/Koopsud/Logo/' . $koopsud['foto']) ?>" alt="Foto Koopsud" class="img-fluid" style="max-height: 301px;">
     </div>
 
     <!-- Informasi Koopsud -->
@@ -51,12 +51,12 @@
             <h5><strong>Tipe Amunisi</strong></h5>
             <div class="row mb-4">
                 <div class="col-md-6 text-center mb-3">
-                    <img src="<?= base_url('Gambar/Koopsud/Amunisi/' . $koopsud['foto_amunisi']) ?>" alt="Amunisi 1" class="img-fluid" style="max-height: 300px;">
+                    <img src="<?= base_url('Gambar/Koopsud/Amunisi/' . $koopsud['foto_amunisi']) ?>" alt="Amunisi 1" class="img-fluid" style="height: 350px; width: 550px;">
                     <p><strong><?= $koopsud['nama_amunisi'] ?><br>Jumlah Unit: <?= $koopsud['jml_amunisi'] ?></strong></p>
                     <p class="mb-0" style="text-align: justify;"><?= $koopsud['deskripsi_amunisi'] ?></p>
                 </div>
                 <div class="col-md-6 text-center mb-3">
-                    <img src="<?= base_url('Gambar/Koopsud/Amunisi 2/' . $koopsud['foto_amunisi_2']) ?>" alt="Amunisi 2" class="img-fluid" style="max-height: 300px;">
+                    <img src="<?= base_url('Gambar/Koopsud/Amunisi 2/' . $koopsud['foto_amunisi_2']) ?>" alt="Amunisi 2" class="img-fluid" style="height: 350px; width: 550px;">
                     <p><strong><?= $koopsud['nama_amunisi_2'] ?><br>Jumlah Unit: <?= $koopsud['jml_amunisi_2'] ?></strong></p>
                     <p class="mb-0" style="text-align: justify;"><?= $koopsud['deskripsi_amunisi_2'] ?></p>
                 </div>
@@ -66,12 +66,12 @@
             <h5><strong>Tipe Pertahanan Udara</strong></h5>
             <div class="row mb-4">
                 <div class="col-md-6 text-center mb-3">
-                    <img src="<?= base_url('Gambar/Koopsud/Pertahanan Udara/' . $koopsud['foto_pertahanan_udara']) ?>" alt="Pertahanan Udara 1" class="img-fluid" style="max-height: 300px;">
+                    <img src="<?= base_url('Gambar/Koopsud/Pertahanan Udara/' . $koopsud['foto_pertahanan_udara']) ?>" alt="Pertahanan Udara 1" class="img-fluid" style="height: 350px; width: 550px;">
                     <p><strong><?= $koopsud['nama_pertahanan_udara'] ?><br>Jumlah Unit: <?= $koopsud['jml_pertahanan_udara'] ?></strong></p>
                     <p class="mb-0" style="text-align: justify;"><?= $koopsud['deskripsi_pertahanan_udara'] ?></p>
                 </div>
                 <div class="col-md-6 text-center mb-3">
-                    <img src="<?= base_url('Gambar/Koopsud/Pertahanan Udara 2/' . $koopsud['foto_pertahanan_udara_2']) ?>" alt="Pertahanan Udara 2" class="img-fluid" style="max-height: 300px;">
+                    <img src="<?= base_url('Gambar/Koopsud/Pertahanan Udara 2/' . $koopsud['foto_pertahanan_udara_2']) ?>" alt="Pertahanan Udara 2" class="img-fluid" style="height: 350px; width: 550px;">
                     <p><strong><?= $koopsud['nama_pertahanan_udara_2'] ?><br>Jumlah Unit: <?= $koopsud['jml_pertahanan_udara_2'] ?></strong></p>
                     <p class="mb-0" style="text-align: justify;"><?= $koopsud['deskripsi_pertahanan_udara_2'] ?></p>
                 </div>
@@ -81,12 +81,12 @@
             <h5><strong>Tipe Pesawat Terbang</strong></h5>
             <div class="row mb-4">
                 <div class="col-md-6 text-center mb-3">
-                    <img src="<?= base_url('Gambar/Koopsud/Pesawat Terbang/' . $koopsud['foto_pesawat_terbang']) ?>" alt="Pesawat Terbang 1" class="img-fluid" style="max-height: 300px;">
+                    <img src="<?= base_url('Gambar/Koopsud/Pesawat Terbang/' . $koopsud['foto_pesawat_terbang']) ?>" alt="Pesawat Terbang 1" class="img-fluid" style="height: 350px; width: 550px;">
                     <p><strong><?= $koopsud['nama_pesawat_terbang'] ?><br>Jumlah Unit: <?= $koopsud['jml_pesawat_terbang'] ?></strong></p>
                     <p class="mb-0" style="text-align: justify;"><?= $koopsud['deskripsi_pesawat_terbang'] ?></p>
                 </div>
                 <div class="col-md-6 text-center mb-3">
-                    <img src="<?= base_url('Gambar/Koopsud/Pesawat Terbang 2/' . $koopsud['foto_pesawat_terbang_2']) ?>" alt="Pesawat Terbang 2" class="img-fluid" style="max-height: 300px;">
+                    <img src="<?= base_url('Gambar/Koopsud/Pesawat Terbang 2/' . $koopsud['foto_pesawat_terbang_2']) ?>" alt="Pesawat Terbang 2" class="img-fluid" style="height: 350px; width: 550px;">
                     <p><strong><?= $koopsud['nama_pesawat_terbang_2'] ?><br>Jumlah Unit: <?= $koopsud['jml_pesawat_terbang_2'] ?></strong></p>
                     <p class="mb-0" style="text-align: justify;"><?= $koopsud['deskripsi_pesawat_terbang_2'] ?></p>
                 </div>

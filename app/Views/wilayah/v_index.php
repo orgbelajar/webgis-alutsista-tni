@@ -54,7 +54,7 @@
           <?php $no = 1;
           foreach ($wilayah as $key => $value) { ?>
             <tr>
-              <td><?= $no++ ?></td>
+              <td class="text-center"><?= $no++ ?></td>
               <td><?= $value['nama_wilayah'] ?></td>
               <td style="background-color: <?= $value['warna'] ?> ;"></td>
               <td class="text-center">

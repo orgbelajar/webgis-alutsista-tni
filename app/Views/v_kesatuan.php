@@ -50,7 +50,7 @@
           <?php $no = 1;
           foreach ($kesatuan as $key => $value) { ?>
             <tr>
-              <td><?= $no++ ?></td>
+              <td class="text-center"><?= $no++ ?></td>
               <td class="text-center"><?= $value['kesatuan'] ?></td>
               <td class="text-center"><img src="<?= base_url('marker/' . $value['marker']) ?>" width="75px" height="90px"></td>
               <td class="text-center">

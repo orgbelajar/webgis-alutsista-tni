@@ -106,17 +106,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar -->
       <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <!-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
             <img src="<?= base_url('foto') ?>/<?= session()->get('foto') ?>" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
             <a href="#" class="d-block"><?= session()->get('nama_user') ?></a>
           </div>
-        </div>
+        </div> -->
 
         <!-- SidebarSearch Form -->
-        <div class="form-inline">
+        <div class="form-inline" style="margin-top: 8px;">
           <div class="input-group" data-widget="sidebar-search">
             <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
             <div class="input-group-append">
@@ -183,14 +183,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </a>
             </li>
 
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a href="<?= base_url('User') ?>" class="nav-link <?= $menu  ==  'user' ? 'active' : '' ?>">
                 <i class="nav-icon fas fa-users"></i>
                 <p>
                   User
                 </p>
               </a>
-            </li>
+            </li> -->
 
             <li class="nav-item">
               <a href="<?= base_url('Admin/Setting') ?>" class="nav-link <?= $menu  ==  'setting' ? 'active' : '' ?>">
@@ -212,25 +212,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
-      <div class="content-header">
+      <!-- <div class="content-header">
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
               <h1 class="m-0"><?= $judul ?></h1>
-            </div><!-- /.col -->
+            </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Starter Page</li>
+                <li class="breadcrumb-item"><a href="<?//= base_url('Admin') ?>">Home</a></li>
               </ol>
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-      </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
       <!-- /.content-header -->
 
       <!-- Main content -->
-      <div class="content">
+      <div class="content" style="margin-top: 15px;">
         <div class="container-fluid">
           <div class="row">
             <!-- /.isi konten -->

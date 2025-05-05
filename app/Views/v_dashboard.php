@@ -44,8 +44,8 @@
   <!-- small box -->
   <div class="small-box bg-olive">
     <div class="inner">
-      <h3><?= $total_tank ?></h3>
-      <p>Total Alutsista Tank</p>
+      <h3><?= $total_artileri ?></h3>
+      <p>Total Alutsista Artileri</p>
     </div>
     <div class="icon">
       <i class="fas fa-layer-group"></i>
@@ -57,7 +57,7 @@
   <!-- small box -->
   <div class="small-box bg-navy">
     <div class="inner">
-      <h3><?= $total_tank ?></h3>
+      <h3><?= $total_artileri_lantamal ?></h3>
       <p>Total Alutsista Artileri</p>
     </div>
     <div class="icon">
@@ -70,7 +70,7 @@
   <!-- small box -->
   <div class="small-box bg-info">
     <div class="inner">
-      <h3><?= $total_tank ?></h3>
+      <h3><?= $total_amunisi ?></h3>
       <p>Total Alutsista Amunisi</p>
     </div>
     <div class="icon">
@@ -96,7 +96,7 @@
   <!-- small box -->
   <div class="small-box bg-navy">
     <div class="inner">
-      <h3><?= $total_tank ?></h3>
+      <h3><?= $total_kapal_selam ?></h3>
       <p>Total Alutsista Kapal Selam</p>
     </div>
     <div class="icon">
@@ -109,7 +109,7 @@
   <!-- small box -->
   <div class="small-box bg-info">
     <div class="inner">
-      <h3><?= $total_tank ?></h3>
+      <h3><?= $total_pertahanan_udara ?></h3>
       <p>Total Alutsista Pertahanan Udara</p>
     </div>
     <div class="icon">
@@ -122,7 +122,7 @@
   <!-- small box -->
   <div class="small-box bg-olive">
     <div class="inner">
-      <h3><?= $total_tank ?></h3>
+      <h3><?= $total_helikopter ?></h3>
       <p>Total Alutsista Helikopter</p>
     </div>
     <div class="icon">
@@ -135,7 +135,7 @@
   <!-- small box -->
   <div class="small-box bg-navy">
     <div class="inner">
-      <h3><?= $total_tank ?></h3>
+      <h3><?= $total_kapal_permukaan ?></h3>
       <p>Total Alutsista Kapal Permukaan</p>
     </div>
     <div class="icon">
@@ -148,7 +148,7 @@
   <!-- small box -->
   <div class="small-box bg-info">
     <div class="inner">
-      <h3><?= $total_tank ?></h3>
+      <h3><?= $total_pesawat_terbang ?></h3>
       <p>Total Alutsista Pesawat Terbang</p>
     </div>
     <div class="icon">
