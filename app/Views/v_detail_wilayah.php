@@ -44,7 +44,7 @@
     const map = L.map('map', {
       center: [<?= $web['coordinate_wilayah'] ?>],
       zoom: <?= $web['zoom_view'] ?>,
-      layers: [esriHybrid] // default layer
+      layers: [osm] // default layer
     });
 
     const baseMaps = {

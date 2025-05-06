@@ -1,7 +1,7 @@
 <div class="col-md-12">
   <div class="card card-outline card-primary">
     <div class="card-header">
-      <h3 class="card-title"><?= $judul ?></h3>
+    <p class="card-title"  style="font-size: 21px;"><strong><?= $judul ?></strong></p>
 
 
       <!-- /.card-tools -->

@@ -1,8 +1,7 @@
 <div class="col-md-12">
     <div class="card card-outline card-primary">
         <div class="card-header">
-            <h3 class="card-title">Daftar <?= $judul ?></h3>
-
+            <p class="card-title"  style="font-size: 21px;"><strong>Daftar <?= $judul ?></strong></p>
             <div class="card-tools">
                 <a href="<?= base_url('Kodam/Input') ?>" class="btn btn-flat btn-primary btn-sm">
                     <i class="fas fa-plus"></i> Tambah
