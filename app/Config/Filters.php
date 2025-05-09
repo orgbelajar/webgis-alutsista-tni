@@ -34,7 +34,7 @@ class Filters extends BaseFilters
         'forcehttps'    => ForceHTTPS::class,
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
-        'FilterAuth'    => \App\Filters\FilterAuth::class,
+        'rolefilter'    => \App\Filters\RoleFilter::class,
     ];
 
     /**
@@ -70,35 +70,45 @@ class Filters extends BaseFilters
      */
     public array $globals = [
         'before' => [
-            'FilterAuth' => [
+            'rolefilter' => [
                 'except' => [
-                    'Auth', 'Auth/*',
-                    'Home', 'Home/*',
-                    'HomeKodam', 'HomeKodam/*',
-                    'HomeLantamal', 'HomeLantamal/*',
-                    'HomeKoopsud', 'HomeKoopsud/*',
+                    'Auth',
+                    'Auth/*',
                     '/',
+                    'Admin',
+                    'Admin/*',
+                    'Home',
+                    'Home/*',
+                    'HomeKodam',
+                    'HomeKodam/*',
+                    'HomeKoopsud',
+                    'HomeKoopsud/*',
+                    'HomeLantamal',
+                    'HomeLantamal/*',
+                    'User',
+                    'User/*',
+                    'Kodam',
+                    'Kodam/*',
+                    'Lantamal',
+                    'Lantamal/*',
+                    'Koopsud',
+                    'Koopsud/*',
+                    'Kesatuan',
+                    'Kesatuan/*',
+                    'Wilayah',
+                    'Wilayah/*',
+                    'PreHome',
+                    'PreHome/*',
+                    'PreHomeKodam',
+                    'PreHomeKodam/*',
+                    'PreHomeKoopsud',
+                    'PreHomeKoopsud/*',
+                    'PreHomeLantamal',
                 ]
             ]
         ],
         'after' => [
-            'FilterAuth' => [
-                'except' => [
-                    'Auth', 'Auth/*',
-                    'Admin', 'Admin/*',
-                    'Home', 'Home/*',
-                    'HomeKodam', 'HomeKodam/*',
-                    'HomeLantamal', 'HomeLantamal/*',
-                    'HomeKoopsud', 'HomeKoopsud/*',
-                    'User', 'User/*',
-                    'Batalyon', 'Batalyon/*',
-                    'Kodam', 'Kodam/*',
-                    'Lantamal', 'Lantamal/*',
-                    'Koopsud', 'Koopsud/*',
-                    'Kesatuan', 'Kesatuan/*',
-                    'Wilayah', 'Wilayah/*',
-                ]
-            ],
+            'toolbar',
         ],
     ];
 

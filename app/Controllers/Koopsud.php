@@ -16,6 +16,13 @@ class Koopsud extends BaseController
 
     public function __construct()
     {
+        //Cek role login
+        if (session()->get('role') != 'admin') {
+            session()->setFlashdata('pesan', 'Harap login dahulu sebagai admin.');
+            header('Location: ' . base_url('Auth/LoginAdmin'));
+            exit;
+        }
+        
         $this->ModelWilayah = new ModelWilayah();
         $this->ModelSetting = new ModelSetting();
         $this->ModelKoopsud = new ModelKoopsud();

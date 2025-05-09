@@ -87,7 +87,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
         <li class="nav-item">
-          <a class="nav-link" href="<?= base_url('Auth/LogOut') ?>">
+          <a class="nav-link" href="<?= base_url('Auth/LogOutAdmin') ?>">
             <i class="fas fa-sign-out-alt"></i> Keluar
           </a>
         </li>
@@ -141,6 +141,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </a>
             </li>
 
+           
+            <li class="nav-item">
+              <a href="<?= base_url('PreHome') ?>" class="nav-link <?= $menu  ==  'prehome' ? 'active' : '' ?>">
+                <i class="nav-icon fas fa-home"></i>
+                <p>
+                  Home
+                </p>
+              </a>
+            </li>
+
+            
+
             <!-- Sebelumnya Poligon Wilayah -->
             <!-- <li class="nav-item">
               <a href="<? //= base_url('Wilayah') 
@@ -183,14 +195,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </a>
             </li>
 
-            <!-- <li class="nav-item">
+            <li class="nav-item">
               <a href="<?= base_url('User') ?>" class="nav-link <?= $menu  ==  'user' ? 'active' : '' ?>">
                 <i class="nav-icon fas fa-users"></i>
                 <p>
                   User
                 </p>
               </a>
-            </li> -->
+            </li>
 
             <li class="nav-item">
               <a href="<?= base_url('Admin/Setting') ?>" class="nav-link <?= $menu  ==  'setting' ? 'active' : '' ?>">
@@ -229,7 +241,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- /.content-header -->
 
       <!-- Main content -->
-      <div class="content" style="margin-top: 15px;">
+      <div class="content" style="margin-top: 0px;">
         <div class="container-fluid">
           <div class="row">
             <!-- /.isi konten -->

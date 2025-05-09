@@ -113,7 +113,7 @@
       <p>Total Alutsista Pertahanan Udara</p>
     </div>
     <div class="icon">
-      <i class="fas fa-layer-group"></i>
+      <i class="fas fa-solid fa-plane-circle-exclamation" style="color: white;"></i>
     </div>
   </div>
 </div>
@@ -126,7 +126,7 @@
       <p>Total Alutsista Helikopter</p>
     </div>
     <div class="icon">
-      <i class="fas fa-layer-group"></i>
+      <i class="fas fa-solid fa-helicopter" style="color: white;"></i>
     </div>
   </div>
 </div>
@@ -139,7 +139,7 @@
       <p>Total Alutsista Kapal Permukaan</p>
     </div>
     <div class="icon">
-      <i class="fas fa-layer-group"></i>
+      <i class="fas fa-solid fa-ship" style="color: white;"></i>
     </div>
   </div>
 </div>
@@ -152,7 +152,7 @@
       <p>Total Alutsista Pesawat Terbang</p>
     </div>
     <div class="icon">
-      <i class="fas fa-layer-group"></i>
+      <i class="fas fa-solid fa-jet-fighter-up" style="color: white"></i>
     </div>
   </div>
 </div>

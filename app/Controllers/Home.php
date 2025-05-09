@@ -13,6 +13,13 @@ class Home extends BaseController
 {
     public function __construct()
     {
+
+        if (session()->get('role') != 'user') {
+            // session()->setFlashdata('pesan', 'Harap login terlebih dahulu.');
+            header('Location: ' . base_url('Auth/LoginUser'));
+            exit;
+        }
+
         $this->ModelSetting = new ModelSetting();
         $this->ModelWilayah = new ModelWilayah();
         $this->ModelKodam = new ModelKodam();
@@ -26,6 +33,7 @@ class Home extends BaseController
         session()->set('previous_url', current_url());
         $data = [
             'judul' => 'Home',
+            'menu' => 'home',
             'page' => 'v_home_2',
             'web' => $this->ModelSetting->DataWeb(),
             'wilayah' => $this->ModelWilayah->AllData(),
@@ -55,35 +63,4 @@ class Home extends BaseController
         ];
         return view('v_template_front_end', $data);
     }
-
-    // public function Kesatuan($id)
-    // {
-    //     $dK = $this->ModelKesatuan->DetailData($id);
-    //     $data = [
-    //         'judul' => $dK['kesatuan'],
-    //         'page' => 'v_kodam_perkesatuan',
-    //         'web' => $this->ModelSetting->DataWeb(),
-    //         'wilayah' => $this->ModelWilayah->AllData(),
-    //         'kesatuan' => $this->ModelKesatuan->AllData(),
-    //         'kodam' => $this->ModelKodam->AllDataPerKesatuan($id),
-    //         'lantamal' => $this->ModelLantamal->AllDataPerKesatuan($id),
-    //         'koopsud' => $this->ModelKoopsud->AllDataPerKesatuan($id),
-    //     ];
-    //     return view('v_template_front_end', $data);
-    // }
-
-    // public function DetailBatalyon($id_kodam)
-    // {
-    //     $kodam = $this->ModelKodam->DetailData($id_kodam);
-    //     $data = [
-    //         'judul' => $kodam['nama_batalyon'],
-    //         'page' => 'v_detail_batalyon',
-    //         'web' => $this->ModelSetting->DataWeb(),
-    //         'wilayah' => $this->ModelWilayah->AllData(),
-    //         'kesatuan' => $this->ModelKesatuan->AllData(),
-    //         'kodam' => $kodam,
-
-    //     ];
-    //     return view('v_template_front_end', $data);
-    // }
 }

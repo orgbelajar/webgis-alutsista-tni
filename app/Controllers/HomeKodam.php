@@ -11,6 +11,12 @@ class HomeKodam extends BaseController
 {
     public function __construct()
     {
+        if (session()->get('role') != 'user') {
+            session()->setFlashdata('pesan', 'Harap login terlebih dahulu.');
+            header('Location: ' . base_url('Auth/LoginUser'));
+            exit;
+        }
+        
         $this->ModelSetting = new ModelSetting();
         $this->ModelWilayah = new ModelWilayah();
         $this->ModelKodam = new ModelKodam();

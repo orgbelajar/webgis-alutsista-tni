@@ -12,7 +12,7 @@
       session();
       $validation = \Config\Services::validation();
       ?>
-      <?php echo form_open_multipart('User/UpdateData/' . $user['id_user']) ?>
+      <?php echo form_open_multipart('User/Update/' . $user['id_user']) ?>
       <div class="form-group">
         <label>Nama User</label>
         <input name="nama_user" value="<?= $user['nama_user'] ?>" placeholder="Nama User" class="form-control">
@@ -27,7 +27,7 @@
 
       <div class="form-group">
         <label>Password</label>
-        <input name="password" value="<?= $user['password'] ?>" placeholder="Password" class="form-control">
+        <input name="password" placeholder="Password" class="form-control">
         <p class="text-danger"><?= $validation->hasError('password') ? $validation->getError('password') : '' ?></p>
       </div>
 
@@ -40,7 +40,7 @@
           </div>
         </div>
         <div class="col-sm-8">
-          <img src="<?= base_url('foto/' . $user['foto']) ?>" width="150px">
+          <img src="<?= base_url('foto_user/' . $user['foto']) ?>" width="150px">
         </div>
       </div>
 

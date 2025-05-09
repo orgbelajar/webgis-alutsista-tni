@@ -1,4 +1,4 @@
-<div class="col-md-12">
+<div class="col-md-12" style="margin-top: 10px;">
   <div class="card card-outline card-primary">
     <div class="card-header">
     <p class="card-title"  style="font-size: 21px;"><strong><?= $judul ?></strong></p>

@@ -11,6 +11,12 @@ class HomeLantamal extends BaseController
 {
     public function __construct()
     {
+        if (session()->get('role') != 'user') {
+            session()->setFlashdata('pesan', 'Harap login terlebih dahulu.');
+            header('Location: ' . base_url('Auth/LoginUser'));
+            exit;
+        }
+        
         $this->ModelSetting = new ModelSetting();
         $this->ModelWilayah = new ModelWilayah();
         $this->ModelLantamal = new ModelLantamal();
@@ -64,7 +70,7 @@ class HomeLantamal extends BaseController
 
     public function DetailLantamal($id)
     {
-        
+
         $lantamal = $this->ModelLantamal->DetailData($id);
         $data = [
             'judul' => $lantamal['nama_lantamal'],

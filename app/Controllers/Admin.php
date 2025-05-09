@@ -10,9 +10,15 @@ class Admin extends BaseController
 {
     public function __construct()
     {
+        //Cek role login
+        if (session()->get('role') != 'admin') {
+            header('Location: ' . base_url('Auth/LoginAdmin'));
+            exit;
+        }
+
+        
         $this->ModelSetting = new ModelSetting();
         $this->ModelAdmin = new ModelAdmin();
-        // $this->ModelKomando = new ModelKomando();
         $this->ModelKesatuan = new ModelKesatuan();
     }
 
@@ -31,7 +37,7 @@ class Admin extends BaseController
         $totalAmunisi = $this->ModelAdmin->TotalAmunisi();
         $totalPertahananUdara = $this->ModelAdmin->TotalPertahananUdara();
         $totalPesawatTerbang = $this->ModelAdmin->TotalPesawatTerbang();
-    
+
         $data = [
             'judul' => 'Dashboard',
             'menu'  => 'dashboard',
@@ -41,7 +47,7 @@ class Admin extends BaseController
             'jmlkoopsud' => $this->ModelAdmin->JmlKoopsud(),
             'jmlwilayah' => $this->ModelAdmin->JmlWilayah(),
             'kesatuan' => $this->ModelKesatuan->AllData(),
-    
+
             // Tambahan total alutsista
             'total_tank' => (int)$totalTank['jml_tank'] + (int)$totalTank['jml_tank_2'],
             'total_artileri' => (int)$totalArtileri['jml_artileri'] + (int)$totalArtileri['jml_artileri_2'],
@@ -52,12 +58,12 @@ class Admin extends BaseController
             'total_kapal_selam' => (int)$totalKapalSelam['jml_armada_kapal_selam'] + (int)$totalKapalSelam['jml_armada_kapal_selam_2'],
             'total_kapal_permukaan' => (int)$totalKapalPermukaan['jml_armada_kapal_permukaan'] + (int)$totalKapalPermukaan['jml_armada_kapal_permukaan_2'],
 
-            //? Diganti
+
             'total_amunisi' => (int)$totalAmunisi['jml_amunisi'] + (int)$totalAmunisi['jml_amunisi_2'],
             'total_pertahanan_udara' => (int)$totalPertahananUdara['jml_pertahanan_udara'] + (int)$totalPertahananUdara['jml_pertahanan_udara_2'],
             'total_pesawat_terbang' => (int)$totalPesawatTerbang['jml_pesawat_terbang'] + (int)$totalPesawatTerbang['jml_pesawat_terbang_2'],
         ];
-    
+
         return view('v_template_back_end', $data);
     }
 
@@ -113,7 +119,7 @@ class Admin extends BaseController
         ];
         return view('v_template_back_end', $data);
     }
-    
+
     public function UpdateSetting()
     {
         $data = [

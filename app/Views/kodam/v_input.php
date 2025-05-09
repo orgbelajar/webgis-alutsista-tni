@@ -151,7 +151,7 @@
 
             <div class="col-sm-3">
                 <div class="form-group">
-                    <label>Foto Artileri 2</label>
+                    <label>Foto Artileri 2 (JPG/PNG)</label>
                     <input type="file" accept=".png,.jpg,.jpeg" name="foto_artileri_2" class="form-control" required>
                     <p class="text-danger"><?= isset($errors['foto_artileri_2']) ? $errors['foto_artileri_2'] : '' ?></p>
                 </div>

@@ -12,28 +12,28 @@
       session();
       $validation = \Config\Services::validation();
       ?>
-      <?php echo form_open_multipart('User/InsertData') ?>
+      <?php echo form_open_multipart('User/Insert') ?>
       <div class="form-group">
         <label>Nama User</label>
-        <input name="nama_user" value="<?= old('nama_user') ?>" placeholder="Nama User" class="form-control">
+        <input type="text" name="nama_user" value="<?= old('nama_user') ?>" placeholder="Nama User" class="form-control" required>
         <p class="text-danger"><?= $validation->hasError('nama_user') ? $validation->getError('nama_user') : '' ?></p>
       </div>
 
       <div class="form-group">
         <label>E-Mail</label>
-        <input name="email" value="<?= old('email') ?>" placeholder="E-Mail" class="form-control">
+        <input type="email" name="email" value="<?= old('email') ?>" placeholder="E-Mail" class="form-control" required>
         <p class="text-danger"><?= $validation->hasError('email') ? $validation->getError('email') : '' ?></p>
       </div>
 
       <div class="form-group">
         <label>Password</label>
-        <input name="password" value="<?= old('password') ?>" placeholder="Password" class="form-control">
+        <input type="text" name="password" value="<?= old('password') ?>" placeholder="Password" class="form-control" required>
         <p class="text-danger"><?= $validation->hasError('password') ? $validation->getError('password') : '' ?></p>
       </div>
 
       <div class="form-group">
         <label>Foto</label>
-        <input type="file" name="foto" value="<?= old('foto') ?>" placeholder="Foto" class="form-control" required>
+        <input type="file" name="foto" placeholder="Foto" class="form-control" required>
         <p class="text-danger"><?= $validation->hasError('foto') ? $validation->getError('foto') : '' ?></p>
       </div>
 

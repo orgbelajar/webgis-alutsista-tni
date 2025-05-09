@@ -26,7 +26,7 @@ class FilterAuth implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         if (session()->get('login') == '') {
-            return redirect()->to('Auth/Login');
+            return redirect()->to('Auth/LoginUser');
         }
     }
 
