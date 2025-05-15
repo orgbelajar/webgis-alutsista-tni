@@ -48,7 +48,8 @@
       <p>Total Alutsista Artileri</p>
     </div>
     <div class="icon">
-      <i class="fas fa-layer-group"></i>
+      <!-- <i class="fas fa-layer-group"></i> -->
+      <i class="fas fa-solid fa-truck-plane" style="color: white;"></i>
     </div>
   </div>
 </div>
@@ -61,7 +62,8 @@
       <p>Total Alutsista Artileri</p>
     </div>
     <div class="icon">
-      <i class="fas fa-layer-group"></i>
+      <!-- <i class="fas fa-layer-group"></i> -->
+      <i class="fas fa-solid fa-truck-plane" style="color: white;"></i>
     </div>
   </div>
 </div>
