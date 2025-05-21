@@ -104,6 +104,7 @@ class Filters extends BaseFilters
                     'PreHomeKoopsud',
                     'PreHomeKoopsud/*',
                     'PreHomeLantamal',
+                    'PreHomeLantamal/*',
                 ]
             ]
         ],

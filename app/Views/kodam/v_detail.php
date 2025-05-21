@@ -47,8 +47,8 @@
         <div class="card-body">
             <h4 class="text-center mb-4"><strong>Daftar Alutsista</strong></h4>
 
-             <!-- Artileri -->
-             <h5><strong>Tipe Artileri</strong></h5>
+            <!-- Artileri -->
+            <h5><strong>Tipe Artileri</strong></h5>
             <div class="row mb-4">
                 <div class="col-md-6 text-center mb-3">
                     <img src="<?= base_url('Gambar/Kodam/Artileri/' . $kodam['foto_artileri']) ?>" alt="Artileri 1" class="img-fluid" style="height: 350px; width: 550px;">
@@ -61,7 +61,7 @@
                     <p class="mb-0" style="text-align: justify;"><?= $kodam['deskripsi_artileri_2'] ?></p>
                 </div>
             </div>
-            
+
             <!-- Tank -->
             <h5><strong>Tipe Tank</strong></h5>
             <div class="row mb-4">

@@ -1,1 +1,0 @@
-__ci_last_regenerate|i:1746661189;_ci_previous_url|s:36:"http://localhost:8080/index.php/User";id_user|s:1:"7";nama_user|s:4:"Heri";email|s:14:"heri@gmail.com";foto|s:35:"1746659840_26aab3e745b33137c848.png";role|s:5:"admin";login|b:1;insert|s:42:"User dengan role admin tidak bisa dihapus!";__ci_vars|a:1:{s:6:"insert";s:3:"old";}

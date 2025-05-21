@@ -93,4 +93,9 @@
     white-space: normal; /* Biarkan teks wrap */
     display: block; /* Agar baris baru bisa terjadi */
 }
+
+/* Tambahkan di <style> atau file CSS Anda */
+.tooltip-kodam { background: #15662F; color: #fff; }
+.tooltip-lantamal { background: #004080; color: #fff; }
+.tooltip-koopsud { background: #00bfff; color: #fff; }
 </style>

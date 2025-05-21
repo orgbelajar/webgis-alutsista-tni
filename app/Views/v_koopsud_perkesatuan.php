@@ -63,6 +63,12 @@
             L.marker([<?= $value['koordinat'] ?>], {
                     icon: Icon
                 })
+                .bindTooltip(
+                    "<?= $value['nama_koopsud'] ?>", {
+                        direction: 'top',
+                        className: 'tooltip-koopsud'
+                    }
+                )
                 .bindPopup(
                     `<div class="popup-container">
             <img src="<?= base_url('Gambar/Koopsud/Logo/' . $value['foto']) ?>" class="popup-img"><br>

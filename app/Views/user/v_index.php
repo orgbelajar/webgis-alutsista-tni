@@ -175,7 +175,8 @@
   <div class="col-md-12" style="margin-top: 10px;">
     <div class="card card-outline card-primary">
       <div class="card-header">
-        <h3 class="card-title"><?= $judul ?></h3>
+        <p class="card-title" style="font-size: 21px;"><strong><?= $judul ?></strong></p>
+
 
         <div class="card-tools">
           <a href="<?= base_url('User/Add') ?>" class="btn btn-flat btn-primary btn-sm">

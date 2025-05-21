@@ -1,7 +1,8 @@
 <div class="col-md-12" style="margin-top: 10px;">
   <div class="card card-outline card-primary">
     <div class="card-header">
-      <h3 class="card-title"><?= $judul ?></h3>
+      <p class="card-title" style="font-size: 21px;"><strong><?= $judul ?></strong></p>
+
 
       <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -29,19 +30,20 @@
 
 
       <div class="row">
-        <div class="col-sm-7">
+        <!-- <div class="col-sm-7">
           <div class="form-group">
             <label>Nama Website</label>
-            <input name="nama_web" value="<?= $web['nama_web'] ?>" class="form-control" placeholder="Nama Website" required>
+            <input name="nama_web" value="<? //= $web['nama_web'] 
+                                          ?>" class="form-control" placeholder="Nama Website" required>
           </div>
-        </div>
+        </div> -->
         <div class="col-sm-3">
           <div class="form-group">
             <label>Coordinate Wilayah</label>
             <input id="Koordinat" name="coordinate_wilayah" value="<?= $web['coordinate_wilayah'] ?>" class="form-control" placeholder="Latitude, Longitude" required>
           </div>
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-3">
           <div class="form-group">
             <label>Zoom View</label>
             <input type="number" value="<?= $web['zoom_view'] ?>" name="zoom_view" min="0" max="20" class="form-control" placeholder="Zoom View" required>

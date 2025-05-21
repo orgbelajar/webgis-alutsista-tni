@@ -278,7 +278,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         right: 20,
         bottom: 20,
         size: 48,
-        dragAndDrop: true,
+        dragAndDrop: false,
         iconColor: 'white',
         customIconSrc: 'https://seeklogo.com/images/C/chatcoin-chat-logo-D655A30A39-seeklogo.com.png',
         autoWindowOpen: {
@@ -319,10 +319,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         fontSize: 16,
         starterPrompts: [
           "Ensiklopedia Alutsista TNI itu apa?",
-          "Apa saja armada di Lantamal 1?",
-          "Dimana Alamat Lantamal 3? ",
-          "Berapa koordinat Lantamal 1?",
-          "Berapa jarak Lantamal 1 dengan Lantamal 3?"
+          "Bagaimana sejarah Tentara Nasional Indonesia?",
+          "Dimana Alamat Lantamal 3? "
 
         ],
         starterPromptFontSize: 15,
@@ -339,7 +337,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           backgroundColor: '#c8f2ff',
           textColor: '#000000',
           showAvatar: true,
-          avatarSrc: 'https://www.teknoredaksi.com/wp-content/uploads/2024/04/2a90a89df0ea59aa6dde4eb8dcfdd97a.png'
+          avatarSrc: 'https://thumb.ac-illust.com/51/51e1c1fc6f50743937e62fca9b942694_t.jpeg'
         },
         textInput: {
           placeholder: 'Tulis pertanyaan anda',

@@ -66,6 +66,12 @@
             L.marker([<?= $value['koordinat'] ?>], {
                     icon: Icon
                 })
+                .bindTooltip(
+                    "<?= $value['nama_kodam'] ?>", {
+                        direction: 'top',
+                        className: 'tooltip-kodam'
+                    }
+                )
                 .bindPopup(
                     `<div class="popup-container">
             <img src="<?= base_url('Gambar/Kodam/Logo/' . $value['foto']) ?>" class="popup-img"><br>
@@ -97,6 +103,12 @@
             L.marker([<?= $value['koordinat'] ?>], {
                     icon: Icon
                 })
+                .bindTooltip(
+                    "<?= $value['nama_lantamal'] ?>", {
+                        direction: 'top',
+                        className: 'tooltip-lantamal'
+                    }
+                )
                 .bindPopup(`
                     <div class="popup-container">
             <img src="<?= base_url('Gambar/Lantamal/Logo/' . $value['foto']) ?>" class="popup-img"><br>
@@ -128,6 +140,12 @@
             L.marker([<?= $value['koordinat'] ?>], {
                     icon: Icon
                 })
+                .bindTooltip(
+                    "<?= $value['nama_koopsud'] ?>", {
+                        direction: 'top',
+                        className: 'tooltip-koopsud'
+                    }
+                )
                 .bindPopup(`
                 <div class="popup-container">
             <img src="<?= base_url('Gambar/Koopsud/Logo/' . $value['foto']) ?>" class="popup-img"><br>

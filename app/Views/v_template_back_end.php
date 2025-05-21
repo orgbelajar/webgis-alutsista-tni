@@ -9,7 +9,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GIS Alutsista TNI | <?= $judul ?></title>
-  
+
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons
@@ -81,11 +81,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
-
-
-
-
-
         <li class="nav-item">
           <a class="nav-link" href="<?= base_url('Auth/LogOutAdmin') ?>">
             <i class="fas fa-sign-out-alt"></i> Keluar
@@ -108,10 +103,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Sidebar user panel (optional) -->
         <!-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img src="<?= base_url('foto') ?>/<?= session()->get('foto') ?>" class="img-circle elevation-2" alt="User Image">
+            <img src="<? //= base_url('foto') 
+                      ?>/<? //= session()->get('foto') 
+                                                ?>" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block"><?= session()->get('nama_user') ?></a>
+            <a href="#" class="d-block"><? //= session()->get('nama_user') 
+                                        ?></a>
           </div>
         </div> -->
 
@@ -141,7 +139,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </a>
             </li>
 
-           
+
             <li class="nav-item">
               <a href="<?= base_url('PreHome') ?>" class="nav-link <?= $menu  ==  'prehome' ? 'active' : '' ?>">
                 <i class="nav-icon fas fa-home"></i>
@@ -151,13 +149,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </a>
             </li>
 
-            
+
 
             <!-- Sebelumnya Poligon Wilayah -->
             <!-- <li class="nav-item">
               <a href="<? //= base_url('Wilayah') 
                         ?>" class="nav-link <? //= $menu  ==  'wilayah' ? 'active' : '' 
-                                                                      ?>">
+                                            ?>">
                 <i class="nav-icon fas fa-layer-group"></i>
                 <p>
                   Wilayah
@@ -232,7 +230,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="<?//= base_url('Admin') ?>">Home</a></li>
+                <li class="breadcrumb-item"><a href="<? //= base_url('Admin') 
+                                                      ?>">Home</a></li>
               </ol>
             </div>
           </div>
@@ -264,17 +263,124 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main Footer -->
     <footer class="main-footer">
       <!-- To the right -->
-      <div class="float-right d-none d-sm-inline">
+      <!-- <div class="float-right d-none d-sm-inline">
         Anything you want
-      </div>
+      </div> -->
       <!-- Default to the left -->
-      <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+      <strong>Copyright &copy; 2025 <a href="https://adminlte.io">WEB GIS ALUTSISTA TNI</a>
     </footer>
   </div>
   <!-- ./wrapper -->
 
   <!-- REQUIRED SCRIPTS -->
+  <script type="module">
+    import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
+    Chatbot.init({
+      chatflowid: "05705ae6-e238-4d02-afba-1473b12482a9",
+      apiHost: "http://localhost:3000",
+      chatflowConfig: {
+        /* Chatflow Config */
+      },
+      observersConfig: {
+        /* Observers Config */
+      },
+      theme: {
+        button: {
+          backgroundColor: '#2268a7',
+          right: 20,
+          bottom: 20,
+          size: 48,
+          dragAndDrop: false,
+          iconColor: 'white',
+          customIconSrc: 'https://seeklogo.com/images/C/chatcoin-chat-logo-D655A30A39-seeklogo.com.png',
+          autoWindowOpen: {
+            autoOpen: false,
+            openDelay: 2,
+            autoOpenOnMobile: false
+          }
+        },
+        tooltip: {
+          showTooltip: false,
+          tooltipMessage: '',
+          tooltipBackgroundColor: 'white',
+          tooltipTextColor: 'white',
+          tooltipFontSize: 16
+        },
+        disclaimer: {
+          title: 'Disclaimer',
+          message: "By using this chatbot, you agree to the <a target=\"_blank\" href=\"https://flowiseai.com/terms\">Terms & Condition</a>",
+          textColor: 'black',
+          buttonColor: '#ef0724',
+          buttonText: 'Start Chatting',
+          buttonTextColor: 'white',
+          blurredBackgroundColor: 'rgba(0, 0, 0, 0.4)',
+          backgroundColor: 'white'
+        },
+        customCSS: ``,
+        chatWindow: {
+          showTitle: true,
+          showAgentMessages: true,
+          title: 'Ensiklopedia Alutsista TNI',
+          titleAvatarSrc: 'https://upload.wikimedia.org/wikipedia/commons/0/0b/Flag_of_Indonesia.png',
+          welcomeMessage: 'Halo, Selamat datang di Ensiklopedia Alutsista TNI! Adakah pertanyaan mengenai Alutsista TNI?',
+          errorMessage: 'Maaf, sistem sedang bermasalah, Mohon tunggu sebentar.',
+          backgroundColor: '',
+          backgroundImage: 'https://i.pinimg.com/736x/7a/2f/5c/7a2f5c4ebcf3980af69c0041f5c152f9.jpg',
+          height: 650,
+          width: 400,
+          fontSize: 16,
+          starterPrompts: [
+            "Ensiklopedia Alutsista TNI itu apa?",
+            "Bagaimana sejarah Tentara Nasional Indonesia?",
+            "Dimana Alamat Lantamal 3? "
 
+          ],
+          starterPromptFontSize: 15,
+          clearChatOnReload: false,
+          sourceDocsTitle: 'Sources:',
+          renderHTML: true,
+          botMessage: {
+            backgroundColor: '#ececec',
+            textColor: '#303235',
+            showAvatar: true,
+            avatarSrc: 'https://img.freepik.com/free-vector/chatbot-chat-message-vectorart_78370-4104.jpg'
+          },
+          userMessage: {
+            backgroundColor: '#c8f2ff',
+            textColor: '#000000',
+            showAvatar: true,
+            avatarSrc: 'https://thumb.ac-illust.com/51/51e1c1fc6f50743937e62fca9b942694_t.jpeg'
+          },
+          textInput: {
+            placeholder: 'Tulis pertanyaan anda',
+            backgroundColor: '#ecececf',
+            textColor: '#303235',
+            sendButtonColor: '#3B81F6',
+            maxChars: 1000,
+            maxCharsWarningMessage: 'You exceeded the characters limit. Please input less than 1000 characters.',
+            autoFocus: true,
+            sendMessageSound: true,
+            sendSoundLocation: 'send_message.mp3',
+            receiveMessageSound: true,
+            receiveSoundLocation: 'receive_message.mp3'
+          },
+          feedback: {
+            color: '#ef0724'
+          },
+          dateTimeToggle: {
+            date: true,
+            time: true
+          },
+          footer: {
+            textColor: '#303235',
+            text: 'Dikembangkan oleh Mahasiswa PKL Pusinfolahta',
+            company: '',
+
+          }
+        }
+      }
+    })
+  </script>
 </body>
 
 </html>

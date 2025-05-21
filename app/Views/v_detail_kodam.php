@@ -147,6 +147,7 @@
         iconUrl: '<?= base_url('Gambar/Kodam/Logo/' . $kodam['foto']) ?>',
         iconSize: [35, 40], // size of the icon
     });
+
     L.marker([<?= $kodam['koordinat'] ?>], {
             icon: icon
         }).addTo(map)
