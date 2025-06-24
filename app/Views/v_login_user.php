@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - WebGIS Alutsista TNI</title>
+  <title>Login User - Ensiklopedia Alutsista TNI</title>
+  <link rel="icon" type="image/png" sizes="48x48" href="/logo/webgis.png">
   <link rel="stylesheet" href="<?= base_url('AdminLTE') ?>/styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   <style>

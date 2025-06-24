@@ -8,7 +8,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GIS Alutsista TNI | <?= $judul ?></title>
+  <title>Ensiklopedia Alutsista TNI - <?= $judul ?></title>
+  <link rel="icon" type="image/png" sizes="48x48" href="/logo/webgis.png">
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -34,7 +35,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container">
 
         <a href="<?= base_url('Home') ?>" class="">
-          <img src="<?= base_url('logo/webgis.png') ?>" class="me-2" height="70px" width="70px">
+          <img src="<?= base_url('logo/webgis.png') ?>" class="me-2" height="70px" width="70px" >
         </a>
         <!-- <h5><b><? //= $web['nama_web'] 
                     ?></b></h5> -->
@@ -111,14 +112,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
-      <a href="<?= base_url('Home') ?>" class="brand-link">
-        <img src="<?= base_url('logo/webgis.png') ?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">WEB GIS Alutsista TNI</span>
+      <a href="<?= base_url('Home') ?>" class="brand-link d-flex justify-content-center">
+        <img src="/logo/webgis.png" alt="AdminLTE Logo" height="150px" width="150px">
+        <!-- <span class="brand-text font-weight-light"></span> -->
       </a>
 
       <!-- Sidebar -->
       <div class="sidebar">
-        <!-- Sidebar user (optional) -->
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-0 d-flex">
+          <div class="image">
+            <img src="<?= base_url('foto_user/') ?><?= session()->get('foto') ?>" class="img-circle elevation-2" alt="User Image">
+          </div>
+          <div class="info">
+            <span class="d-block" style="color: azure;"><?= session()->get('nama_user') ?></span>
+          </div>
+        </div>
 
 
         <!-- Sidebar Menu -->
@@ -193,9 +202,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   }
                   ?>
                   <li class="nav-item">
-                    <a href="<?= $url ?>" class="nav-link">
-                      <img src="<?= $icon ?>" alt="Icon <?= $value['kesatuan'] ?>" class="nav-icon" style="width: 20px; height: 20px;">
-                      <p><?= $satuan . ' (' . $value['kesatuan'] . ')' ?></p>
+                    <a href="<?= $url ?>" class="nav-link d-flex align-items-center">
+                      <img src="<?= $icon ?>" alt="Icon <?= $value['kesatuan'] ?>" class="nav-icon" style="width: 35px; height: 35px;">
+                      <p class="mb-0 ms-2"><?= $satuan . ' (' . $value['kesatuan'] . ')' ?></p>
                     </a>
                   </li>
                 <?php } ?>
@@ -241,11 +250,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main Footer -->
     <footer class="main-footer">
       <!-- To the right -->
-      <div class="float-right d-none d-sm-inline">
-        <!-- Anything you want -->
-      </div>
+      <!-- <div class="float-right d-none d-sm-inline"> -->
+      <!-- Anything you want -->
+      <!-- </div> -->
       <!-- Default to the left -->
-      <strong>Copyright &copy; <?= date('Y') ?> <a href="<?= base_url() ?>"><?= $web['nama_web'] ?></a>.</strong> All rights reserved.
+      <strong>Copyright &copy; <?= date('Y') ?> <a href="<?= base_url() ?>">WEB GIS ALUTSISTA TNI</a>
     </footer>
   </div>
   <!-- ./wrapper -->

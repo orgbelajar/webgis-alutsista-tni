@@ -36,7 +36,21 @@ class ModelKoopsud extends Model
             ->get()->getResultArray();
     }
 
-    public function InsertDataKoopsud($data)
+    public function AllDataPerAlutsista()
+    {
+        return $this->db->table('tbl_koopsud')
+            ->select("tbl_koopsud.*, 
+                (COALESCE(jml_amunisi, 0) + 
+                 COALESCE(jml_amunisi_2, 0) + 
+                 COALESCE(jml_pertahanan_udara, 0) + 
+                 COALESCE(jml_pertahanan_udara_2, 0) + 
+                 COALESCE(jml_pesawat_terbang, 0) + 
+                 COALESCE(jml_pesawat_terbang_2, 0)) AS total_alutsista")
+            ->get()
+            ->getResultArray();
+    }
+
+    public function InsertData($data)
     {
         $this->db->table('tbl_koopsud')->insert($data);
     }

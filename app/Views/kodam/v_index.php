@@ -1,7 +1,7 @@
 <div class="col-md-12" style="margin-top: 10px;">
     <div class="card card-outline card-primary">
         <div class="card-header">
-            <p class="card-title"  style="font-size: 21px;"><strong>Daftar <?= $judul ?></strong></p>
+            <p class="card-title" style="font-size: 21px;"><strong><?= $judul ?></strong></p>
             <div class="card-tools">
                 <a href="<?= base_url('Kodam/Input') ?>" class="btn btn-flat btn-primary btn-sm">
                     <i class="fas fa-plus"></i> Tambah
@@ -12,30 +12,12 @@
         <!-- /.card-header -->
         <div class="card-body">
             <?php
-            //notif insert data
-            if (session()->getFlashdata('insert')) {
+            //notif
+            if (session()->getFlashdata('success')) {
                 echo '<div class="alert alert-success alert-dismissible">
                   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                   <h5><i class="icon fas fa-check"></i>';
-                echo session()->getFlashdata('insert');
-                echo '</h5></div>';
-            }
-
-            //notif update data
-            if (session()->getFlashdata('update')) {
-                echo '<div class="alert alert-primary alert-dismissible">
-                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                  <h5><i class="icon fas fa-check"></i>';
-                echo session()->getFlashdata('update');
-                echo '</h5></div>';
-            }
-
-            //notif update data
-            if (session()->getFlashdata('delete')) {
-                echo '<div class="alert alert-danger alert-dismissible">
-                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                  <h5><i class="icon fas fa-check"></i>';
-                echo session()->getFlashdata('delete');
+                echo session()->getFlashdata('success');
                 echo '</h5></div>';
             }
 
@@ -43,13 +25,13 @@
             <table id="example2" class="table table-sm table-bordered table-striped">
                 <thead>
                     <tr class="text-center">
-                        <th width="50px">No</th>
-                        <th>Nama Kodam</th>
-                        <th>Tanggal Dibentuk</th>
-                        <th>Kesatuan</th>
-                        <th>Alamat</th>
-                        <th>Foto</th>
-                        <th width="150px">Aksi</th>
+                        <th class="align-middle">No</th>
+                        <th class="align-middle" width="170px">Nama</th>
+                        <th class="align-middle" width="80px">Tanggal Dibentuk</th>
+                        <th class="align-middle" width="80px">Total Alutsista</th>
+                        <th class="align-middle">Alamat</th>
+                        <th class="align-middle">Foto</th>
+                        <th class="align-middle" width="110px">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -57,15 +39,15 @@
                     foreach ($kodam as $key => $value) { ?>
                         <tr>
                             <td class="text-center"><?= $no++ ?></td>
-                            <td><?= $value['nama_kodam'] ?></td>
-                            <td class="text-center"><?= $value['tgl_dibentuk'] ?></td>
-                            <td class="text-center"><?= $value['kesatuan'] ?></td>
-                            <td><?= $value['alamat'] ?></td>
-                            <td class="text-center"><img src="<?= base_url('Gambar/Kodam/Logo/' . $value['foto']) ?>" width="110px" height="110px"></td>
+                            <td class="text-center"><?= $value['nama_kodam'] ?></td>
+                            <td class="text-center"><?= date('d-m-Y', strtotime($value['tgl_dibentuk'])) ?></td>
+                            <td class="text-center"><span><?= $value['total_alutsista'] ?></span></td>
+                            <td class="text-justify"><?= $value['alamat'] ?></td>
+                            <td class="text-center"><img src="<?= base_url('Gambar/Kodam/Logo/' . $value['foto']) ?>" alt="Foto Kodam" width="120px" height="120px"></td>
                             <td class="text-center">
-                                <a href="<?= base_url('Kodam/Detail/' . $value['id']) ?>" class="btn btn-xs btn-success btn-flat"><i class="fas fa-eye"></i></a>
-                                <a href="<?= base_url('Kodam/Edit/' . $value['id']) ?>" class="btn btn-xs btn-warning btn-flat"><i class="fas fa-pencil-alt"></i></a>
-                                <a href="<?= base_url('Kodam/Delete/' . $value['id']) ?>" onclick="return confirm('Ingin Hapus Data <?= $value['nama_kodam'] ?>?')" class="btn btn-xs btn-danger btn-flat"><i class="fas fa-trash"></i></a>
+                                <a href="<?= base_url('Kodam/Detail/' . $value['id']) ?>" class="btn btn-sm btn-success"><i class="fas fa-eye"></i></a>
+                                <a href="<?= base_url('Kodam/Edit/' . $value['id']) ?>" class="btn btn-sm btn-warning"><i class="fas fa-pencil-alt"></i></a>
+                                <a href="<?= base_url('Kodam/Delete/' . $value['id']) ?>" onclick="return confirm('Ingin Hapus Data <?= $value['nama_kodam'] ?>?')" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
                             </td>
                         </tr>
                     <?php } ?>
@@ -80,20 +62,27 @@
 
 <script>
     $(function() {
-        $("#example1").DataTable({
+        $('#example2').DataTable({
             "responsive": true,
-            "lengthChange": false,
-            "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        $("#example2").DataTable({
-            "paging": true,
-            "lengthChange": true,
-            "searching": true,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
+            "columnDefs": [{
+                    "orderable": false,
+                    "targets": [5, 6]
+                } // Nonaktifkan sorting untuk kolom Foto dan Aksi
+            ],
+            "language": {
+                "lengthMenu": "Tampilkan _MENU_ Baris",
+                "zeroRecords": "Tidak Ada Data Yang Ditemukan",
+                "info": "Menampilkan _START_ sampai _END_ dari _TOTAL_ entri",
+                "infoEmpty": "Tidak Ada Data Yang Tersedia",
+                "infoFiltered": "(disaring dari total _MAX_ entri)",
+                "search": "Pencarian:",
+                "paginate": {
+                    "first": "Pertama",
+                    "last": "Terakhir",
+                    "next": "<i class='fas fa-angle-right'></i>",
+                    "previous": "<i class='fas fa-angle-left'></i>"
+                }
+            }
         });
     });
 </script>

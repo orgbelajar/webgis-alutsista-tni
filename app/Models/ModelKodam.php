@@ -10,20 +10,25 @@ class ModelKodam extends Model
     {
         return $this->db->table('tbl_kodam')
             ->select('tbl_kodam.*, tbl_kesatuan.kesatuan, tbl_kesatuan.marker, tbl_wilayah.nama_wilayah')
-            //->select('tbl_kodam.*, tbl_kesatuan.kesatuan, tbl_kesatuan.marker') // <-- ambil nama kesatuan!
             ->join('tbl_kesatuan', 'tbl_kesatuan.id = tbl_kodam.id_kesatuan', 'left') // join yang benar
             ->join('tbl_wilayah', 'tbl_wilayah.id = tbl_kodam.id_wilayah', 'left')
             ->get()
             ->getResultArray();
     }
 
-    // public function AllDataPerWilayah($id_wilayah)
-    // {
-    //     return $this->db->table('tbl_kodam')
-    //         ->join('tbl_kesatuan', 'tbl_kesatuan.id = tbl_kodam.id_kesatuan', 'left')
-    //         ->where('id_wilayah', $id_wilayah)
-    //         ->get()->getResultArray();
-    // }
+    public function AllDataPerAlutsista()
+    {
+        return $this->db->table('tbl_kodam')
+            ->select("tbl_kodam.*, 
+                (COALESCE(jml_artileri, 0) + 
+                 COALESCE(jml_artileri_2, 0) + 
+                 COALESCE(jml_tank, 0) + 
+                 COALESCE(jml_tank_2, 0) + 
+                 COALESCE(jml_helikopter, 0) + 
+                 COALESCE(jml_helikopter_2, 0)) AS total_alutsista")
+            ->get()
+            ->getResultArray();
+    }
 
     public function AllDataPerWilayah($id_wilayah)
     {
@@ -44,19 +49,10 @@ class ModelKodam extends Model
             ->get()->getResultArray();
     }
 
-    public function InsertDataKodam($data)
+    public function InsertData($data)
     {
         $this->db->table('tbl_kodam')->insert($data);
     }
-
-    // public function DetailData($id)
-    // {
-    //     return $this->db->table('tbl_kodam')
-    //         ->join('tbl_kesatuan', 'tbl_kesatuan.id = tbl_kodam.id_kesatuan', 'left')
-    //         ->join('tbl_wilayah', 'tbl_wilayah.id = tbl_kodam.id_wilayah', 'left')
-    //         ->where('tbl_kodam.id', $id)
-    //         ->get()->getRowArray();
-    // }
 
     public function DetailData($id)
     {
@@ -81,26 +77,4 @@ class ModelKodam extends Model
             ->where('id', $data['id'])
             ->delete($data);
     }
-
-    //provinsi
-    // public function allProvinsi()
-    // {
-    //     return $this->db->table('tbl_provinsi')
-    //         ->orderBy('id_provinsi', 'ASC')
-    //         ->get()->getResultArray();
-    // }
-
-    // public function allKabupaten($id_provinsi)
-    // {
-    //     return $this->db->table('tbl_kabupaten')
-    //         ->where('id_provinsi', $id_provinsi)
-    //         ->get()->getResultArray();
-    // }
-
-    // public function allKecamatan($id_kabupaten)
-    // {
-    //     return $this->db->table('tbl_kecamatan')
-    //         ->where('id_kabupaten', $id_kabupaten)
-    //         ->get()->getResultArray();
-    // }
 }

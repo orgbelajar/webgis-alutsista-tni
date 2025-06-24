@@ -9,7 +9,6 @@ class ModelLantamal extends Model
     public function AllData()
     {
         return $this->db->table('tbl_lantamal')
-            //->join('tbl_kesatuan', 'tbl_kesatuan.id = tbl_lantamal.id_kesatuan', 'left')
             ->select('tbl_lantamal.*, tbl_kesatuan.kesatuan, tbl_kesatuan.marker, tbl_wilayah.nama_wilayah') // <-- ambil nama kesatuan!
             ->join('tbl_kesatuan', 'tbl_kesatuan.id = tbl_lantamal.id_kesatuan', 'left') // join yang benar
             ->join('tbl_wilayah', 'tbl_wilayah.id = tbl_lantamal.id_wilayah', 'left')
@@ -36,7 +35,21 @@ class ModelLantamal extends Model
             ->get()->getResultArray();
     }
 
-    public function InsertDataLantamal($data)
+    public function AllDataPerAlutsista()
+    {
+        return $this->db->table('tbl_lantamal')
+            ->select("tbl_lantamal.*, 
+                (COALESCE(jml_artileri, 0) + 
+                 COALESCE(jml_artileri_2, 0) + 
+                 COALESCE(jml_armada_kapal_selam, 0) + 
+                 COALESCE(jml_armada_kapal_selam_2, 0) + 
+                 COALESCE(jml_armada_kapal_permukaan, 0) + 
+                 COALESCE(jml_armada_kapal_permukaan_2, 0)) AS total_alutsista")
+            ->get()
+            ->getResultArray();
+    }
+
+    public function InsertData($data)
     {
         $this->db->table('tbl_lantamal')->insert($data);
     }

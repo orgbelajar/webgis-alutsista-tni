@@ -42,7 +42,7 @@ class Kesatuan extends BaseController
         ];
         $marker->move('marker', $name_file);
         $this->ModelKesatuan->UpdateData($data);
-        session()->setFlashdata('update', 'Marker Berhasil Diupdate !!');
+        session()->setFlashdata('update', 'Marker Berhasil Diupdate!');
         return redirect()->to('Kesatuan');
     }
 }

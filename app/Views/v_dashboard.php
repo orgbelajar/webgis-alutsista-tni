@@ -13,65 +13,65 @@
 </div>
 
 <style>
- .icon-kesatuan {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  margin-right: 5px;
-}
+  .icon-kesatuan {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    margin-right: 5px;
+  }
 
- .icon-kesatuan img {
-  transition: transform 0.3s ease;
-}
+  .icon-kesatuan img {
+    transition: transform 0.3s ease;
+  }
 
- .icon-kesatuan img:hover {
-  transform: scale(1.1);
-}
+  .icon-kesatuan img:hover {
+    transform: scale(1.1);
+  }
 
-.icon-submarine {
-  position: absolute;
-  top: 0px;
-  right: 10px;
-  margin-right: 5px;
-}
+  .icon-submarine {
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    margin-right: 5px;
+  }
 
- .icon-submarine img {
-  transition: transform 0.3s ease;
-}
+  .icon-submarine img {
+    transition: transform 0.3s ease;
+  }
 
- .icon-submarine img:hover {
-  transform: scale(1.1);
-}
+  .icon-submarine img:hover {
+    transform: scale(1.1);
+  }
 
-.icon-amunisi {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  margin-right: 0px;
-}
+  .icon-amunisi {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    margin-right: 0px;
+  }
 
- .icon-amunisi img {
-  transition: transform 0.3s ease;
-}
+  .icon-amunisi img {
+    transition: transform 0.3s ease;
+  }
 
- .icon-amunisi img:hover {
-  transform: scale(1.1);
-}
+  .icon-amunisi img:hover {
+    transform: scale(1.1);
+  }
 
-.icon-tank {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  margin-right: 5px;
-}
+  .icon-tank {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    margin-right: 5px;
+  }
 
- .icon-tank img {
-  transition: transform 0.3s ease;
-}
+  .icon-tank img {
+    transition: transform 0.3s ease;
+  }
 
- .icon-tank img:hover {
-  transform: scale(1.1);
-}
+  .icon-tank img:hover {
+    transform: scale(1.1);
+  }
 </style>
 
 <div class="col-lg-4 col-4">
@@ -166,7 +166,7 @@
     </div>
     <div class="icon-submarine">
       <!-- <i class="fas fa-layer-group"></i> -->
-       <img src="<?= base_url('Gambar/submarine.png') ?>" alt="Kapal Selam" style="width:110px; height:auto;">
+      <img src="<?= base_url('Gambar/submarine.png') ?>" alt="Kapal Selam" style="width:110px; height:auto;">
     </div>
   </div>
 </div>

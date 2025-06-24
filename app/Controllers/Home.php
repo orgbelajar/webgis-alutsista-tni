@@ -50,7 +50,7 @@ class Home extends BaseController
         session()->set('previous_url', current_url());
         $dW = $this->ModelWilayah->DetailData($id);
         $data = [
-            'judul' => $dW['nama_wilayah'],
+            'judul' => 'Wilayah ' . $dW['nama_wilayah'],
             'page' => 'v_detail_wilayah',
             'web' => $this->ModelSetting->DataWeb(),
             'wilayah' => $this->ModelWilayah->AllData(),

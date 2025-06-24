@@ -49,7 +49,7 @@ class User extends BaseController
             'foto'      => [
                 'uploaded[foto]',
                 'mime_in[foto,image/jpg,image/jpeg,image/png]',
-                'max_size[foto,2048]',
+                'max_size[foto,3072]',
             ],
         ])) {
             return redirect()->to(base_url('User/Add'))->withInput();
@@ -72,7 +72,7 @@ class User extends BaseController
         ];
 
         $this->ModelUser->InsertData($data);
-        session()->setFlashdata('success', 'Data User berhasil ditambahkan!');
+        session()->setFlashdata('success', 'Data ' . $data['nama_user'] . ' Berhasil Ditambahkan!');
         return redirect()->to(base_url('User'));
     }
 
@@ -93,10 +93,10 @@ class User extends BaseController
     public function Update($id_user)
     {
         // Ambil data user lama dari database
-        $userLama = $this->ModelUser->DetailData($id_user);
+        $user = $this->ModelUser->DetailData($id_user);
 
         // Cek apakah user ada
-        if (!$userLama) {
+        if (!$user) {
             session()->setFlashdata('error', 'User tidak ditemukan');
             return redirect()->to('User');
         }
@@ -106,7 +106,7 @@ class User extends BaseController
             'email'     => $this->request->getPost('email'),
             'nama_user' => $this->request->getPost('nama_user'),
             // Role tetap pakai nilai lama agar tidak bisa dimanipulasi
-            'role'      => $userLama['role'],
+            'role'      => $user['role'],
         ];
 
         // Jika password diisi, update password
@@ -119,8 +119,8 @@ class User extends BaseController
         $foto = $this->request->getFile('foto');
         if ($foto && $foto->isValid() && !$foto->hasMoved()) {
             // Hapus foto lama jika ada
-            if ($userLama['foto'] && file_exists('foto_user/' . $userLama['foto'])) {
-                unlink('foto_user/' . $userLama['foto']);
+            if ($user['foto'] && file_exists('foto_user/' . $user['foto'])) {
+                unlink('foto_user/' . $user['foto']);
             }
 
             $nama_foto = $foto->getRandomName();
@@ -129,7 +129,7 @@ class User extends BaseController
         }
 
         $this->ModelUser->UpdateData($data);
-        session()->setFlashdata('success', 'User berhasil diupdate');
+        session()->setFlashdata('success', 'Data ' . $user['nama_user'] . ' Berhasil Diubah!');
         return redirect()->to('User');
     }
 
@@ -153,7 +153,7 @@ class User extends BaseController
         }
 
         $this->ModelUser->DeleteData(['id_user' => $id_user]);
-        session()->setFlashdata('success', 'User berhasil dihapus');
+        session()->setFlashdata('success', 'Data ' . $user['nama_user'] . ' Berhasil Dihapus!');
         return redirect()->to('User');
     }
 }

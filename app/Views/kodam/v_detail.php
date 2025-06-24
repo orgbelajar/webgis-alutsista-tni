@@ -2,7 +2,7 @@
 
     <!-- Foto Kodam -->
     <div class="text-center mb-4">
-        <img src="<?= base_url('Gambar/Kodam/Logo/' . $kodam['foto']) ?>" alt="Foto Koopsud" class="img-fluid" style="max-height: 300px;">
+        <img src="<?= base_url('Gambar/Kodam/Logo/' . $kodam['foto']) ?>" alt="Foto Kodam" class="img-fluid" style="max-height: 300px;">
     </div>
 
     <!-- Informasi Kodam -->

@@ -1,7 +1,7 @@
 <div class="col-md-12" style="margin-top: 10px;">
   <div class="card card-outline card-primary">
     <div class="card-header">
-      <p class="card-title" style="font-size: 21px;"><strong><?= $judul ?></strong></p>
+      <p class="card-title" style="font-size: 21px;"><strong><?= $judul ?> Titik Awal dan Zoom Peta</strong></p>
 
 
       <div class="card-tools">
@@ -37,22 +37,26 @@
                                           ?>" class="form-control" placeholder="Nama Website" required>
           </div>
         </div> -->
-        <div class="col-sm-3">
+        <div class="col-sm-4">
           <div class="form-group">
-            <label>Coordinate Wilayah</label>
+            <label>Koordinat Titik Awal Peta</label>
             <input id="Koordinat" name="coordinate_wilayah" value="<?= $web['coordinate_wilayah'] ?>" class="form-control" placeholder="Latitude, Longitude" required>
           </div>
         </div>
         <div class="col-sm-3">
           <div class="form-group">
-            <label>Zoom View</label>
+            <label>Zoom Peta</label>
             <input type="number" value="<?= $web['zoom_view'] ?>" name="zoom_view" min="0" max="20" class="form-control" placeholder="Zoom View" required>
           </div>
         </div>
       </div>
 
 
-      <button class="btn btn-primary" type="submit">Simpan</button>
+      <!-- <button class="btn btn-primary btn-flat" type="submit">Simpan</button> -->
+
+      <div class="d-flex justify-content-start mt-2">
+        <button class="btn btn-primary btn-flat" type="submit">Simpan</button>
+      </div>
 
 
 
@@ -114,7 +118,7 @@
 
   const layerControl = L.control.layers(baseMaps).addTo(map);
 
-  var coordinateInput = document.querySelector("[name=koordinat]");
+  var coordinateInput = document.querySelector("[name=coordinate_wilayah]");
 
   var curLocation = [<?= $web['coordinate_wilayah'] ?>];
   map.attributionControl.setPrefix(false);

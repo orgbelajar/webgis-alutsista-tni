@@ -8,17 +8,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GIS Alutsista TNI | <?= $judul ?></title>
+  <!-- <img src="/logo/webgis.png" alt="Logo"> -->
+  <!-- <link rel="icon" href="/logo/webgis.png" sizes="1x1"> -->
+  <link rel="icon" type="image/png" sizes="48x48" href="/logo/webgis.png">
+  <title>Ensiklopedia Alutsista TNI - <?= $judul ?></title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome Icons
-  <link rel="stylesheet" href="<? //= base_url('AdminLTE') 
-                                ?>/plugins/fontawesome-free/css/all.min.css"> -->
+
   <!-- Font Awesome via CDN -->
   <script src="https://kit.fontawesome.com/9d76725032.js" crossorigin="anonymous"></script>
 
-  <link rel="stylesheet" href="/public/AdminLTE/styles.css">
+
   <!-- Bootstrap Color Picker -->
   <link rel="stylesheet" href="<?= base_url('AdminLTE') ?>/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
   <!-- Select2 -->
@@ -93,25 +94,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
-      <a href="<?= base_url('Admin') ?>" class="brand-link">
-        <img src="/logo/webgis.png" alt="AdminLTE Logo" class="me-2" height="58px" width="58px">
-        <span class="brand-text font-weight-light">WEB GIS Alutsista TNI</span>
+      <a href="<?= base_url('Admin') ?>" class="brand-link d-flex justify-content-center">
+        <img src="/logo/webgis.png" alt="AdminLTE Logo" height="150px" width="150px" class="img-fluid">
       </a>
 
       <!-- Sidebar -->
       <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
-        <!-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="user-panel mt-3 pb-3 mb-2 d-flex">
           <div class="image">
-            <img src="<? //= base_url('foto') 
-                      ?>/<? //= session()->get('foto') 
-                                                ?>" class="img-circle elevation-2" alt="User Image">
+            <img src="<?= base_url('foto_user/') ?><?= session()->get('foto') ?>" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block"><? //= session()->get('nama_user') 
-                                        ?></a>
+            <span class="d-block" style="color: azure;"><?= session()->get('nama_user') ?></span>
           </div>
-        </div> -->
+        </div>
 
         <!-- SidebarSearch Form -->
         <div class="form-inline" style="margin-top: 8px;">
@@ -163,14 +160,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </a>
             </li> -->
 
-            <li class="nav-item">
-              <a href="<?= base_url('Kesatuan') ?>" class="nav-link <?= $menu  ==  'kesatuan' ? 'active' : '' ?>">
+            <!-- <li class="nav-item">
+              <a href="<? //= base_url('Kesatuan') 
+                        ?>" class="nav-link <? //= $menu  ==  'kesatuan' ? 'active' : '' 
+                                            ?>">
                 <i class="nav-icon fas fa-person-military-rifle"></i>
                 <p>
                   Kesatuan
                 </p>
               </a>
-            </li>
+            </li> -->
 
             <li class="nav-item">
               <a href="<?= base_url('Kodam') ?>" class="nav-link <?= $menu  ==  'kodam' ? 'active' : '' ?>">
@@ -267,7 +266,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         Anything you want
       </div> -->
       <!-- Default to the left -->
-      <strong>Copyright &copy; 2025 <a href="https://adminlte.io">WEB GIS ALUTSISTA TNI</a>
+      <strong>Copyright &copy; <?= date('Y') ?> <a href="<?= base_url('Admin') ?>">WEB GIS ALUTSISTA TNI</a>
     </footer>
   </div>
   <!-- ./wrapper -->
@@ -278,12 +277,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     Chatbot.init({
       chatflowid: "05705ae6-e238-4d02-afba-1473b12482a9",
       apiHost: "http://localhost:3000",
-      chatflowConfig: {
-        /* Chatflow Config */
-      },
-      observersConfig: {
-        /* Observers Config */
-      },
       theme: {
         button: {
           backgroundColor: '#2268a7',

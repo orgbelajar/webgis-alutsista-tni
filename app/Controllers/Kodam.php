@@ -14,16 +14,15 @@ use App\Models\ModelWilayah;
 
 class Kodam extends BaseController
 {
-
     public function __construct()
     {
-         //Cek role login
+        //Cek role login
         if (session()->get('role') != 'admin') {
-            session()->setFlashdata('pesan', 'Harap login dahulu sebagai admin.');
+            session()->setFlashdata('pesan', 'Harap login dahulu sebagai admin!');
             header('Location: ' . base_url('Auth/LoginAdmin'));
             exit;
         }
-        
+
         $this->ModelWilayah = new ModelWilayah();
         $this->ModelSetting = new ModelSetting();
         $this->ModelKodam = new ModelKodam();
@@ -33,10 +32,10 @@ class Kodam extends BaseController
     public function index()
     {
         $data = [
-            'judul' => 'Kodam',
+            'judul' => 'Daftar Kodam',
             'menu'  => 'kodam',
             'page' => 'kodam/v_index',
-            'kodam' => $this->ModelKodam->AllData(),
+            'kodam' => $this->ModelKodam->AllDataPerAlutsista(),
         ];
         return view('v_template_back_end', $data);
     }
@@ -56,7 +55,7 @@ class Kodam extends BaseController
     public function Input()
     {
         $data = [
-            'judul' => 'Kodam',
+            'judul' => 'Input Kodam dan Alutsista',
             'menu'  => 'kodam',
             'page' => 'kodam/v_input',
             'web' => $this->ModelSetting->DataWeb(),
@@ -66,18 +65,11 @@ class Kodam extends BaseController
         return view('v_template_back_end', $data);
     }
 
-    public function InsertDataKodam()
+    public function Insert()
     {
         if ($this->validate([
             'nama_kodam' => [
                 'label' => 'Nama Kodam',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
-            ],
-            'id_kesatuan' => [
-                'label' => 'Kesatuan',
                 'rules' => 'required',
                 'errors' => [
                     'required' => '{field} Wajib Diisi !!'
@@ -106,183 +98,147 @@ class Kodam extends BaseController
             ],
             'nama_artileri' => [
                 'label' => 'Nama Artileri 1',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
+                'rules' => 'permit_empty',
+                'errors' => []
             ],
             'nama_artileri_2' => [
                 'label' => 'Nama Artileri 2',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
+                'rules' => 'permit_empty',
+                'errors' => []
             ],
             'deskripsi_artileri' => [
                 'label' => 'Deskripsi Artileri 1',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
+                'rules' => 'permit_empty',
+                'errors' => []
             ],
             'deskripsi_artileri_2' => [
                 'label' => 'Deskripsi Artileri 2',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
+                'rules' => 'permit_empty',
+                'errors' => []
             ],
             'foto_artileri' => [
                 'label' => 'Foto Artileri 1',
-                'rules' => 'max_size[foto_artileri,1024]|mime_in[foto_artileri,image/jpg,image/jpeg,image/png]|ext_in[foto_artileri,jpg,jpeg,png]',
+                'rules' => 'max_size[foto_artileri,3072]|mime_in[foto_artileri,image/jpg,image/jpeg,image/png]|ext_in[foto_artileri,jpg,jpeg,png]',
                 'errors' => [
-                    'max_size' => 'Ukuran {field} maksimal 1MB',
+                    'max_size' => 'Ukuran {field} maksimal 3 MB',
                     'mime_in' => 'Format {field} harus JPG, JPEG, atau PNG',
                     'ext_in' => 'Format {field} harus berekstensi .jpg, .jpeg, atau .png'
                 ]
             ],
             'foto_artileri_2' => [
                 'label' => 'Foto Artileri 2',
-                'rules' => 'max_size[foto_artileri_2,1024]|mime_in[foto_artileri_2,image/jpg,image/jpeg,image/png]|ext_in[foto_artileri_2,jpg,jpeg,png]',
+                'rules' => 'max_size[foto_artileri_2,3072]|mime_in[foto_artileri_2,image/jpg,image/jpeg,image/png]|ext_in[foto_artileri_2,jpg,jpeg,png]',
                 'errors' => [
-                    'max_size' => 'Ukuran {field} maksimal 1MB',
+                    'max_size' => 'Ukuran {field} maksimal 3 MB',
                     'mime_in' => 'Format {field} harus JPG, JPEG, atau PNG',
                     'ext_in' => 'Format {field} harus berekstensi .jpg, .jpeg, atau .png'
                 ]
             ],
             'jml_artileri' => [
                 'label' => 'Jumlah Artileri 1',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
+                'rules' => 'permit_empty',
+                'errors' => []
             ],
             'jml_artileri_2' => [
                 'label' => 'Jumlah Artileri 2',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
+                'rules' => 'permit_empty',
+                'errors' => []
             ],
             'nama_tank' => [
                 'label' => 'Nama Tank 1',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
+                'rules' => 'permit_empty',
+                'errors' => []
             ],
             'nama_tank_2' => [
                 'label' => 'Nama Tank 2',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
+                'rules' => 'permit_empty',
+                'errors' => []
             ],
             'deskripsi_tank' => [
                 'label' => 'Deskripsi Tank 1',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
+                'rules' => 'permit_empty',
+                'errors' => []
             ],
             'deskripsi_tank_2' => [
                 'label' => 'Deskripsi Tank 2',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
+                'rules' => 'permit_empty',
+                'errors' => []
             ],
             'foto_tank' => [
                 'label' => 'Foto Tank 1',
-                'rules' => 'max_size[foto_tank,1024]|mime_in[foto_tank,image/jpg,image/jpeg,image/png]|ext_in[foto_tank,jpg,jpeg,png]',
+                'rules' => 'max_size[foto_tank,3072]|mime_in[foto_tank,image/jpg,image/jpeg,image/png]|ext_in[foto_tank,jpg,jpeg,png]',
                 'errors' => [
-                    'max_size' => 'Ukuran {field} maksimal 1MB',
+                    'max_size' => 'Ukuran {field} maksimal 3 MB',
                     'mime_in' => 'Format {field} harus JPG, JPEG, atau PNG',
                     'ext_in' => 'Format {field} harus berekstensi .jpg, .jpeg, atau .png'
                 ]
             ],
             'foto_tank_2' => [
                 'label' => 'Foto Tank 2',
-                'rules' => 'max_size[foto_tank_2,1024]|mime_in[foto_tank_2,image/jpg,image/jpeg,image/png]|ext_in[foto_tank_2,jpg,jpeg,png]',
+                'rules' => 'max_size[foto_tank_2,3072]|mime_in[foto_tank_2,image/jpg,image/jpeg,image/png]|ext_in[foto_tank_2,jpg,jpeg,png]',
                 'errors' => [
-                    'max_size' => 'Ukuran {field} maksimal 1MB',
+                    'max_size' => 'Ukuran {field} maksimal 3 MB',
                     'mime_in' => 'Format {field} harus JPG, JPEG, atau PNG',
                     'ext_in' => 'Format {field} harus berekstensi .jpg, .jpeg, atau .png'
                 ]
             ],
             'jml_tank' => [
                 'label' => 'Jumlah Tank 1',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
+                'rules' => 'permit_empty',
+                'errors' => []
             ],
             'jml_tank_2' => [
                 'label' => 'Jumlah Tank 2',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
+                'rules' => 'permit_empty',
+                'errors' => []
             ],
             'nama_helikopter' => [
                 'label' => 'Nama Helikopter 1',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
+                'rules' => 'permit_empty',
+                'errors' => []
             ],
             'nama_helikopter_2' => [
                 'label' => 'Nama Helikopter 2',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
+                'rules' => 'permit_empty',
+                'errors' => []
             ],
             'deskripsi_helikopter' => [
                 'label' => 'Deskripsi Helikopter 1',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
+                'rules' => 'permit_empty',
+                'errors' => []
             ],
             'deskripsi_helikopter_2' => [
                 'label' => 'Deskripsi Helikopter 2',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
+                'rules' => 'permit_empty',
+                'errors' => []
             ],
             'foto_helikopter' => [
                 'label' => 'Foto Helikopter 1',
-                'rules' => 'max_size[foto_helikopter,1024]|mime_in[foto_helikopter,image/jpg,image/jpeg,image/png]|ext_in[foto_helikopter,jpg,jpeg,png]',
+                'rules' => 'max_size[foto_helikopter,3072]|mime_in[foto_helikopter,image/jpg,image/jpeg,image/png]|ext_in[foto_helikopter,jpg,jpeg,png]',
                 'errors' => [
-                    'max_size' => 'Ukuran {field} maksimal 1MB',
+                    'max_size' => 'Ukuran {field} maksimal 3 MB',
                     'mime_in' => 'Format {field} harus JPG, JPEG, atau PNG',
                     'ext_in' => 'Format {field} harus berekstensi .jpg, .jpeg, atau .png'
                 ]
             ],
             'foto_helikopter_2' => [
                 'label' => 'Foto Helikopter 2',
-                'rules' => 'max_size[foto_helikopter_2,1024]|mime_in[foto_helikopter_2,image/jpg,image/jpeg,image/png]|ext_in[foto_helikopter_2,jpg,jpeg,png]',
+                'rules' => 'max_size[foto_helikopter_2,3072]|mime_in[foto_helikopter_2,image/jpg,image/jpeg,image/png]|ext_in[foto_helikopter_2,jpg,jpeg,png]',
                 'errors' => [
-                    'max_size' => 'Ukuran {field} maksimal 1MB',
+                    'max_size' => 'Ukuran {field} maksimal 3 MB',
                     'mime_in' => 'Format {field} harus JPG, JPEG, atau PNG',
                     'ext_in' => 'Format {field} harus berekstensi .jpg, .jpeg, atau .png'
                 ]
             ],
             'jml_helikopter' => [
                 'label' => 'Jumlah Helikopter 1',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
+                'rules' => 'permit_empty',
+                'errors' => []
             ],
             'jml_helikopter_2' => [
                 'label' => 'Jumlah Helikopter 2',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
+                'rules' => 'permit_empty',
+                'errors' => []
             ],
             'koordinat' => [
                 'label' => 'Koordinat',
@@ -300,79 +256,99 @@ class Kodam extends BaseController
             ],
             'foto' => [
                 'label' => 'Foto Kodam',
-                'rules' => 'max_size[foto,1024]|mime_in[foto,image/png]|ext_in[foto,png]',
+                'rules' => 'max_size[foto,3072]|mime_in[foto,image/png]|ext_in[foto,png]',
                 'errors' => [
-                    'max_size' => 'Ukuran {field} maksimal 1MB',
+                    'max_size' => 'Ukuran {field} maksimal 3 MB',
                     'mime_in' => 'Format {field} harus PNG',
                     'ext_in' => 'Format {field} harus berekstensi .png'
                 ]
             ],
         ])) {
-            // Ambil semua file foto
             $foto_kodam = $this->request->getFile('foto');
-            $foto_artileri = $this->request->getFile('foto_artileri');
-            $foto_artileri_2 = $this->request->getFile('foto_artileri_2');
-            $foto_tank = $this->request->getFile('foto_tank');
-            $foto_tank_2 = $this->request->getFile('foto_tank_2');
-            $foto_helikopter = $this->request->getFile('foto_helikopter');
-            $foto_helikopter_2 = $this->request->getFile('foto_helikopter_2');
+            if ($foto_kodam->isValid()) {
+                $nama_file_foto_kodam = $foto_kodam->getRandomName();
+                $foto_kodam->move('Gambar/Kodam/Logo', $nama_file_foto_kodam);
+            }
 
-            // Generate nama random untuk setiap file
-            $nama_file_foto = $foto_kodam->getRandomName();
-            $nama_file_foto_artileri = $foto_artileri->getRandomName();
-            $nama_file_foto_artileri_2 = $foto_artileri_2->getRandomName();
-            $nama_file_foto_tank = $foto_tank->getRandomName();
-            $nama_file_foto_tank_2 = $foto_tank_2->getRandomName();
-            $nama_file_foto_helikopter = $foto_helikopter->getRandomName();
-            $nama_file_foto_helikopter_2 = $foto_helikopter_2->getRandomName();
-            
+            $foto_artileri = $this->request->getFile('foto_artileri');
+            $nama_file_foto_artileri = '-';
+            if ($foto_artileri->isValid()) {
+                $nama_file_foto_artileri = $foto_artileri->getRandomName();
+                $foto_artileri->move('Gambar/Kodam/Artileri', $nama_file_foto_artileri);
+            }
+
+            $foto_artileri_2 = $this->request->getFile('foto_artileri_2');
+            $nama_file_foto_artileri_2 = '-';
+            if ($foto_artileri_2->isValid()) {
+                $nama_file_foto_artileri_2 = $foto_artileri_2->getRandomName();
+                $foto_artileri_2->move('Gambar/Kodam/Artileri 2', $nama_file_foto_artileri_2);
+            }
+
+            $foto_tank = $this->request->getFile('foto_tank');
+            $nama_file_foto_tank = '-';
+            if ($foto_tank->isValid()) {
+                $nama_file_foto_tank = $foto_tank->getRandomName();
+                $foto_tank->move('Gambar/Kodam/Tank', $nama_file_foto_tank);
+            }
+
+            $foto_tank_2 = $this->request->getFile('foto_tank_2');
+            $nama_file_foto_tank_2 = '-';
+            if ($foto_tank_2->isValid()) {
+                $nama_file_foto_tank_2 = $foto_tank_2->getRandomName();
+                $foto_tank_2->move('Gambar/Kodam/Tank 2', $nama_file_foto_tank_2);
+            }
+
+            $foto_helikopter = $this->request->getFile('foto_helikopter');
+            $nama_file_foto_helikopter = '-';
+            if ($foto_helikopter->isValid()) {
+                $nama_file_foto_helikopter = $foto_helikopter->getRandomName();
+                $foto_helikopter->move('Gambar/Kodam/Helikopter', $nama_file_foto_helikopter);
+            }
+
+            $foto_helikopter_2 = $this->request->getFile('foto_helikopter_2');
+            $nama_file_foto_helikopter_2 = '-';
+            if ($foto_helikopter_2->isValid()) {
+                $nama_file_foto_helikopter_2 = $foto_helikopter_2->getRandomName();
+                $foto_helikopter_2->move('Gambar/Kodam/Helikopter 2', $nama_file_foto_helikopter_2);
+            }
+
             //jika validasi berhasil
             $data = [
-                'nama_kodam'                     => $this->request->getPost('nama_kodam'),
-                'id_kesatuan'                       => $this->request->getPost('id_kesatuan'),
-                'tgl_dibentuk'                      => $this->request->getPost('tgl_dibentuk'),
-                'id_wilayah'                        => $this->request->getPost('id_wilayah'),
-                'jml_personel'                      => $this->request->getPost('jml_personel'),
-                'nama_artileri'           => $this->request->getPost('nama_artileri'),
-                'nama_artileri_2'         => $this->request->getPost('nama_artileri_2'),
-                'deskripsi_artileri'      => $this->request->getPost('deskripsi_artileri'),
-                'deskripsi_artileri_2'    => $this->request->getPost('deskripsi_artileri_2'),
+                'nama_kodam'              => $this->request->getPost('nama_kodam'),
+                'tgl_dibentuk'            => $this->request->getPost('tgl_dibentuk'),
+                'id_wilayah'              => $this->request->getPost('id_wilayah'),
+                'jml_personel'            => (int)$this->request->getPost('jml_personel'),
+                'nama_artileri'           => empty($this->request->getPost('nama_artileri')) ? '-' : $this->request->getPost('nama_artileri'),
+                'nama_artileri_2'         => empty($this->request->getPost('nama_artileri_2')) ? '-' : $this->request->getPost('nama_artileri_2'),
+                'deskripsi_artileri'      => empty($this->request->getPost('deskripsi_artileri')) ? '-' : $this->request->getPost('deskripsi_artileri'),
+                'deskripsi_artileri_2'    => empty($this->request->getPost('deskripsi_artileri_2')) ? '-' : $this->request->getPost('deskripsi_artileri_2'),
                 'foto_artileri'           => $nama_file_foto_artileri,
                 'foto_artileri_2'         => $nama_file_foto_artileri_2,
-                'jml_artileri'            => $this->request->getPost('jml_artileri'),
-                'jml_artileri_2'          => $this->request->getPost('jml_artileri_2'),
-                'nama_tank'                     => $this->request->getPost('nama_tank'),
-                'nama_tank_2'                   => $this->request->getPost('nama_tank_2'),
-                'deskripsi_tank'                => $this->request->getPost('deskripsi_tank'),
-                'deskripsi_tank_2'              => $this->request->getPost('deskripsi_tank_2'),
-                'foto_tank'                     => $nama_file_foto_tank,
-                'foto_tank_2'                   => $nama_file_foto_tank_2,
-                'jml_tank'                      => $this->request->getPost('jml_tank'),
-                'jml_tank_2'                    => $this->request->getPost('jml_tank_2'),
-                'nama_helikopter'       => $this->request->getPost('nama_helikopter'),
-                'nama_helikopter_2'     => $this->request->getPost('nama_helikopter_2'),
-                'deskripsi_helikopter'  => $this->request->getPost('deskripsi_helikopter'),
-                'deskripsi_helikopter_2' => $this->request->getPost('deskripsi_helikopter_2'),
-                'foto_helikopter'       => $nama_file_foto_helikopter,
-                'foto_helikopter_2'     => $nama_file_foto_helikopter_2,
-                'jml_helikopter'        => $this->request->getPost('jml_helikopter'),
-                'jml_helikopter_2'      => $this->request->getPost('jml_helikopter_2'),
-                'koordinat'                         => $this->request->getPost('koordinat'),
-                'alamat'                            => $this->request->getPost('alamat'),
-                'foto'                              => $nama_file_foto,
+                'jml_artileri'            => empty($this->request->getPost('jml_artileri')) ? 0 : (int)$this->request->getPost('jml_artileri'),
+                'jml_artileri_2'          => empty($this->request->getPost('jml_artileri_2')) ? 0 : (int)$this->request->getPost('jml_artileri_2'),
+                'nama_tank'               => empty($this->request->getPost('nama_tank')) ? '-' : $this->request->getPost('nama_tank'),
+                'nama_tank_2'             => empty($this->request->getPost('nama_tank_2')) ? '-' : $this->request->getPost('nama_tank_2'),
+                'deskripsi_tank'          => empty($this->request->getPost('deskripsi_tank')) ? '-' : $this->request->getPost('deskripsi_tank'),
+                'deskripsi_tank_2'        => empty($this->request->getPost('deskripsi_tank_2')) ? '-' : $this->request->getPost('deskripsi_tank_2'),
+                'foto_tank'               => $nama_file_foto_tank,
+                'foto_tank_2'             => $nama_file_foto_tank_2,
+                'jml_tank'                => empty($this->request->getPost('jml_tank')) ? 0 : (int)$this->request->getPost('jml_tank'),
+                'jml_tank_2'              => empty($this->request->getPost('jml_tank_2')) ? 0 : (int)$this->request->getPost('jml_tank_2'),
+                'nama_helikopter'         => empty($this->request->getPost('nama_helikopter')) ? '-' : $this->request->getPost('nama_helikopter'),
+                'nama_helikopter_2'       => empty($this->request->getPost('nama_helikopter_2')) ? '-' : $this->request->getPost('nama_helikopter_2'),
+                'deskripsi_helikopter'    => empty($this->request->getPost('deskripsi_helikopter')) ? '-' : $this->request->getPost('deskripsi_helikopter'),
+                'deskripsi_helikopter_2'  => empty($this->request->getPost('deskripsi_helikopter_2')) ? '-' : $this->request->getPost('deskripsi_helikopter_2'),
+                'foto_helikopter'         => $nama_file_foto_helikopter,
+                'foto_helikopter_2'       => $nama_file_foto_helikopter_2,
+                'jml_helikopter'          => empty($this->request->getPost('jml_helikopter')) ? 0 : (int)$this->request->getPost('jml_helikopter'),
+                'jml_helikopter_2'        => empty($this->request->getPost('jml_helikopter_2')) ? 0 : (int)$this->request->getPost('jml_helikopter_2'),
+                'koordinat'               => $this->request->getPost('koordinat'),
+                'alamat'                  => $this->request->getPost('alamat'),
+                'foto'                    => $nama_file_foto_kodam,
             ];
 
-            // Pindahkan file ke folder tujuan
-            $foto_kodam->move('Gambar/Kodam/Logo', $nama_file_foto);
-            $foto_artileri->move('Gambar/Kodam/Artileri', $nama_file_foto_artileri);
-            $foto_artileri_2->move('Gambar/Kodam/Artileri 2', $nama_file_foto_artileri_2);
-            $foto_tank->move('Gambar/Kodam/Tank', $nama_file_foto_tank);
-            $foto_tank_2->move('Gambar/Kodam/Tank 2', $nama_file_foto_tank_2);
-            $foto_helikopter->move('Gambar/Kodam/Helikopter', $nama_file_foto_helikopter);
-            $foto_helikopter_2->move('Gambar/Kodam/Helikopter 2', $nama_file_foto_helikopter_2);
-
-            $this->ModelKodam->InsertDataKodam($data);
-            session()->setFlashdata('insert', 'Data ' . $data['nama_kodam'] . ' Berhasil Ditambahkan!');
+            $this->ModelKodam->InsertData($data);
+            session()->setFlashdata('success', 'Data ' . $data['nama_kodam'] . ' Berhasil Ditambahkan!');
             return redirect()->to('Kodam');
         } else {
             //jika validasi gagal
@@ -384,7 +360,7 @@ class Kodam extends BaseController
     public function Edit($id)
     {
         $data = [
-            'judul' => 'Edit Kodam',
+            'judul' => 'Edit Kodam dan Alutsista',
             'menu'  => 'kodam',
             'page' => 'kodam/v_edit',
             'web' => $this->ModelSetting->DataWeb(),
@@ -396,18 +372,11 @@ class Kodam extends BaseController
         return view('v_template_back_end', $data);
     }
 
-    public function UpdateData($id)
+    public function Update($id)
     {
         if ($this->validate([
             'nama_kodam' => [
                 'label' => 'Nama Kodam',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
-            ],
-            'id_kesatuan' => [
-                'label' => 'Kesatuan',
                 'rules' => 'required',
                 'errors' => [
                     'required' => '{field} Wajib Diisi !!'
@@ -436,183 +405,147 @@ class Kodam extends BaseController
             ],
             'nama_artileri' => [
                 'label' => 'Nama Artileri 1',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
+                'rules' => 'permit_empty',
+                'errors' => []
             ],
             'nama_artileri_2' => [
                 'label' => 'Nama Artileri 2',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
+                'rules' => 'permit_empty',
+                'errors' => []
             ],
             'deskripsi_artileri' => [
                 'label' => 'Deskripsi Artileri 1',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
+                'rules' => 'permit_empty',
+                'errors' => []
             ],
             'deskripsi_artileri_2' => [
                 'label' => 'Deskripsi Artileri 2',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
+                'rules' => 'permit_empty',
+                'errors' => []
             ],
             'foto_artileri' => [
                 'label' => 'Foto Artileri 1',
-                'rules' => 'max_size[foto_artileri,1024]|mime_in[foto_artileri,image/jpg,image/jpeg,image/png]|ext_in[foto_artileri,jpg,jpeg,png]',
+                'rules' => 'max_size[foto_artileri,3072]|mime_in[foto_artileri,image/jpg,image/jpeg,image/png]|ext_in[foto_artileri,jpg,jpeg,png]',
                 'errors' => [
-                    'max_size' => 'Ukuran {field} maksimal 1MB',
+                    'max_size' => 'Ukuran {field} maksimal 3 MB',
                     'mime_in' => 'Format {field} harus JPG, JPEG, atau PNG',
                     'ext_in' => 'Format {field} harus berekstensi .jpg, .jpeg, atau .png'
                 ]
             ],
             'foto_artileri_2' => [
                 'label' => 'Foto Artileri 2',
-                'rules' => 'max_size[foto_artileri_2,1024]|mime_in[foto_artileri_2,image/jpg,image/jpeg,image/png]|ext_in[foto_artileri_2,jpg,jpeg,png]',
+                'rules' => 'max_size[foto_artileri_2,3072]|mime_in[foto_artileri_2,image/jpg,image/jpeg,image/png]|ext_in[foto_artileri_2,jpg,jpeg,png]',
                 'errors' => [
-                    'max_size' => 'Ukuran {field} maksimal 1MB',
+                    'max_size' => 'Ukuran {field} maksimal 3 MB',
                     'mime_in' => 'Format {field} harus JPG, JPEG, atau PNG',
                     'ext_in' => 'Format {field} harus berekstensi .jpg, .jpeg, atau .png'
                 ]
             ],
             'jml_artileri' => [
                 'label' => 'Jumlah Artileri 1',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
+                'rules' => 'permit_empty',
+                'errors' => []
             ],
             'jml_artileri_2' => [
                 'label' => 'Jumlah Artileri 2',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
+                'rules' => 'permit_empty',
+                'errors' => []
             ],
             'nama_tank' => [
                 'label' => 'Nama Tank 1',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
+                'rules' => 'permit_empty',
+                'errors' => []
             ],
             'nama_tank_2' => [
                 'label' => 'Nama Tank 2',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
+                'rules' => 'permit_empty',
+                'errors' => []
             ],
             'deskripsi_tank' => [
                 'label' => 'Deskripsi Tank 1',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
+                'rules' => 'permit_empty',
+                'errors' => []
             ],
             'deskripsi_tank_2' => [
                 'label' => 'Deskripsi Tank 2',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
+                'rules' => 'permit_empty',
+                'errors' => []
             ],
             'foto_tank' => [
                 'label' => 'Foto Tank 1',
-                'rules' => 'max_size[foto_tank,1024]|mime_in[foto_tank,image/jpg,image/jpeg,image/png]|ext_in[foto_tank,jpg,jpeg,png]',
+                'rules' => 'max_size[foto_tank,3072]|mime_in[foto_tank,image/jpg,image/jpeg,image/png]|ext_in[foto_tank,jpg,jpeg,png]',
                 'errors' => [
-                    'max_size' => 'Ukuran {field} maksimal 1MB',
+                    'max_size' => 'Ukuran {field} maksimal 3 MB',
                     'mime_in' => 'Format {field} harus JPG, JPEG, atau PNG',
                     'ext_in' => 'Format {field} harus berekstensi .jpg, .jpeg, atau .png'
                 ]
             ],
             'foto_tank_2' => [
                 'label' => 'Foto Tank 2',
-                'rules' => 'max_size[foto_tank_2,1024]|mime_in[foto_tank_2,image/jpg,image/jpeg,image/png]|ext_in[foto_tank_2,jpg,jpeg,png]',
+                'rules' => 'max_size[foto_tank_2,3072]|mime_in[foto_tank_2,image/jpg,image/jpeg,image/png]|ext_in[foto_tank_2,jpg,jpeg,png]',
                 'errors' => [
-                    'max_size' => 'Ukuran {field} maksimal 1MB',
+                    'max_size' => 'Ukuran {field} maksimal 3 MB',
                     'mime_in' => 'Format {field} harus JPG, JPEG, atau PNG',
                     'ext_in' => 'Format {field} harus berekstensi .jpg, .jpeg, atau .png'
                 ]
             ],
             'jml_tank' => [
                 'label' => 'Jumlah Tank 1',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
+                'rules' => 'permit_empty',
+                'errors' => []
             ],
             'jml_tank_2' => [
                 'label' => 'Jumlah Tank 2',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
+                'rules' => 'permit_empty',
+                'errors' => []
             ],
             'nama_helikopter' => [
                 'label' => 'Nama Helikopter 1',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
+                'rules' => 'permit_empty',
+                'errors' => []
             ],
             'nama_helikopter_2' => [
                 'label' => 'Nama Helikopter 2',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
+                'rules' => 'permit_empty',
+                'errors' => []
             ],
             'deskripsi_helikopter' => [
                 'label' => 'Deskripsi Helikopter 1',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
+                'rules' => 'permit_empty',
+                'errors' => []
             ],
             'deskripsi_helikopter_2' => [
                 'label' => 'Deskripsi Helikopter 2',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
+                'rules' => 'permit_empty',
+                'errors' => []
             ],
             'foto_helikopter' => [
                 'label' => 'Foto Helikopter 1',
-                'rules' => 'max_size[foto_helikopter,1024]|mime_in[foto_helikopter,image/jpg,image/jpeg,image/png]|ext_in[foto_helikopter,jpg,jpeg,png]',
+                'rules' => 'max_size[foto_helikopter,3072]|mime_in[foto_helikopter,image/jpg,image/jpeg,image/png]|ext_in[foto_helikopter,jpg,jpeg,png]',
                 'errors' => [
-                    'max_size' => 'Ukuran {field} maksimal 1MB',
+                    'max_size' => 'Ukuran {field} maksimal 3 MB',
                     'mime_in' => 'Format {field} harus JPG, JPEG, atau PNG',
                     'ext_in' => 'Format {field} harus berekstensi .jpg, .jpeg, atau .png'
                 ]
             ],
             'foto_helikopter_2' => [
                 'label' => 'Foto Helikopter 2',
-                'rules' => 'max_size[foto_helikopter_2,1024]|mime_in[foto_helikopter_2,image/jpg,image/jpeg,image/png]|ext_in[foto_helikopter_2,jpg,jpeg,png]',
+                'rules' => 'max_size[foto_helikopter_2,3072]|mime_in[foto_helikopter_2,image/jpg,image/jpeg,image/png]|ext_in[foto_helikopter_2,jpg,jpeg,png]',
                 'errors' => [
-                    'max_size' => 'Ukuran {field} maksimal 1MB',
+                    'max_size' => 'Ukuran {field} maksimal 3 MB',
                     'mime_in' => 'Format {field} harus JPG, JPEG, atau PNG',
                     'ext_in' => 'Format {field} harus berekstensi .jpg, .jpeg, atau .png'
                 ]
             ],
             'jml_helikopter' => [
                 'label' => 'Jumlah Helikopter 1',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
+                'rules' => 'permit_empty',
+                'errors' => []
             ],
             'jml_helikopter_2' => [
                 'label' => 'Jumlah Helikopter 2',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Wajib Diisi !!'
-                ]
+                'rules' => 'permit_empty',
+                'errors' => []
             ],
             'koordinat' => [
                 'label' => 'Koordinat',
@@ -630,172 +563,129 @@ class Kodam extends BaseController
             ],
             'foto' => [
                 'label' => 'Foto Kodam',
-                'rules' => 'max_size[foto,1024]|mime_in[foto,image/jpg,image/jpeg,image/png]|ext_in[foto,jpg,jpeg,png]',
+                'rules' => 'max_size[foto,3072]|mime_in[foto,image/png]|ext_in[foto,png]',
                 'errors' => [
-                    'max_size' => 'Ukuran {field} maksimal 1MB',
-                    'mime_in' => 'Format {field} harus JPG, JPEG, atau PNG',
-                    'ext_in' => 'Format {field} harus berekstensi .jpg, .jpeg, atau .png'
+                    'max_size' => 'Ukuran {field} maksimal 3 MB',
+                    'mime_in' => 'Format {field} harus PNG',
+                    'ext_in' => 'Format {field} harus berekstensi .png'
                 ]
             ],
         ])) {
             // Ambil data lama untuk keperluan update file
             $kodam = $this->ModelKodam->DetailData($id);
 
-            // Ambil file dari form
-            $foto_kodam = $this->request->getFile('foto');
-            $foto_artileri = $this->request->getFile('foto_artileri');
-            $foto_artileri_2 = $this->request->getFile('foto_artileri_2');
-            $foto_tank = $this->request->getFile('foto_tank');
-            $foto_tank_2 = $this->request->getFile('foto_tank_2');
-            $foto_helikopter = $this->request->getFile('foto_helikopter');
-            $foto_helikopter_2 = $this->request->getFile('foto_helikopter_2');
+            // Handle file uploads
+            $fileFields = [
+                'foto' => ['path' => 'Gambar/Kodam/Logo/', 'current' => $kodam['foto']],
+                'foto_artileri' => ['path' => 'Gambar/Kodam/Artileri/', 'current' => $kodam['foto_artileri']],
+                'foto_artileri_2' => ['path' => 'Gambar/Kodam/Artileri 2/', 'current' => $kodam['foto_artileri_2']],
+                'foto_tank' => ['path' => 'Gambar/Kodam/Tank/', 'current' => $kodam['foto_tank']],
+                'foto_tank_2' => ['path' => 'Gambar/Kodam/Tank 2/', 'current' => $kodam['foto_tank_2']],
+                'foto_helikopter' => ['path' => 'Gambar/Kodam/Helikopter/', 'current' => $kodam['foto_helikopter']],
+                'foto_helikopter_2' => ['path' => 'Gambar/Kodam/Helikopter 2/', 'current' => $kodam['foto_helikopter_2']]
+            ];
 
-            // Fungsi helper untuk handle upload dan hapus file lama
-            function handleFileUpload($newFile, $oldFileName, $uploadPath)
-            {
-                if ($newFile->getError() == 4) {
-                    return $oldFileName; // Tidak ada file baru diupload
-                } else {
-                    // Hapus file lama jika ada
-                    if ($oldFileName && file_exists($uploadPath . $oldFileName)) {
-                        unlink($uploadPath . $oldFileName);
+            $uploadedFiles = [];
+            foreach ($fileFields as $field => $config) {
+                $file = $this->request->getFile($field);
+                if ($file->isValid() && !$file->hasMoved()) {
+                    // Hapus file lama jika bukan default
+                    if ($config['current'] && $config['current'] != '-' && file_exists($config['path'] . $config['current'])) {
+                        unlink($config['path'] . $config['current']);
                     }
                     // Upload file baru
-                    $newFileName = $newFile->getRandomName();
-                    $newFile->move($uploadPath, $newFileName);
-                    return $newFileName;
+                    $newName = $file->getRandomName();
+                    $file->move($config['path'], $newName);
+                    $uploadedFiles[$field] = $newName;
+                } else {
+                    $uploadedFiles[$field] = $config['current'] ?? '-';
                 }
             }
 
-            // Proses setiap file
-            $nama_file_foto_kodam = handleFileUpload(
-                $foto_kodam,
-                $kodam['foto'],
-                'Gambar/Kodam/Logo/'
-            );
-
-            $nama_file_foto_tank = handleFileUpload(
-                $foto_tank,
-                $kodam['foto_tank'],
-                'Gambar/Kodam/Tank/'
-            );
-
-            $nama_file_foto_tank_2 = handleFileUpload(
-                $foto_tank_2,
-                $kodam['foto_tank_2'],
-                'Gambar/Kodam/Tank 2/'
-            );
-
-            $nama_file_foto_artileri = handleFileUpload(
-                $foto_artileri,
-                $kodam['foto_artileri'],
-                'Gambar/Kodam/Artileri/'
-            );
-
-            $nama_file_foto_artileri_2 = handleFileUpload(
-                $foto_artileri_2,
-                $kodam['foto_artileri_2'],
-                'Gambar/Kodam/Artileri 2/'
-            );
-
-            $nama_file_foto_helikopter = handleFileUpload(
-                $foto_helikopter,
-                $kodam['foto_helikopter'],
-                'Gambar/Kodam/Helikopter/'
-            );
-
-            $nama_file_foto_helikopter_2 = handleFileUpload(
-                $foto_helikopter_2,
-                $kodam['foto_helikopter_2'],
-                'Gambar/Kodam/Helikopter 2/'
-            );
-
+            // Siapkan data untuk update
             $data = [
-                'id'                                => $id,
-                'nama_kodam'                      => $this->request->getPost('nama_kodam'),
-                'id_kesatuan'                       => $this->request->getPost('id_kesatuan'),
-                'tgl_dibentuk'                      => $this->request->getPost('tgl_dibentuk'),
-                'id_wilayah'                        => $this->request->getPost('id_wilayah'),
-                'jml_personel'                      => $this->request->getPost('jml_personel'),
-                'nama_artileri'             => $this->request->getPost('nama_artileri'),
-                'nama_artileri_2'           => $this->request->getPost('nama_artileri_2'),
-                'deskripsi_artileri'        => $this->request->getPost('deskripsi_artileri'),
-                'deskripsi_artileri_2'      => $this->request->getPost('deskripsi_artileri_2'),
-                'foto_artileri'             => $nama_file_foto_artileri,
-                'foto_artileri_2'           => $nama_file_foto_artileri_2,
-                'jml_artileri'              => $this->request->getPost('jml_artileri'),
-                'jml_artileri_2'            => $this->request->getPost('jml_artileri_2'),
-                'nama_tank'                 => $this->request->getPost('nama_tank'),
-                'nama_tank_2'                   => $this->request->getPost('nama_tank_2'),
-                'deskripsi_tank'                => $this->request->getPost('deskripsi_tank'),
-                'deskripsi_tank_2'              => $this->request->getPost('deskripsi_tank_2'),
-                'foto_tank'                     => $nama_file_foto_tank,
-                'foto_tank_2'                   => $nama_file_foto_tank_2,
-                'jml_tank'                      => $this->request->getPost('jml_tank'),
-                'jml_tank_2'                    => $this->request->getPost('jml_tank_2'),
-                'nama_helikopter'           => $this->request->getPost('nama_helikopter'),
-                'nama_helikopter_2'         => $this->request->getPost('nama_helikopter_2'),
-                'deskripsi_helikopter'      => $this->request->getPost('deskripsi_helikopter'),
-                'deskripsi_helikopter_2'    => $this->request->getPost('deskripsi_helikopter_2'),
-                'foto_helikopter'           => $nama_file_foto_helikopter,
-                'foto_helikopter_2'         => $nama_file_foto_helikopter_2,
-                'jml_helikopter'            => $this->request->getPost('jml_helikopter'),
-                'jml_helikopter_2'          => $this->request->getPost('jml_helikopter_2'),
-                'koordinat'                         => $this->request->getPost('koordinat'),
-                'alamat'                            => $this->request->getPost('alamat'),
-                'foto'                              => $nama_file_foto_kodam,
+                'id'                    => $id,
+                'nama_kodam'            => $this->request->getPost('nama_kodam'),
+                'tgl_dibentuk'          => $this->request->getPost('tgl_dibentuk'),
+                'id_wilayah'            => $this->request->getPost('id_wilayah'),
+                'jml_personel'          => (int)$this->request->getPost('jml_personel'),
+                'nama_artileri'         => empty($this->request->getPost('nama_artileri')) ? '-' : $this->request->getPost('nama_artileri'),
+                'nama_artileri_2'       => empty($this->request->getPost('nama_artileri_2')) ? '-' : $this->request->getPost('nama_artileri_2'),
+                'deskripsi_artileri'    => empty($this->request->getPost('deskripsi_artileri')) ? '-' : $this->request->getPost('deskripsi_artileri'),
+                'deskripsi_artileri_2'  => empty($this->request->getPost('deskripsi_artileri_2')) ? '-' : $this->request->getPost('deskripsi_artileri_2'),
+                'foto_artileri'         => $uploadedFiles['foto_artileri'],
+                'foto_artileri_2'       => $uploadedFiles['foto_artileri_2'],
+                'jml_artileri'          => empty($this->request->getPost('jml_artileri')) ? 0 : (int)$this->request->getPost('jml_artileri'),
+                'jml_artileri_2'        => empty($this->request->getPost('jml_artileri_2')) ? 0 : (int)$this->request->getPost('jml_artileri_2'),
+                'nama_tank'             => empty($this->request->getPost('nama_tank')) ? '-' : $this->request->getPost('nama_tank'),
+                'nama_tank_2'           => empty($this->request->getPost('nama_tank_2')) ? '-' : $this->request->getPost('nama_tank_2'),
+                'deskripsi_tank'        => empty($this->request->getPost('deskripsi_tank')) ? '-' : $this->request->getPost('deskripsi_tank'),
+                'deskripsi_tank_2'      => empty($this->request->getPost('deskripsi_tank_2')) ? '-' : $this->request->getPost('deskripsi_tank_2'),
+                'foto_tank'             => $uploadedFiles['foto_tank'],
+                'foto_tank_2'           => $uploadedFiles['foto_tank_2'],
+                'jml_tank'              => empty($this->request->getPost('jml_tank')) ? 0 : (int)$this->request->getPost('jml_tank'),
+                'jml_tank_2'            => empty($this->request->getPost('jml_tank_2')) ? 0 : (int)$this->request->getPost('jml_tank_2'),
+                'nama_helikopter'       => empty($this->request->getPost('nama_helikopter')) ? '-' : $this->request->getPost('nama_helikopter'),
+                'nama_helikopter_2'     => empty($this->request->getPost('nama_helikopter_2')) ? '-' : $this->request->getPost('nama_helikopter_2'),
+                'deskripsi_helikopter'  => empty($this->request->getPost('deskripsi_helikopter')) ? '-' : $this->request->getPost('deskripsi_helikopter'),
+                'deskripsi_helikopter_2' => empty($this->request->getPost('deskripsi_helikopter_2')) ? '-' : $this->request->getPost('deskripsi_helikopter_2'),
+                'foto_helikopter'       => $uploadedFiles['foto_helikopter'],
+                'foto_helikopter_2'     => $uploadedFiles['foto_helikopter_2'],
+                'jml_helikopter'        => empty($this->request->getPost('jml_helikopter')) ? 0 : (int)$this->request->getPost('jml_helikopter'),
+                'jml_helikopter_2'      => empty($this->request->getPost('jml_helikopter_2')) ? 0 : (int)$this->request->getPost('jml_helikopter_2'),
+                'koordinat'             => $this->request->getPost('koordinat'),
+                'alamat'                => $this->request->getPost('alamat'),
+                'foto'                  => $uploadedFiles['foto'],
             ];
 
+
             $this->ModelKodam->UpdateData($data);
-            session()->setFlashdata('insert', 'Data ' . $kodam['nama_kodam'] . ' Berhasil Diubah!');
+            session()->setFlashdata('success', 'Data ' . $kodam['nama_kodam'] . ' Berhasil Diubah!');
             return redirect()->to('Kodam');
         } else {
             //jika validasi gagal
             session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
-            return redirect()->to('Kodam/Edit/' . $id)->withInput('validation', \Config\Services::validation());
+            return redirect()->to('Kodam/Edit')->withInput('validation', \Config\Services::validation());
         }
     }
 
-    //delete
     public function Delete($id)
     {
         $kodam = $this->ModelKodam->DetailData($id);
 
-        // Hapus foto di folder 
-        if ($kodam['foto'] <> '') {
-            unlink('Gambar/Kodam/Logo/' . $kodam['foto']);
-        }
-
-        if ($kodam['foto_tank'] <> '') {
-            unlink('Gambar/Kodam/Tank/' . $kodam['foto_tank']);
-        }
-
-        if ($kodam['foto_tank_2'] <> '') {
-            unlink('Gambar/Kodam/Tank 2/' . $kodam['foto_tank_2']);
-        }
-
-        if ($kodam['foto_artileri'] <> '') {
-            unlink('Gambar/Kodam/Artileri/' . $kodam['foto_artileri']);
-        }
-
-        if ($kodam['foto_artileri_2'] <> '') {
-            unlink('Gambar/Kodam/Artileri 2/' . $kodam['foto_artileri_2']);
-        }
-
-        if ($kodam['foto_helikopter'] <> '') {
-            unlink('Gambar/Kodam/Helikopter/' . $kodam['foto_helikopter']);
-        }
-
-        if ($kodam['foto_helikopter_2'] <> '') {
-            unlink('Gambar/Kodam/Helikopter 2/' . $kodam['foto_helikopter_2']);
-        }
-
-        $data = [
-            'id' => $id,
+        // Daftar file dan path yang perlu dihapus
+        $filesToDelete = [
+            'foto' => 'Gambar/Kodam/Logo/' . $kodam['foto'],
+            'foto_tank' => 'Gambar/Kodam/Tank/' . $kodam['foto_tank'],
+            'foto_tank_2' => 'Gambar/Kodam/Tank 2/' . $kodam['foto_tank_2'],
+            'foto_artileri' => 'Gambar/Kodam/Artileri/' . $kodam['foto_artileri'],
+            'foto_artileri_2' => 'Gambar/Kodam/Artileri 2/' . $kodam['foto_artileri_2'],
+            'foto_helikopter' => 'Gambar/Kodam/Helikopter/' . $kodam['foto_helikopter'],
+            'foto_helikopter_2' => 'Gambar/Kodam/Helikopter 2/' . $kodam['foto_helikopter_2']
         ];
 
+        foreach ($filesToDelete as $field => $filePath) {
+            try {
+                // Skip jika file tidak ada atau default value '-'
+                if ($kodam[$field] == '-' || empty($kodam[$field]) || !file_exists($filePath)) {
+                    continue;
+                }
+
+                // Hapus file jika ada
+                if (is_file($filePath)) {
+                    unlink($filePath);
+                }
+            } catch (\Exception $e) {
+                // Log error tapi jangan hentikan proses
+                log_message('error', 'Gagal menghapus file ' . $field . ': ' . $e->getMessage());
+            }
+        }
+
+        // Hapus data dari database
+        $data = ['id' => $id];
         $this->ModelKodam->DeleteData($data);
-        session()->setFlashdata('insert', 'Data ' . $kodam['nama_kodam'] . ' Berhasil Dihapus!');
+
+        session()->setFlashdata('success', 'Data ' . $kodam['nama_kodam'] . ' Berhasil Dihapus!');
         return redirect()->to('Kodam');
     }
 }
