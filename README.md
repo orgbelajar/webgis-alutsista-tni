@@ -122,13 +122,6 @@ mysql -u root -p webgis-alutsista-tni < webgis-alutsista-tni.sql
 
 #### Apache Configuration (Manual Setup)
 
-### 6. Set Permissions
-
-```bash
-chmod -R 755 writable/
-chmod -R 755 public/
-```
-
 ## Menjalankan Aplikasi
 
 ### Development Server
@@ -161,12 +154,12 @@ Untuk production, pastikan web server Apache sudah dikonfigurasi dengan benar da
 ### Default Login Credentials
 
 **Admin Account:**
-- Email: `admin@webgis.com`
+- Email: `admin@gmail.com`
 - Password: `admin123`
 
 **User Account:**
-- Email: `user@webgis.com`
-- Password: `user123`
+- Email: `nabil@gmail.com`
+- Password: `nabil`
 
 ## Penggunaan Aplikasi
 
