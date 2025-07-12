@@ -1,60 +1,264 @@
-# CodeIgniter 4 Framework
+# WebGIS Alutsista TNI
 
-## What is CodeIgniter?
+Sistem Informasi Geografis (WebGIS) untuk manajemen dan visualisasi data Alat Utama Sistem Persenjataan (Alutsista) Tentara Nasional Indonesia (TNI). Aplikasi ini menyediakan platform berbasis web untuk mengelola dan menampilkan informasi geografis tentang kesatuan TNI, alutsista, dan distribusinya di seluruh wilayah Indonesia.
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+> ⚠️ **PENTING - STATUS PROTOTIPE**
+>
+> Proyek ini merupakan **PROTOTIPE** untuk tujuan demonstrasi dan pembelajaran.
+> **Data yang digunakan dalam database BUKAN data asli** dari TNI, melainkan data dummy/simulasi yang dibuat untuk keperluan pengembangan dan testing aplikasi.
+>
+> Aplikasi ini tidak dimaksudkan untuk penggunaan operasional yang sesungguhnya dan tidak mengandung informasi sensitif atau rahasia militer.
 
-This repository holds the distributable version of the framework.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+## Fitur Utama
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+- **Peta Interaktif**: Visualisasi geografis kesatuan TNI di seluruh Indonesia
+- **Manajemen Kesatuan**: Kelola data TNI AD (Kodam), TNI AL (Lantamal), dan TNI AU (Koopsud)
+- **Database Alutsista**: Informasi lengkap tentang tank, artileri, helikopter, pesawat, kapal, dan amunisi
+- **Sistem Autentikasi**: Login terpisah untuk admin dan user dengan role-based access
+- **Dashboard Admin**: Interface untuk mengelola data kesatuan, wilayah, dan alutsista
+- **Responsive Design**: Menggunakan AdminLTE untuk tampilan yang responsif
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+## Teknologi yang Digunakan
 
-## Important Change with index.php
+- **Framework**: CodeIgniter 4
+- **Database**: MySQL 8.0+
+- **Frontend**: AdminLTE 3, Bootstrap 4.6, jQuery
+- **Maps**: Leaflet.js untuk peta interaktif
+- **PHP**: Version 8.1+
+- **Web Server**: Apache (Laragon/XAMPP)
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+## Persyaratan Sistem
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+### Server Requirements
 
-**Please** read the user guide for a better explanation of how CI4 works!
+- **PHP**: Version 8.1 atau lebih tinggi
+- **Database**: MySQL 8.0+ atau MariaDB 10.3+
+- **Web Server**: Apache 2.4+ (Direkomendasikan menggunakan Laragon atau XAMPP untuk development)
+- **Memory**: Minimum 8GB RAM
+- **Storage**: Minimum 3GB disk space
 
-## Repository Management
+### Development Environment (Recommended)
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+Untuk kemudahan development, disarankan menggunakan salah satu dari:
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+- **[Laragon](https://laragon.org/)** - Portable development environment untuk Windows
+- **[XAMPP](https://www.apachefriends.org/)** - Cross-platform web server solution stack
+- **[WAMP](https://www.wampserver.com/)** - Windows web development environment
 
-## Contributing
+### PHP Extensions
 
-We welcome contributions from the community.
+Pastikan ekstensi PHP berikut telah diaktifkan:
 
-Please read the [*Contributing to CodeIgniter*](https://github.com/codeigniter4/CodeIgniter4/blob/develop/CONTRIBUTING.md) section in the development repository.
+- `intl` - untuk internationalization
+- `mbstring` - untuk multibyte string handling
+- `json` - untuk JSON processing (default enabled)
+- `mysqlnd` - untuk MySQL database connectivity
+- `libcurl` - untuk HTTP requests
+- `gd` atau `imagick` - untuk image processing
+- `zip` - untuk file compression
 
-## Server Requirements
+## Instalasi dan Setup
 
-PHP version 8.1 or higher is required, with the following extensions installed:
+### 1. Clone Repository
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+```bash
+git clone https://github.com/username/webgis_alutsista_tni.git
+cd webgis_alutsista_tni
+```
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> - The end of life date for PHP 8.1 will be December 31, 2025.
+### 2. Install Dependencies
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+```bash
+composer install
+```
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+### 3. Konfigurasi Environment
+
+Salin file environment dan sesuaikan konfigurasi:
+
+```bash
+cp env .env
+```
+
+Edit file `.env` dan sesuaikan konfigurasi database:
+
+```env
+CI_ENVIRONMENT = development
+
+# Database Configuration
+database.default.hostname = localhost
+database.default.database = webgis-alutsista-tni
+database.default.username = root
+database.default.password =
+database.default.DBDriver = MySQLi
+database.default.port = 3306
+```
+
+### 4. Setup Database
+
+1. Buat database MySQL:
+```sql
+CREATE DATABASE `webgis-alutsista-tni`;
+```
+
+2. Import database schema:
+```bash
+mysql -u root -p webgis-alutsista-tni < webgis-alutsista-tni.sql
+```
+
+### 5. Konfigurasi Web Server
+
+#### Konfigurasi untuk Laragon
+
+1. **Ekstrak proyek** ke folder `C:\laragon\www\webgis_alutsista_tni`
+2. **Akses aplikasi** melalui `http://webgis_alutsista_tni.test` (Laragon auto virtual host)
+3. **Database** dapat diakses melalui phpMyAdmin di `http://localhost/phpmyadmin`
+
+#### Konfigurasi untuk XAMPP
+
+1. **Ekstrak proyek** ke folder `C:\xampp\htdocs\webgis_alutsista_tni`
+2. **Akses aplikasi** melalui `http://localhost/webgis_alutsista_tni/public`
+3. **Database** dapat diakses melalui phpMyAdmin di `http://localhost/phpmyadmin`
+
+#### Apache Configuration (Manual Setup)
+
+### 6. Set Permissions
+
+```bash
+chmod -R 755 writable/
+chmod -R 755 public/
+```
+
+## Menjalankan Aplikasi
+
+### Development Server
+
+#### Menggunakan Laragon/XAMPP (Recommended)
+
+1. **Laragon**: Akses `http://webgis_alutsista_tni.test`
+2. **XAMPP**: Akses `http://localhost/webgis_alutsista_tni/public`
+
+#### Menggunakan Built-in PHP Server
+
+Untuk development cepat, Anda dapat menggunakan built-in PHP server:
+
+```bash
+php spark serve
+```
+
+Aplikasi akan berjalan di `http://localhost:8080`
+
+### Production Server
+
+Untuk production, pastikan web server Apache sudah dikonfigurasi dengan benar dan mengarah ke folder `public/`.
+
+### Akses Aplikasi
+
+1. **User Interface**: `http://your-domain.com/`
+2. **Admin Login**: `http://your-domain.com/Auth/LoginAdmin`
+3. **User Login**: `http://your-domain.com/Auth/LoginUser`
+
+### Default Login Credentials
+
+**Admin Account:**
+- Email: `admin@webgis.com`
+- Password: `admin123`
+
+**User Account:**
+- Email: `user@webgis.com`
+- Password: `user123`
+
+## Penggunaan Aplikasi
+
+### Untuk User
+
+1. **Login**: Akses halaman login user dan masukkan kredensial
+2. **Peta Interaktif**: Jelajahi peta Indonesia dengan marker kesatuan TNI
+3. **Detail Kesatuan**: Klik marker untuk melihat informasi detail kesatuan
+4. **Filter Data**: Gunakan filter untuk menampilkan kesatuan tertentu (TNI AD/AL/AU)
+5. **Informasi Alutsista**: Lihat detail alutsista setiap kesatuan
+
+### Untuk Admin
+
+1. **Dashboard**: Akses dashboard admin untuk overview sistem
+2. **Manajemen Kesatuan**: Tambah, edit, hapus data kesatuan TNI
+3. **Manajemen Wilayah**: Kelola data wilayah Indonesia
+4. **Manajemen Alutsista**: Update informasi tank, artileri, helikopter, dll
+5. **Manajemen User**: Kelola akun user dan admin
+6. **Pengaturan**: Konfigurasi aplikasi dan peta
+
+## Development dan Testing
+
+### Struktur Direktori
+
+```
+webgis_alutsista_tni/
+├── app/
+│   ├── Controllers/     # Controller files
+│   ├── Models/         # Model files
+│   ├── Views/          # View templates
+│   ├── Config/         # Configuration files
+│   └── ...
+├── public/             # Web accessible files
+│   ├── AdminLTE/       # AdminLTE assets
+│   ├── css/           # Custom CSS
+│   ├── js/            # Custom JavaScript
+│   ├── Gambar/        # Images and assets
+│   └── index.php      # Entry point
+├── system/            # CodeIgniter 4 system files
+├── writable/          # Writable directories
+├── .env               # Environment configuration
+├── composer.json      # Composer dependencies
+└── webgis-alutsista-tni.sql  # Database schema
+```
+
+### Setup Development Environment
+
+1. **Clone dan Install**:
+```bash
+git clone https://github.com/username/webgis_alutsista_tni.git
+cd webgis_alutsista_tni
+composer install
+```
+
+2. **Environment Setup**:
+```bash
+cp env .env
+# Edit .env file dengan konfigurasi development
+```
+
+3. **Database Setup**:
+```bash
+# Import database
+mysql -u root -p webgis-alutsista-tni < webgis-alutsista-tni.sql
+```
+
+4. **Development Server**:
+```bash
+php spark serve
+```
+
+## Disclaimer
+
+Proyek ini dibuat untuk tujuan:
+- **Pembelajaran** dan pengembangan skill programming
+- **Demonstrasi** kemampuan WebGIS dengan CodeIgniter 4
+- **Portfolio** pengembangan aplikasi web
+
+**Data yang ditampilkan**:
+- Merupakan data dummy/simulasi
+- Tidak mengandung informasi sensitif atau rahasia
+- Tidak dimaksudkan untuk penggunaan operasional militer
+- Hanya untuk keperluan akademis dan demonstrasi
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- CodeIgniter 4 Framework
+- AdminLTE untuk template admin
+- Leaflet.js untuk peta interaktif
+- Bootstrap untuk responsive design
+- Laragon/XAMPP untuk development environment
